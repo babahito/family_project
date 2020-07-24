@@ -15,6 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//トップ画面 
+Route::get('/top', function () {
+    return view('top');
+});
+
+//ノート投稿
+Route::get('/note', function () {
+    return view('note');
+});
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
