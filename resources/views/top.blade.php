@@ -5,12 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <ul>
-                <li>Family Note</li>
+                <li><a href="{{url('/year_note')}}">Family NOTE</a></li>
                 <li><a href="{{url('/note')}}">送る</a></li>
-                <li>送った履歴</li>
-                <li>受け取り</li>
-                <li>お気に入りメッセージ</li>
-                <li>保留中メッセージ</li>
+                <li><a href="{{url('/send')}}">送信履歴</a></li>
+                <li><a href="{{url('/recieve')}}">受信履歴</a></li>
+                <li><a href="{{url('/favorite')}}">お気に入り</a></li>
             </ul>
         </div>
     </div>

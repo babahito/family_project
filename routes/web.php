@@ -1,37 +1,128 @@
 <?php
+use App\Note;
+use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+// サイトトップ
 Route::get('/', function () {
     return view('welcome');
 });
 
-//トップ画面 
+
+// ========会員トップページ=============
+//会員トップ画面 
 Route::get('/top', function () {
     return view('top');
 });
 
-//ノート投稿
+
+// ========ファミリーNOTE=============
+//ファミリーNOTE（一覧）
+Route::get('/year_note', function () {
+    return view('year_note');
+});
+
+// ===========ノート投稿=============
+//ノート投稿トップ
 Route::get('/note', function () {
     return view('note');
 });
 
 
 
+// ノート投稿機能
+Route::post('/note', function (Request $request) {
+    //バリデーション
+    $validator = Validator::make($request->all(), [
+        'title' => 'required|max:255',
+        'body' => 'required|max:255',
+        // 'user_id' => 'required',
+        // 'photo' => 'required',
+        // 'attribute' => 'required',
+    ]);
+    // //バリデーション:エラー 
+    if ($validator->fails()) {
 
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+    //以下に登録処理を記述（Eloquentモデル）
+    $notes = new Note;
+    $notes->title= $request->title;
+    $notes->body = $request->body;
+    $notes->user_id = '1';
+    $notes->photo = '1';
+    $notes->attribute =  '1';
+    $notes->save(); 
+    return redirect('/note');
+});
+
+// ノート表示部分
+Route::get('/note', function () {
+    $notes = Note::orderBy('created_at', 'desc')->get();
+    $note = Note::orderBy('created_at', 'desc')->first();
+
+    return view('note', [
+        'notes' => $notes,
+        'note' => $note,
+        
+    ]);
+});
+
+
+
+// =======ノート送信履歴===========
+// 送信（一覧）
+// Route::get('/send', function () {
+//     return view('send');
+// });
+// ノート表示部分
+Route::get('/send', function () {
+    $notes = Note::orderBy('created_at', 'desc')->get();
+    return view('send', [
+        'notes' => $notes
+    ]);
+});
+
+
+// 送信（詳細）
+Route::get('/send_detail', function () {
+    return view('send_detail');
+});
+
+
+// // 送信(編集)
+Route::get('/send_edit', function () {
+    return view('send_edit');
+});
+
+
+// =========ノート受信==============
+// 受信（一覧）
+Route::get('/recieve', function () {
+    return view('recieve');
+});
+
+// 受信（詳細）
+Route::get('/recieve_detail', function () {
+    return view('recieve_detail');
+});
+
+// =========お気に入り==============
+// お気に入り（一覧）
+Route::get('/favorite', function () {
+    return view('favorite');
+});
+
+
+
+
+// =========認証==============
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

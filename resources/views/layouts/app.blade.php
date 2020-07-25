@@ -45,6 +45,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/year_note')}}">Family NOTE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/note')}}">NOTEをつくる</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/send')}}">送信履歴</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/recieve')}}">受信履歴</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/favorite')}}">お気に入り</a></li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
