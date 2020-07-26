@@ -37,8 +37,8 @@ Route::post('/note', function (Request $request) {
         'title' => 'required|max:255',
         'body' => 'required|max:255',
         // 'user_id' => 'required',
-        // 'photo' => 'required',
         // 'attribute' => 'required',
+        'toukou_time' => 'required',
     ]);
     // //バリデーション:エラー 
     if ($validator->fails()) {
@@ -47,28 +47,48 @@ Route::post('/note', function (Request $request) {
             ->withInput()
             ->withErrors($validator);
     }
+
+    // 画像ファイル処理
+
+        //==コントローラー内でのddチェック====
+        // dd($request->file('photo'));
+        // ==================================?
+    $file=$request->file('photo');
+        // 空かどうかチェック
+        if(!empty($file)){
+            // ファイル名を取得
+            $filename=$file->getClientOriginalName();
+            // ファイルを移動
+            $move = $file->move('./upload/',$filename); 
+        }else{
+            $filename="";
+        }
+    
+
     //以下に登録処理を記述（Eloquentモデル）
     $notes = new Note;
-    $notes->title= $request->title;
+    $notes->title=$request->title;
     $notes->body = $request->body;
     $notes->user_id = '1';
-    $notes->photo = '1';
-    $notes->attribute =  '1';
+    $notes->photo = $filename;
+    $notes->attribute =  '1'; $request->title;
+    $notes->toukou_time= $request->toukou_time;
     $notes->save(); 
     return redirect('/note');
 });
 
 // ノート表示部分
 Route::get('/note', function () {
-    $notes = Note::orderBy('created_at', 'desc')->get();
+    // $notes = Note::orderBy('created_at', 'desc')->get();
     $note = Note::orderBy('created_at', 'desc')->first();
 
     return view('note', [
-        'notes' => $notes,
+        // 'notes' => $notes,
         'note' => $note,
         
     ]);
 });
+
 
 
 
@@ -84,17 +104,67 @@ Route::get('/send', function () {
         'notes' => $notes
     ]);
 });
-
+// ノート削除
+Route::delete('/send/{note}', function (Note $note) {
+    $note->delete();       //追加
+    return redirect('/send');  //追加
+});
 
 // 送信（詳細）
-Route::get('/send_detail', function () {
-    return view('send_detail');
-});
+// Route::get('/send_detail', function () {
+//     return view('send_detail');
+// });
 
 
 // // 送信(編集)
-Route::get('/send_edit', function () {
-    return view('send_edit');
+Route::post('/send_edit/{notes}', function (Note $notes) {
+    return view('send_edit',[
+        'note'=>$notes
+    ]);
+});
+
+
+// ノート投稿更新する
+Route::post('/send/update', function (Request $request) {
+    //バリデーション
+    $validator = Validator::make($request->all(), [
+        'id'=>'required',
+        'title' => 'required|max:255',
+        'body' => 'required|max:255',
+        // 'user_id' => 'required',
+        // 'attribute' => 'required',
+        'toukou_time' => 'required',
+    ]);
+    // //バリデーション:エラー 
+    if ($validator->fails()) {
+
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    // 画像ファイル処理
+    $file=$request->file('photo');
+    // 空かどうかチェック
+    if(!empty($file)){
+        // ファイル名を取得
+        $filename=$file->getClientOriginalName();
+        // ファイルを移動
+        $move = $file->move('./upload/',$filename); 
+    }else{
+        $filename="";
+    }
+
+    //以下に登録処理を記述（Eloquentモデル）
+    $notes = Note::find($request->id);
+    $notes->title=$request->title;
+    $notes->body = $request->body;
+    $notes->user_id = '1';
+    $notes->photo = $filename;
+    $notes->attribute =  '1'; $request->title;
+    $notes->toukou_time= $request->toukou_time;
+    $notes->save(); 
+    return redirect('/send');
 });
 
 

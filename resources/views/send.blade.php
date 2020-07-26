@@ -27,9 +27,28 @@
                         <!-- 本タイトル -->
                         <td class="table-text">
                             <div>{{ $note->title }}</div>
+                            <div>{{ $note->body }}</div>
+                            <div><img src="upload/{{$note->photo}}" width="100"></div>
                         </td>
-            <!-- 本: 削除ボタン -->
+                         <!-- 本: 削除ボタン -->
                         <td>
+                        <form action="{{ url('send/'.$note->id) }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-danger">
+                                削除
+                            </button>
+                        </form>
+                        </td>
+                        <td>
+                        <!-- 本: 更新ボタン -->
+                        <td>
+                            <form action="{{ url('send_edit/'.$note->id) }}" method="POST">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-primary">
+                            更新
+                            </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
