@@ -19,6 +19,11 @@
     <!--★★ fontawsam ★★-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
+
+    <!-- ★★vue読み込み用（ログアウトでない問題）★★ -->
+    <!-- <script src="{{-- mix('js/app.js') --}}"></script> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   -->
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -79,8 +84,6 @@
             @yield('content')
         </main>
     </div>
-        <!-- ★★vue読み込み用★★ -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+
 </body>
 </html>
