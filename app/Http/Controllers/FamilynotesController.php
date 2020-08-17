@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+
 use Storage;
 use Validate;
 use DB;
-use App\User;
+// use App\User;
 use App\Post;
     
     //=======================================================================
@@ -22,15 +22,16 @@ use App\Post;
         {
             $keyword = $request->get("search");
             $perPage = 25;
-            $users=User::all();
+            // $users=User::all();
             // dd($user);
             if (!empty($keyword)) {
                 $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->paginate($perPage);
             } else {
                     $post = Post::paginate($perPage);  
+                    
                                
             }          
-            return view("family_note.index", compact("post","users"));
+            return view("family_note.index", compact("post"));
         }
     
         /**
