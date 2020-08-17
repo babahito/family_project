@@ -2,9 +2,11 @@
 
 namespace App;
 
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -36,4 +38,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // 1対１(ユーザーとユーザー詳細紐づけ)
+    public function user_detail(){
+        return $this->hasOne('App\UserDetail');
+    }
+
+    // 1対多(ユーザーとノート記事）
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
 }
