@@ -61,7 +61,7 @@ use App\Post;
 				"sendtime" => "required|date", //integer('status')
 
             ]);
-            dd($request);
+            
             // ====画像ファイルの保存=====
             $validator = Validator::make($request->all(), [
                 'photo' => 'required|max:5000' //動画の容量を決める->5MB

@@ -20,6 +20,7 @@
 						$table->string('photo')->nullable();
 						$table->integer('attribute_id')->nullable()->unsigned();
 						$table->integer('status');
+						$table->date('sendtime');
 						$table->timestamps();
 						$table->softDeletes();
 						//$table->foreign("user_id")->references("id")->on("users");

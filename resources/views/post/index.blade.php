@@ -31,7 +31,7 @@
                                 
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
-                                        <thea<tr><th>タイトル</th><th>送信日hihi</th><th>送信相手</th></tr>
+                                        <thea<tr><th>タイトル</th><th>送信日</th><th>送信相手</th></tr>
                                             
                                         </thead>
                                         <tbody>
