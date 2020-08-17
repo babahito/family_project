@@ -13,9 +13,11 @@
                 public function up()
                 {
                     Schema::create("likes", function (Blueprint $table) {
-						$table->bigIncrements('id')->unsigned();
-						$table->integer('user_id')->unsigned();
-						$table->integer('post_id')->unsigned();
+						$table->bigIncrements('id');
+                        $table->unsignedBigInteger('user_id');
+                        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                        $table->unsignedBigInteger('post_id');
+                        $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
 						$table->timestamps();
 						$table->softDeletes();
 						//$table->foreign("user_id")->references("id")->on("users");
