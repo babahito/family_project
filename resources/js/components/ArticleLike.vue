@@ -3,21 +3,25 @@
         <button type="button" class="btn m-0 p-1 shadow-none">
             <i class="fas fa-heart mr-1"/>
         </button>
-        8
+        <p>
+           {{counter}}
+        </p>
+        <button v-on:click="increment">+1</button>
     </div>
+    
 </template>
 <script>
   export default {
-    props: {
-      initialIsLikedBy: {
-        type: Boolean,
-        default: false,
-      },
+    name: "ArticleLike",
+     data () {
+        return {
+            counter: 0
+        }
     },
-    data() {
-      return {
-        isLikedBy: this.initialIsLikedBy,
-      }
-    },
+    methods: {
+        increment:function(){
+            alert('increment');
+        }
+    }
   }
 </script>

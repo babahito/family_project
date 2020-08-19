@@ -31,8 +31,8 @@
                                 
                                 <div class="table-responsive">
                                 <!-- vue -->
-                                    <oosakatest></oosakatest>
-
+                                    <!-- <oosaka-test></oosaka-test> -->
+                                    <example-component></example-component>
 
 
 

@@ -1,16 +1,9 @@
 <template>
-    <p>{{ message }}</p>
+<div>
+aaaaa
+<div>
 </template>
 <script>
-// export default {
 
-// }
-  export default {
-    data() {
-      return {
-        message: 'this is test'
-      }
-    },
-  }
 
 </script>

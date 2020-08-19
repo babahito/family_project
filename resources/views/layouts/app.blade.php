@@ -28,9 +28,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
     <!---------------------------  -------------------------->
 
-    <!-- ★★vue読み込み用（ログアウトでない問題）★★ -->
-    <!-- <script src="{{-- mix('js/app.js') --}}"></script> -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   -->
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -93,10 +90,11 @@
         </main>
     </div>
 
-    <!-- ★★vue読み込み用★★ -->
-    <script src="{{ mix('js/app.js') }}"></script>
+
+        <!-- ★★vue読み込み用★★ -->
+        <script src="{{ mix('js/app.js') }}"></script>
+        
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
-    
     <!---------------- MDBoootstrap用 ------------------->
         <!-- JQuery -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
