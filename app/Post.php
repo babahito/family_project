@@ -18,14 +18,15 @@ class Post extends Model
         }
 
         // 多対多（記事といいねボタン）
-        public function likes(){
-            return $this->belongsToMany('App\User','likes')->withTimestamps();
+        public function likes(): BelongsToMany{
+            return $this->belongsToMany('App\User', 'likes')->withTimestamps();
         }
 
         // ログインユーザーがいいね済みかどうか（isLikeByメソッドの作成）
         public function isLikedBy(?User $user): bool //?はnull許可(nullableな型宣言)Userモデル
         {
             return $user
+            
             //$userが空でなければ、(bool)は型キャスト、tureかfalsewo
             ? (bool)$this->likes->where('id', $user->id)->count()
             //$userが空

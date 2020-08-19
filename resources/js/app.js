@@ -11,6 +11,8 @@ window.Vue = require('vue');
 import './bootstrap'
 import Vue from 'vue'
 import ArticleLike from './components/ArticleLike'
+import Oosakatest from './components/Oosakatest'
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -35,7 +37,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+
     components: {
       ArticleLike,
-    }
+      Oosakatest
+    },
+
   });

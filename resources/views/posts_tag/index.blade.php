@@ -30,6 +30,12 @@
                                 
                                 
                                 <div class="table-responsive">
+                                <!-- vue -->
+                                    <oosakatest></oosakatest>
+
+
+
+
                                     <table class="table table-borderless">
                                         <thead>
                                             <tr><th>id</th><th>post_id</th><th>tag_id</th></tr>
