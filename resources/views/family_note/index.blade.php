@@ -55,9 +55,14 @@
                                             <td>{{ $item->attribute_id}} </td>
                                             <td>
                                             
-                                            <example-component></example-component>
-                                            </td>
+                                            <article-like
+        :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
+        :initial-count-likes='@json($item->count_likes)'
+ 
+></article-like>
 
+                                            </td>        
+                                           
                                             <!-- <td>{{ $item->status}} </td> -->
   
                                                 <td><a href="{{ url("/post/" . $item->id) }}" title="View post"><button class="btn btn-info btn-xs">View</button></a></td>
@@ -88,4 +93,3 @@
             </div>
         </div>
         @endsection
-

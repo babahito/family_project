@@ -2,10 +2,9 @@
 @section("content")
 
     <div class="container">                            
-        <article-like message="ながしま"></article-like>
-        <article-like message="ささき"></article-like>
-        <article-like></article-like>
-        <article-like></article-like>
-        <article-like></article-like>
+        <article-like
+        :initial-is-liked-by='@json($article->isLikedBy(Auth::user()))'      
+      >
+      </article-like>
     </div>
 @endsection

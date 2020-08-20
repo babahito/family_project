@@ -1,31 +1,37 @@
 <template>
     <div>
-        <p>こんにちは、{{message}}さん</p>
-        <p>
-            Count : <span>{{ counter }}</span>
-        </p>
-        <button v-on:click="increment()">+1</button>
-
+    <button type="button" class="btn m-0 p-1 shadow-none">
+      <i class="fas fa-heart mr-1"
+      :class="{'red-text':this.isLikedBy}" 
+      />
+    </button>
+    {{ countLikes }}
     </div>
 </template>
 
 <script>
 export default {
-    name: "ExampleComponent",
-    data () {
-        return {
-            counter: 0,
-        }
-        
+    name: "ArticleLike",
+    // props:['postId'],
+    props: {
+      initialIsLikedBy: {
+        type: Boolean,
+        default: false,
+      },
+        initialCountLikes: {
+        type: Number,
+        default: 0,
+      },
     },
-    props:['message'],
-    methods: {
-        increment:function(){
-            this.counter++;
-        },
+    data() {
+      return {
+        isLikedBy: this.initialIsLikedBy,
+        countLikes: this.initialCountLikes,
+      }
+    },
+  }
+</script>
 
-    }
-}
 </script>
 
 <style scoped>

@@ -1920,17 +1920,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ExampleComponent",
+  name: "ArticleLike",
+  // props:['postId'],
+  props: {
+    initialIsLikedBy: {
+      type: Boolean,
+      "default": false
+    },
+    initialCountLikes: {
+      type: Number,
+      "default": 0
+    }
+  },
   data: function data() {
     return {
-      counter: 0
+      isLikedBy: this.initialIsLikedBy,
+      countLikes: this.initialCountLikes
     };
-  },
-  props: ['message'],
-  methods: {
-    increment: function increment() {
-      this.counter++;
-    }
   }
 });
 
@@ -38293,24 +38299,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("p", [_vm._v("こんにちは、" + _vm._s(_vm.message) + "さん")]),
-    _vm._v(" "),
-    _c("p", [
-      _vm._v("\n        Count : "),
-      _c("span", [_vm._v(_vm._s(_vm.counter))])
-    ]),
-    _vm._v(" "),
     _c(
       "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.increment()
-          }
-        }
-      },
-      [_vm._v("+1")]
-    )
+      { staticClass: "btn m-0 p-1 shadow-none", attrs: { type: "button" } },
+      [
+        _c("i", {
+          staticClass: "fas fa-heart mr-1",
+          class: { "red-text": this.isLikedBy }
+        })
+      ]
+    ),
+    _vm._v("\n" + _vm._s(_vm.countLikes) + "\n")
   ])
 }
 var staticRenderFns = []

@@ -3,9 +3,10 @@
 namespace App;
 use App\User;
 use App\Post;
+use App\Like;
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
@@ -29,9 +30,14 @@ class Post extends Model
             
             //$userが空でなければ、(bool)は型キャスト、tureかfalsewo
             ? (bool)$this->likes->where('id', $user->id)->count()
+            
             //$userが空
             : false;
         }
 
+        public function getCountLikesAttribute(): int
+        {
+            return $this->likes->count();
+        }
 }
 
