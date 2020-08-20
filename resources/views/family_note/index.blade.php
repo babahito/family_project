@@ -2,7 +2,7 @@
 
         @extends("layouts.app")
         @section("content")
- 
+   
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -55,7 +55,7 @@
                                             <td>{{ $item->attribute_id}} </td>
                                             <td>
                                             
-                                            <article-like></article-like>
+                                            <example-component></example-component>
                                             </td>
 
                                             <!-- <td>{{ $item->status}} </td> -->
@@ -88,3 +88,4 @@
             </div>
         </div>
         @endsection
+

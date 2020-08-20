@@ -1,27 +1,44 @@
 <template>
     <div>
-        <button type="button" class="btn m-0 p-1 shadow-none">
-            <i class="fas fa-heart mr-1"/>
-        </button>
+        <p>こんにちは、{{message}}さん</p>
         <p>
-           {{counter}}
+            Count : <span>{{ counter }}</span>
         </p>
-        <button v-on:click="increment">+1</button>
+        <button v-on:click="increment()">+1</button>
+
     </div>
-    
 </template>
+
 <script>
-  export default {
-    name: "ArticleLike",
-     data () {
+export default {
+    name: "ExampleComponent",
+    data () {
         return {
-            counter: 0
+            counter: 0,
         }
+        
     },
+    props:['message'],
     methods: {
         increment:function(){
-            alert('increment');
-        }
+            this.counter++;
+        },
+
     }
-  }
+}
 </script>
+
+<style scoped>
+    p {
+        margin: 10px;
+    }
+    .positive {
+        color: blue;
+    }
+    .negative {
+        color: red;
+    }
+    .warning{
+        background-color:red;
+    }
+</style>

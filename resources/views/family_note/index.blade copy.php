@@ -1,6 +1,8 @@
 
+
         @extends("layouts.app")
         @section("content")
+        <div id="app">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -30,7 +32,7 @@
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
                                         <thead>
-                                            <tr><th>タイトル</th><th>送信日時</th><th>誰から</th><th>送信相手</th><th>いいね</th></tr>
+                                            <tr><th>タイトル</th><th>送信日</th><th>誰から</th><th>送信相手</th><th>いいね</th></tr>
                                         </thead>
                                         <tbody>
                                         
@@ -52,9 +54,8 @@
 
                                             <td>{{ $item->attribute_id}} </td>
                                             <td>
-                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                                </svg>
+                                            
+                                            <example-component></example-component>
                                             </td>
 
                                             <!-- <td>{{ $item->status}} </td> -->
@@ -64,7 +65,7 @@
                                                 <td>
                                                     <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
                                                         {{ csrf_field() }}
-                                                        
+                                                
                                                         {{ method_field("DELETE") }}
                                                         <button type="submit" class="btn btn-danger btn-xs" title="Delete User" onclick="return confirm('Confirm delete')">
                                                         Delete
@@ -85,5 +86,6 @@
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         @endsection
-    
