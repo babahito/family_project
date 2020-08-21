@@ -107,6 +107,32 @@ use App\Post;
             return view("post.show", compact("posts"));
         }
     
+        //---------いいねボタン用------
+        public function like(Request $request, Post $post){
+
+            $post->likes()->detach($request->user()->id);
+            $post->likes()->attach($request->user()->id);
+
+            return [
+                'id'=>$post->id,
+                'countLikes'=>$post->count_likes
+            ];
+        }
+
+        public function unlike(Request $request, Post $post){
+        
+            $post->likes()->detach($request->user()->id);
+   
+            return [
+                'id'=>$post->id,
+                'countLikes'=>$post->count_likes
+            ];
+        }
+
+
+
+
+
 
         public function edit($id)
         {

@@ -58,8 +58,8 @@
                                             <article-like
         :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
         :initial-count-likes='@json($item->count_likes)'
- 
-></article-like>
+        :authorized='@json(Auth::check())'
+        endpoint="{{ route('posts.like', ['post' => $post]) }}"></article-like>
 
                                             </td>        
                                            

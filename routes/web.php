@@ -136,7 +136,14 @@ Route::put("post/{id}", "PostsController@update");
 //destroy
 Route::delete("post/{id}", "PostsController@destroy");
 
-// Route::resource('post','PostsController');
+// -------------unlike用---------------------------
+
+Route::prefix('posts')->name('posts.')->group(function () {
+    Route::put('/{post}/like', 'PostsController@like')->name('like')->middleware('auth');
+    Route::delete('/{post}/like', 'PostsController@unlike')->name('unlike')->middleware('auth');
+});
+
+// ------------------------------------------------
 //=======================================================================
 
 
@@ -146,7 +153,7 @@ Route::delete("post/{id}", "PostsController@destroy");
 //index
 Route::get("family_note/", "familynotesController@index");
 //create
-// Route::get("family_note/create", "familynotesController@create");
+// Route::get("family_note/like", "PostsController@like");
 // //show
 // Route::get("family_note/{id}", "familynotesController@show");
 // //store
