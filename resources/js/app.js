@@ -19,4 +19,18 @@ const app = new Vue({
   //  components: {
   //    ArticleLike,
   //  }
+
+  data: {
+   todos: [] //←TODO を格納するための配列を用意
+ },
+ methods: {
+   fetchTodos: function(){ //←axios.get で TODO リストを取得しています
+     axios.get('/api/get').then((res)=>{
+       this.todos = res.data //← 取得した TODO リストを todos に格納
+     })
+   }
+ },
+ created() { //← インスタンス生成時に fetchTodos()を実行したいので、created フックに登録します。
+   this.fetchTodos()
+ },
  });

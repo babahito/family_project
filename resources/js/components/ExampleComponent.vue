@@ -1,48 +1,37 @@
 <template>
     <div>
-        <p>
-            Count : <span>{{ counter }}</span>
-        </p>
 
+        <ul>
+            <li v-for="tag in tags" v-bind:key="tag.id">{{tag}}</li>sss
+        </ul> 
     </div>
 </template>
 
 <script>
 export default {
     name: "ExampleComponent",
-    data () {
-        return {
-            counter: 0,
-            // imgPath:"",
-            // wid:100,
-            // isActive:false
-            // formType:"password"
-            // user:""
-        }
-        
-    },
-    methods: {
-        increment:function(){
-            this.counter++;
-        },
-        // change:function(){
-        //     this.formbox=!this.formbox
-        // }
-        // tyoko:function(){
-        //     this.imgPath="https://silsmaria1982.itembox.design/item/item_dammy002.jpg"
-        // },
-        // tukuru:function(){
-        //     this.imgPath="https://silsmaria1982.itembox.design/item/item_dammy006.jpg"
-        // },
-        // wid600:function(){
-        //     this.wid=600
-        // },
-        // tyuui:function(){
-        //     this.isActive=!this.isActive
-        // }
+    //     data(){
+    //         return {
+    //             users: []
+    //         }
+    //     },
 
+    //    mounted() {
+    //   axios.get('/users').then(response => this.users = response.data)
+    //     }
+    data(){
+        return{
+            tags: []
+            }
+        },
+         mounted() {
+            axios.get('/posts_tag').then(response => this.tags = response.data)
+        }
+
+
+
+    
     }
-}
 </script>
 
 <style scoped>

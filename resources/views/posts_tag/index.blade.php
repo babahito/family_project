@@ -1,7 +1,6 @@
-@extends("layouts.app")
-@section("content")
 
-    <div class="container">                            
+        @extends("layouts.app")
+        @section("content")
         <example-component></example-component>
-    </div>
-@endsection
+        @endsection
+    

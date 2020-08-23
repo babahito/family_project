@@ -18,17 +18,16 @@ use App\PostsTag;
          */
         public function index(Request $request)
         {
-            $keyword = $request->get("search");
-            $perPage = 25;
-    
-            if (!empty($keyword)) {
-                $posts_tag = PostsTag::where("id","LIKE","%$keyword%")->orWhere("post_id", "LIKE", "%$keyword%")->orWhere("tag_id", "LIKE", "%$keyword%")->paginate($perPage);
-            } else {
-                    $posts_tag = PostsTag::paginate($perPage);              
-            }          
-            return view("posts_tag.index", compact("posts_tag"));
+
+                    $tags = PostsTag::find(1);
+                    // dd($tags);          
+         
+            return view("posts_tag.index", compact("tags"));
         }
     
+
+
+      
         /**
          * Show the form for creating a new resource.
          *

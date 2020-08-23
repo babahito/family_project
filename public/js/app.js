@@ -2053,35 +2053,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExampleComponent",
+  //     data(){
+  //         return {
+  //             users: []
+  //         }
+  //     },
+  //    mounted() {
+  //   axios.get('/users').then(response => this.users = response.data)
+  //     }
   data: function data() {
     return {
-      counter: 0 // imgPath:"",
-      // wid:100,
-      // isActive:false
-      // formType:"password"
-      // user:""
-
+      tags: []
     };
   },
-  methods: {
-    increment: function increment() {
-      this.counter++;
-    } // change:function(){
-    //     this.formbox=!this.formbox
-    // }
-    // tyoko:function(){
-    //     this.imgPath="https://silsmaria1982.itembox.design/item/item_dammy002.jpg"
-    // },
-    // tukuru:function(){
-    //     this.imgPath="https://silsmaria1982.itembox.design/item/item_dammy006.jpg"
-    // },
-    // wid600:function(){
-    //     this.wid=600
-    // },
-    // tyuui:function(){
-    //     this.isActive=!this.isActive
-    // }
+  mounted: function mounted() {
+    var _this = this;
 
+    axios.get('/posts_tag').then(function (response) {
+      return _this.tags = response.data;
+    });
   }
 });
 
@@ -39173,10 +39163,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("p", [
-      _vm._v("\n        Count : "),
-      _c("span", [_vm._v(_vm._s(_vm.counter))])
-    ])
+    _c(
+      "ul",
+      [
+        _vm._l(_vm.tags, function(tag) {
+          return _c("li", { key: tag.id }, [_vm._v(_vm._s(tag))])
+        }),
+        _vm._v("sss\n    ")
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = []
@@ -51365,10 +51361,28 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('article-like', __webpack_require__(/*! ./components/ArticleLike.vue */ "./resources/js/components/ArticleLike.vue")["default"]); // Vue.component('app-component', require('./components/AppComponent.vue').default);
 
 var app = new Vue({
-  el: '#app' //  components: {
+  el: '#app',
+  //  components: {
   //    ArticleLike,
   //  }
+  data: {
+    todos: [] //←TODO を格納するための配列を用意
 
+  },
+  methods: {
+    fetchTodos: function fetchTodos() {
+      var _this = this;
+
+      //←axios.get で TODO リストを取得しています
+      axios.get('/api/get').then(function (res) {
+        _this.todos = res.data; //← 取得した TODO リストを todos に格納
+      });
+    }
+  },
+  created: function created() {
+    //← インスタンス生成時に fetchTodos()を実行したいので、created フックに登録します。
+    this.fetchTodos();
+  }
 });
 
 /***/ }),

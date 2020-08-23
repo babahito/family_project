@@ -276,6 +276,18 @@ Route::put("mail_received/{id}", "MailReceivedsController@update");
 Route::delete("mail_received/{id}", "MailReceivedsController@destroy");
 //=======================================================================
 
+
+// --------axios練習------
+// Route::get('/{app}', function () {  //←追記
+//     return view('www');
+//   })->where('app', '.*');
+
+Route::group(['middleware' => 'api'], function() {
+    Route::get('get', 'TodoController@getTodos');
+  });
+
+  
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
