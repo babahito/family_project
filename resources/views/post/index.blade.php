@@ -6,6 +6,8 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">MY NOTE</div>
+                            <div class="card mt-3">
+
                             <div class="panel-body">
                             
                             <p>{{Auth::user()->name}}さん</p>

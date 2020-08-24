@@ -10,10 +10,7 @@
                             <div class="panel-heading">NOTE一覧（全員分）</div>
                             <div class="panel-body">
                             
-                            
-
-
-                                <form method="GET" action="{{ url("post") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
+                            <form method="GET" action="{{ url("post") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="search" placeholder="Search...">
                                         <span class="input-group-btn">
@@ -23,6 +20,31 @@
                                         </span>
                                     </div>
                                 </form>
+                               
+                            @foreach($post as $item)
+                            <div class="card mt-3">
+  <div class="card-body d-flex flex-row">
+    {{----------ここから追加----------}}
+    <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">
+    {{----------ここまで追加----------}}
+      <i class="fas fa-user-circle fa-3x mr-1"></i>
+    </a> {{----------この行を追加----------}}
+    <div>
+      <div class="font-weight-bold">
+        {{----------ここから追加----------}}
+        <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">
+        {{----------ここまで追加----------}}
+          {{ $item->user->name }}
+        </a> {{----------この行を追加----------}}
+      </div>
+      <div class="font-weight-lighter">
+        {{ $item->created_at->format('Y/m/d H:i') }}
+      </div>
+    </div>
+    {{--略--}}
+  </div>
+</div>
+
 
 
                                 <br/>
@@ -36,7 +58,7 @@
                                         </thead>
                                         <tbody>
                                         
-                                        @foreach($post as $item)
+                                       
                                     
                                     <tr>
                                   

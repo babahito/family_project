@@ -35,7 +35,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                    @include('nav')
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -53,10 +53,19 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <i class="fas fa-user-circle"></i>{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
+
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <!-- マイページ -->
+                                    <button class="dropdown-item" type="button" onclick="location.href=''">
+                                        マイページ
+                                    </button>
+                                    <!-- family NOTE -->
+                                    <a class="nav-link" href="{{-- route('post.create') --}}"><i class="fas fa-pen mr-1"></i>投稿する</a>
+                                    <!-- ログアウト -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -80,10 +89,13 @@
     
 
     </div>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   -->
+
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" ></script>
+        <!-- <script src="{{ asset('js/app.js') }}" ></script> -->
                         <!-- ★★vue読み込み用★★
-                        <script src="{{ mix('js/app.js') }}"></script>
+                         
                         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   -->
 </body>
 </html>

@@ -12,9 +12,7 @@ Route::get("/tables_check_view_html",function(){
 
 // ===-vue&laravel=======================
 
-Route::get("/new", function () {
-    return view("new");
-});
+
 
 // ====================================
 
@@ -34,6 +32,18 @@ Route::put("user/{id}", "UserController@update");
 //destroy
 Route::delete("user/{id}", "UserController@destroy");
 //=======================================================================
+
+
+//===================フォロワー====================================================
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{name}', 'UserController@show')->name('show');
+    //==========ここから追加==========
+    Route::middleware('auth')->group(function () {
+        Route::put('/{name}/follow', 'UserController@follow')->name('follow');
+        Route::delete('/{name}/follow', 'UserController@unfollow')->name('unfollow');
+    });
+    //==========ここまで追加==========
+});
 
 //=======================================================================
 //index
@@ -282,15 +292,8 @@ Route::delete("mail_received/{id}", "MailReceivedsController@destroy");
 //     return view('www');
 //   })->where('app', '.*');
 
-Route::group(['middleware' => 'api'], function() {
-    Route::get('get', 'TodoController@getTodos');
-  });
 
-  
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

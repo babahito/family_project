@@ -36,11 +36,7 @@ class UserController extends Controller
     }
 
 
-    public function show($id)
-    {
-        //
-        return view('user.show', ['user' => $user]);
-    }
+
 
 
     public function edit($id)
@@ -58,4 +54,46 @@ class UserController extends Controller
     {
         //
     }
+
+
+// フォロワー用
+
+    public function show(string $name)
+    {
+        //
+        $user = User::where('name', $name)->first();
+       
+        return view('user.show', ['user' => $user]);
+    }
+
+    // フォローする
+    public function follow(Request $request,string $name){
+        $user=User::where('name',$name)->first();
+
+        if($user->id===$request->user()->id){
+            return abort('404','あなた自身をフォローできません');
+        }
+
+        $request->user()->followings()->detach($user);
+        $request->user()->followings()->attach($user);
+
+        return ['name' => $name];
+    }
+
+
+    // フォローをはずす
+    public function unfollow(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        if ($user->id === $request->user()->id)
+        {
+            return abort('404','あなた自身をフォローできません');
+        }
+
+        $request->user()->followings()->detach($user);
+
+        return ['name' => $name];
+    }
+
 }

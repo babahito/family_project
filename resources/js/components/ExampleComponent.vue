@@ -1,15 +1,12 @@
 <template>
     <div>
 
-        <ul>
-            <li v-for="tag in tags" v-bind:key="tag.id">{{tag}}</li>sss
-        </ul> 
     </div>
 </template>
 
 <script>
-export default {
-    name: "ExampleComponent",
+// export default {
+//     name: "ExampleComponent",
     //     data(){
     //         return {
     //             users: []
@@ -19,19 +16,19 @@ export default {
     //    mounted() {
     //   axios.get('/users').then(response => this.users = response.data)
     //     }
-    data(){
-        return{
-            tags: []
-            }
-        },
-         mounted() {
-            axios.get('/posts_tag').then(response => this.tags = response.data)
-        }
+    // data(){
+    //     return{
+    //         tags: []
+    //         }
+    //     },
+    //      mounted() {
+    //         axios.get('/posts_tag').then(response => this.tags = response.data)
+    //     }
 
 
 
     
-    }
+    // }
 </script>
 
 <style scoped>
