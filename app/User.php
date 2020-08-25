@@ -1,13 +1,15 @@
 <?php
 
 namespace App;
+use Auth;
+use Post;
+use UserDetail;
 
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Auth;
 
 class User extends Authenticatable
 {
@@ -60,6 +62,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id')->withTimestamps();
     }
 
+    // いいねした記事とユーザーのリレーション
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Post', 'likes')->withTimestamps();
+    }
 
     // ユーザーがフォロー中かどうか
     public function isFollowedBy(?User $user): bool
@@ -67,6 +74,18 @@ class User extends Authenticatable
         return $user
             ? (bool)$this->followers->where('id', $user->id)->count()
             : false;
+    }
+
+    //フォロワーの算出 
+    public function getCountFollowersAttribute(): int
+    {
+        return $this->followers->count();
+    }
+
+    // フォローの算出
+    public function getCountFollowingsAttribute(): int
+    {
+        return $this->followings->count();
     }
 
 

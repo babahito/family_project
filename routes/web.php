@@ -37,6 +37,14 @@ Route::delete("user/{id}", "UserController@destroy");
 //===================フォロワー====================================================
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{name}', 'UserController@show')->name('show');
+
+    // いいねした記事一覧
+    Route::get('/{name}/likes', 'UserController@likes')->name('likes');
+
+    // フォロー・フォロワーの一覧表示
+    Route::get('/{name}/followings', 'UserController@followings')->name('followings');
+    Route::get('/{name}/followers', 'UserController@followers')->name('followers');
+
     //==========ここから追加==========
     Route::middleware('auth')->group(function () {
         Route::put('/{name}/follow', 'UserController@follow')->name('follow');

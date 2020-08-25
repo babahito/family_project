@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\UserDetail;
+use App\Post;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -62,8 +64,12 @@ class UserController extends Controller
     {
         //
         $user = User::where('name', $name)->first();
+        $user_details = UserDetail::get();
+
+        dd($user_details);
+        $articles = $user->posts->sortByDesc('created_at');
        
-        return view('user.show', ['user' => $user]);
+        return view('user.show', ['user' => $user,'articles' => $articles]);
     }
 
     // フォローする
@@ -94,6 +100,45 @@ class UserController extends Controller
         $request->user()->followings()->detach($user);
 
         return ['name' => $name];
+    }
+
+    // フォロワー一覧情報
+    public function followings(string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        $followings = $user->followings->sortByDesc('created_at');
+
+        return view('user.followings', [
+            'user' => $user,
+            'followings' => $followings,
+        ]);
+    }
+
+    // いいねした記事
+    public function likes(string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        $articles = $user->likes->sortByDesc('created_at');
+
+        return view('user.likes', [
+            'user' => $user,
+            'articles' => $articles,
+        ]);
+    }
+    
+    // フォロワー一覧情報
+    public function followers(string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        $followers = $user->followers->sortByDesc('created_at');
+
+        return view('user.followers', [
+            'user' => $user,
+            'followers' => $followers,
+        ]);
     }
 
 }
