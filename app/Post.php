@@ -2,8 +2,9 @@
 
 namespace App;
 use App\User;
-use App\Post;
+
 use App\Like;
+use App\UserDetail;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,11 +18,20 @@ class Post extends Model
         public function user(){
             return $this->belongsTo('App\User');
         }
+        // １対多(従テーブル：ユーザー詳細とノート記事）
+        public function user_detail(){
+            return $this->belongsTo('App\UserDetail');
+        }
 
         // 多対多（記事といいねボタン）
         public function likes(): BelongsToMany{
             return $this->belongsToMany('App\User', 'likes')->withTimestamps();
         }
+
+        // 多対多（記事とユーザー詳細）
+        // public function deposts(): BelongsToMany{
+        //     return $this->belongsToMany('App\UserDetail', 'deposts')->withTimestamps();
+        // }
 
         // ログインユーザーがいいね済みかどうか（isLikeByメソッドの作成）
         public function isLikedBy(?User $user): bool //?はnull許可(nullableな型宣言)Userモデル

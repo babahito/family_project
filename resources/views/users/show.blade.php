@@ -1,4 +1,7 @@
 
+
+
+<!-- 
         @extends("layouts.app")
         @section("content")
         @include('nav')
@@ -57,4 +60,4 @@
    
     {{----------ここまで追加----------}}
   </div>
-@endsection
+@endsection -->

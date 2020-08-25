@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Storage;
 use Validate;
 use DB;
+use UserDetail;
 // use App\User;
 use App\Post;
     

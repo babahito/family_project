@@ -60,16 +60,26 @@ class UserController extends Controller
 
 // フォロワー用
 
+    // public function show(string $name)
+    // {
+    //     //
+    //     $user = User::where('name', $name)->first();
+    //     $user_details = UserDetail::get();
+
+     
+    //     $articles = $user->posts->sortByDesc('created_at');
+       
+    //     return view('user.show', ['user' => $user,'articles' => $articles]);
+    // }
+
+
     public function show(string $name)
     {
-        //
         $user = User::where('name', $name)->first();
-        $user_details = UserDetail::get();
 
-        dd($user_details);
-        $articles = $user->posts->sortByDesc('created_at');
-       
-        return view('user.show', ['user' => $user,'articles' => $articles]);
+        return view('users.show', [
+            'user' => $user,
+        ]);
     }
 
     // フォローする

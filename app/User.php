@@ -51,6 +51,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
+
+
     // 多対多（ユーザ（フォロー）⇒ユーザー（フォロワー））
     public function followers(){
         return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();

@@ -103,7 +103,7 @@ use App\Post;
         {
 
             $posts=Post::find($id);
-            // dd($id);
+            
             return view("post.show", compact("posts"));
         }
     
@@ -112,7 +112,7 @@ use App\Post;
 
             $post->likes()->detach($request->user()->id);
             $post->likes()->attach($request->user()->id);
-
+            dd($post);
             return [
                 'id'=>$post->id,
                 'countLikes'=>$post->count_likes
