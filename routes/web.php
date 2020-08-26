@@ -36,6 +36,7 @@ Route::delete("user/{id}", "UserController@destroy");
 
 //===================フォロワー====================================================
 Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/', 'UserController@index');
     Route::get('/{name}', 'UserController@show')->name('show');
 
     // いいねした記事一覧
@@ -52,6 +53,9 @@ Route::prefix('users')->name('users.')->group(function () {
     });
     //==========ここまで追加==========
 });
+
+// フォロー一覧
+// http://localhost/users/ママ/followings
 
 //=======================================================================
 //index

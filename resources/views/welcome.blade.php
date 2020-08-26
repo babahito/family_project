@@ -105,7 +105,7 @@ li:hover{
                     <!-- <h4>1. Migrtion [ php artisan migrate ]<br>2. Update [ composer update ]<br>3. TestData [ php artisan db:seed ] <br>GO!!</h4> -->
                     <ul>
                     
-								<li><a href="/user">登録一覧（Users）</a></li>
+								<li><a href="/users">登録一覧（Users）</a></li>
                                 <li><a href="/user_detail">マイページ設定（UserDetails）</a></li>
 								<li><a href="/family_note">ファミリーNOTE（Familynotes）</a></li>
                                 <li><a href="/post">マイNOTE（Posts）</a></li>

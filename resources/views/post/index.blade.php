@@ -41,16 +41,14 @@
                                     
                                     <tr>
 
-                                            <!-- <td>{{ $item->id}} </td> -->
+
 
                                             <td>{{ $item->title}} </td>
 
-                                            <!-- <td>{{ $item->body}} </td> -->
+
                                             <td>{{ $item->sendtime}} </td>
 
-                                            <!-- <td>{{ $item->user_id}} </td> -->
 
-                                            <!-- <td><img src="{{ asset('storage/' . $item->photo) }}" width="100px"></td> -->
 
                                             <td>{{ $item->attribute_id}} </td>
 

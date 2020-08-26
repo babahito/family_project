@@ -2063,11 +2063,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     initialIsFollowedBy: {
@@ -2088,6 +2083,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   computed: {
+    // CSS設定
     buttonColor: function buttonColor() {
       return this.isFollowedBy ? 'bg-primary text-white' : 'bg-white';
     },
@@ -2100,12 +2096,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     clickFollow: function clickFollow() {
+      // authがfalseの場合
       if (!this.authorized) {
-        alert('フォロー機能はログイン中のみ使用できます');
+        alert('ログインしてください');
         return;
-      }
+      } // authがtureの場合
 
-      this.isFollowedBy ? this.unfollow() : this.follow();
+
+      this.isFollowedBy ? this.unfollow() //フォロー中
+      : this.follow(); //フォローしていなければ
     },
     follow: function follow() {
       var _this = this;
@@ -2155,7 +2154,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     }
-  }
+  } //==========ここまで追加==========
+
 });
 
 /***/ }),
@@ -39206,7 +39206,7 @@ var render = function() {
       },
       [
         _c("i", { staticClass: "mr-1", class: _vm.buttonIcon }),
-        _vm._v("\n          " + _vm._s(_vm.buttonText) + "\n          ")
+        _vm._v("\n            " + _vm._s(_vm.buttonText) + "\n          ")
       ]
     )
   ])

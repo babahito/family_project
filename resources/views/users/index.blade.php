@@ -41,7 +41,7 @@
                                             <td>{{ $user->id}} </td>
                                             <td>{{ $user->name}} </td>
                                             <td>{{ $user->email}} </td>
-                                            <td><img src="{{ asset('storage/' . $user->user_detail->photo) }}" width="100px"></td>
+                                            <td><img src="{{-- asset('storage/' . $user->user_detail->photo) --}}" width="100px"></td>
                                             <td>{{ $user->user_detail->birthday}}<td>
                                                 <td><a href="{{ url("/user/" . $user->id) }}" title="View post"><button class="btn btn-info btn-xs">詳細</button></a></td>
                                                 <td><a href="{{ url("/user/" . $user->id . "/edit") }}" title="Edit post"><button class="btn btn-primary btn-xs">編集</button></a></td>

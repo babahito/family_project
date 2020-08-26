@@ -1,12 +1,17 @@
 <template>
   <div>
-          <button
+
+            <button
             class="btn-sm shadow-none border border-primary p-2"
             :class="buttonColor"
             @click="clickFollow" 
             >
-            <i class="mr-1" :class="buttonIcon"></i>
-              {{ buttonText }}
+            <i
+                class="mr-1"
+                :class="buttonIcon"
+                
+            ></i>
+            {{ buttonText }}
             </button> 
   </div>
 </template>
@@ -32,12 +37,10 @@
       }
     },
     computed: {
-      // CSS設定
       buttonColor() {
         return this.isFollowedBy
-        
-          ? 'bg-primary text-white'
-          : 'bg-white'
+        ? 'bg-white'
+          : 'bg-primary text-white'
           
       },
       buttonIcon() {
@@ -53,26 +56,26 @@
     },
     methods: {
       clickFollow() {
-        // authがfalseの場合
         if (!this.authorized) {
           alert('ログインしてください')
           return
         }
-        // authがtureの場合
+
+        
         this.isFollowedBy
           ? this.unfollow() //フォロー中
           : this.follow()　//フォローしていなければ
       },
-        async follow() {
-          const response = await axios.put(this.endpoint)
+      async follow() {
+        const response = await axios.put(this.endpoint)
 
-          this.isFollowedBy = true
-        },
-        async unfollow() {
-          const response = await axios.delete(this.endpoint)
+        this.isFollowedBy = true
+      },
+      async unfollow() {
+        const response = await axios.delete(this.endpoint)
 
-          this.isFollowedBy = false
-        },
+        this.isFollowedBy = false
+      },
     },
     //==========ここまで追加==========
   }
