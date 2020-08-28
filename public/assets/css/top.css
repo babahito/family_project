@@ -1,0 +1,196 @@
+
+*{
+    padding:0;
+    margin:0;
+}
+html, body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+}
+ a{
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+  }
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+img{
+    max-width:100%;
+    border:0
+}
+/* 共通 */
+.sub980{
+    margin:0 auto;
+    width:980px;
+    vertical-align:bottom;
+}
+
+/* ナビ */
+.header{
+    background:#fff;
+    padding:1% 2%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+    position:fixed;
+    color:#555;
+    z-index: 100;
+    width:100%;
+}
+.header ul{
+    display:flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+/* メイン画像部分 */
+.main_img{
+    width: 100%;
+    height:650px;
+    background: url("../images/main.png") no-repeat center center;
+    position:static;
+    box-sizing: border-box;
+    padding: 1% 2% 0;
+    position: relative;
+    
+}
+    /* mirai_box */
+    .mirai_box{
+        position: absolute;
+        top:32%;
+        left:10%;
+    }
+    /* ログインボックス */
+    .log_box{
+        position :absolute;
+        width:20%;
+        height:50%;
+        background:#fff;
+        padding: 1% 2% 0;
+        /* opacity:0.9; */
+        right:15%;
+        top:100px;
+        border-radius: 5px;
+    }
+    .login_btn{
+        display: inline-block;
+        padding: 0.5em 1em;
+        width:80%;
+        text-decoration: none;
+        border-radius: 3px;
+        font-weight: bold;
+        color: #FFCE85;
+        border:1px solid #FFCE85;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+        text-align: center;
+        transition: .4s;
+    }
+    .login_btn:hover{
+        background-image: linear-gradient(45deg, #FFCE85 0%, #fae0b9 100%);
+        color: #FFF;
+    }
+
+
+    .sign_btn{
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        border-radius: 3px;
+        font-weight: bold;
+        width:80%;
+        /* margin:3em 0; */
+        color: #FFF;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+        border:1px solid #FFCE85;
+        background-image: linear-gradient(45deg, #FFCE85 0%, #fae0b9 100%);
+        transition: .4s;
+        text-align: center;
+    }
+    .sign_btn:hover{
+        background-image: linear-gradient(45deg, #fae0b9 0%, #FFCE85 100%);
+        
+    }
+/*  コンセプト */
+.concept{
+    margin:30px auto;
+}
+
+.concept_title{
+    text-align: center;
+    line-height: 3.0em;
+}
+    .note_box{
+        display: flex;
+        justify-content: space-between;
+        margin-top:20px;
+    }
+    .note_sub{
+        max-width:240px;
+        background: #fff;
+        box-shadow: 2px 2px 2px rgba(110, 110, 110, 0.28);
+
+    }
+        .note_sub_img{
+            background: url("../images/main.png") no-repeat center center;
+        }
+        .note_sub_title{
+            padding:5% 2%;
+            font-weight: 600;
+        }
+        .note_sub_day{
+            text-align:right;
+            padding:5% 2%;
+        }
+    .logo_mini{
+        margin:40px auto;
+        text-align: center;
+    }
+/* 斜めレイアウト */
+/* https://qiita.com/sho012b/items/3478ca65fe5b6de0450a */
+.contents {
+    position: relative;
+    overflow: hidden;
+    margin: 10% 0;
+    padding: 80px 0;
+  }
+  
+  .contents:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 80%;
+    margin: 3% -10% 0;
+    background: #E0EDF1;
+    -webkit-transform-origin: left center;
+    -ms-transform-origin: left center;
+    transform-origin: left center;
+    -webkit-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    transform: rotate(3deg);
+    z-index: -1;
+  }
+  
+  .contents_inner {
+    box-sizing: boder-box;
+    width: 100%;
+    max-width: 640px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 100px 10px 120px;
+    color: #fff;
+    text-align: center;
+  }

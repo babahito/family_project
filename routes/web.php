@@ -5,11 +5,11 @@ use Illuminate\Http\Response;
 Route::get("/", function () {
     return view("welcome");
 });
-//Demo (Delete after site publish.)
-Route::get("/tables_check_view_html",function(){
-    return view("tables_check_view_html");
-});
 
+
+Route::get("/top", function () {
+    return view("top");
+});
 // ===-vue&laravel=======================
 
 
