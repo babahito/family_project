@@ -29,21 +29,12 @@
                     <a href="{{ route('register') }}" class="sign_btn">Sing In</a>
                 </li>
                 <li>   
-                    <a href="{{ route('login') }}" class="login_btn">Log In</a>
+                    <a hrmain_imgef="{{ route('login') }}" class="login_btn">Log In</a>
                 </li>
             </ul>
         </div>
     <!-- main_img -->
         <div class="main_img">
-            <!-- 未来ボックス -->
-            <!-- <div class="mirai_box">
-                <img class="logo" src="{{ asset('/assets/images/mira.png') }}" alt="logo">
-            </div>   -->
-            <!-- ログイン -->
-            <!-- <div class="log_box">
-                    <a href="{{ route('register') }}" class="sign_btn">Sing In</a><br>
-                    <a href="{{ route('login') }}" class="login_btn">Log In</a>
-            </div> -->
         </div>
         
     <div class="concept sub980">

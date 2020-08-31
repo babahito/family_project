@@ -3,13 +3,16 @@
     padding:0;
     margin:0;
 }
-html, body {
-    background-color: #fff;
+html{
+    background-color: #F1F1F1;
     color: #555;
     font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 100;
+    font-size: 62.5%;
     height: 100vh;
     margin: 0;
+}
+body{
+    font-size:1.6rem;/* 16px*/
 }
  a{
     cursor: pointer;
@@ -34,12 +37,38 @@ img{
     border:0
 }
 /* 共通 */
-.sub980{
-    margin:0 auto;
-    width:980px;
-    vertical-align:bottom;
+/* フォント */
+/* https://pecopla.net/web-column/fontsize-css */
+h1 {
+    font-size: 36px;/* IE8以下とAndroid4.3以下用フォールバック */
+    font-size: calc(2.4rem + ((1vw - 0.64rem) * 2.1429));/* 24px~36pxで可変*/
+    line-height: 1.3;
 }
-
+h2 {
+    font-size: 24px;/* IE8以下とAndroid4.3以下用フォールバック
+     */
+    font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));/* 20px~24pxで可変*/
+    line-height: 1.3;
+}
+h3 {
+    font-size: 14px;/* IE8以下とAndroid4.3以下用フォールバック
+     */
+    /* font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));20px~24pxで可変 */
+}
+@media screen and (max-width: 640px) {/* 640px以下*/
+    body{
+    line-height: 2;
+    }
+    h1{
+        font-size: 2.4rem;/* 24px*/
+    }
+    h2 {
+        font-size: 2rem;/* 20px*/
+    }
+    h3 {
+        font-size: 1.2rem;/* 16px*/
+    }
+}
 /* ナビ */
 .header{
     background:#fff;
@@ -49,6 +78,8 @@ img{
     color:#555;
     z-index: 100;
     width:100%;
+    display: flex;
+    justify-content: space-around;
 }
 .header ul{
     display:flex;
@@ -56,11 +87,19 @@ img{
     font-weight: bold;
 }
 /* メイン画像部分 */
+.main_content{
+    /* position:static; */
+
+    /* margin:0 auto;
+    max-width:980px;
+    background: #FBFAF2; */
+    
+}
 .main_img{
     width: 100%;
     height:650px;
     background: url("../images/main.png") no-repeat center center;
-    position:static;
+    /* position:static; */
     box-sizing: border-box;
     padding: 1% 2% 0;
     position: relative;
@@ -120,7 +159,6 @@ img{
     }
     .sign_btn:hover{
         background-image: linear-gradient(45deg, #fae0b9 0%, #FFCE85 100%);
-        
     }
 /*  コンセプト */
 .concept{
@@ -194,3 +232,128 @@ img{
     color: #fff;
     text-align: center;
   }
+
+/* ファミリーノート */
+.family_top{
+    display:flex;
+    justify-content: space-between;
+}
+    .family_user{
+        display:flex;
+        justify-content: space-between;
+        width:50%;
+    }
+        .person_icon{
+            width:80px;
+            border-radius: 50%;
+        }
+        .note_btn{
+            display: inline-block;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            /* width:80%; */
+            /* margin:3em 0; */
+            color: #FFF;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+            border:1px solid #FFCE85;
+            background-image: linear-gradient(45deg, #FFCE85 0%, #fae0b9 100%);
+            transition: .4s;
+            text-align: center;
+        }
+        .note_btn:hover{
+            background-image: linear-gradient(45deg, #fae0b9 0%, #FFCE85 100%);
+        }
+    .card_box{
+        /* display: flex; */
+        /* flex-wrap: wrap; */
+        /* width: 100%; */
+    }
+        .card{
+            width:calc(100%-20px);
+            margin:0 10px 25px 10px;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            margin-bottom:10px;
+            /* border-radius: 10px; */
+        }
+        .card_mini{
+            display:flex;
+            justify-content: space-between;
+        }
+        .card_img{
+            width:50%;
+
+            /* height:224px; */
+            /* border-radius: 10px; */
+        }
+        .card_body{
+            width:50%;
+            
+
+        }
+        .card_title{
+            font-weight: 600;
+        }
+
+    /* APPファイル */
+        /* メイン */
+        .content{
+            width:100%;
+            margin:0 auto;
+        }
+        /* header */
+        header{
+            width:100%;
+            background:#aaa;
+            position: fixed;
+            top:0;
+            height:50px;
+            z-index: 100;
+            display: flex;
+        }
+        main{
+            margin:50px auto 0 auto;
+            max-width:980px;
+            background: #fff;
+            padding:10px;
+            }
+        .navi{
+            width:100%;
+            background: #333;
+            position: fixed;
+            bottom:0;
+        }
+
+
+    /* header */
+    .header_sub{
+        display: flex;
+        max-width: 980px;
+        margin:0 auto;
+        justify-content: space-between;
+    }
+
+    /* nav */
+
+    .nav_list{
+        display:flex;
+        width:100%;
+    }
+
+    .nav_list li{
+        font-size:1.0rem;
+        background: #EDEDED;
+        text-align: center;
+        color:#A9A9A9;
+        width: calc(100%/5);
+    }
+    .nav_list li a{
+        display: block;
+
+
+    }
+    .nav_list li:hover{
+        background-color: #FFCE85;
+        color:#fff;
+    }

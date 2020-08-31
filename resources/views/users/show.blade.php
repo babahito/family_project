@@ -6,7 +6,7 @@
       <div class="card-body">
         <div class="d-flex flex-row">
           <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-            <i class="fas fa-user-circle fa-3x"></i>
+          <img src="{{ asset('storage/' .  $user->user_detail->photo) }}" class="person_icon">
           </a>
             <!-- フォローボタン -->
             @if( Auth::id() !== $user->id )
@@ -43,11 +43,7 @@
   @foreach($post as $item)
   <div class="card mt-3">
       <div class="card-body d-flex flex-row">
-          <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">
-              <i class="fas fa-user-circle fa-3x mr-1"></i>
-              <!-- <img src="{{-- asset('storage/' . $item->deposts->photo) --}}" width="100px"> -->
-              
-          </a> 
+
           <div>
               <div class="font-weight-bold">
                   <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">{{ $item->user->name }}から</a>
