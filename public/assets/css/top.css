@@ -326,6 +326,7 @@ h3 {
         }
 
 
+
     /* header */
     .header_sub{
         display: flex;
@@ -345,15 +346,22 @@ h3 {
         font-size:1.0rem;
         background: #EDEDED;
         text-align: center;
-        color:#A9A9A9;
+        color:#999;
         width: calc(100%/5);
     }
     .nav_list li a{
         display: block;
-
-
+        color:#ccc;
+        font-weight: 600;
     }
-    .nav_list li:hover{
+    .nav_list li a:hover{
         background-color: #FFCE85;
         color:#fff;
     }
+            /* フォントオーサム色 */
+            .icon_gray{
+                color:#ccc;
+            }
+            .icon_gray:hover{
+                color:#fff;
+            }
