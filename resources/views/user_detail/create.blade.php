@@ -42,6 +42,13 @@
                                                 <label for="birthday" class="col-md-4 control-label">birthday: </label>
                                                 <div class="col-md-6">
                                                     <input class="form-control" name="birthday" type="date" id="birthday" value="{{old('birthday')}}">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="comment" class="col-md-4 control-label">comment: </label>
+                                                <div class="col-md-6">
+                                                    <input class="form-control" name="comment" type="text" id="comment" value="{{old('comment')}}">
                                                 </div>
                                             </div>
                         

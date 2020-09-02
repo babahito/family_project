@@ -25,6 +25,7 @@ use App\UserDetail;
             $keyword = $request->get("search");
             $perPage = 25;
             $auth = Auth::user();
+            $users = User::all();    
 
             if (!empty($keyword)) {
                 $user_detail = UserDetail::where("id","LIKE","%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->paginate($perPage);
@@ -32,7 +33,7 @@ use App\UserDetail;
                 $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);   
                    
             }          
-            return view("user_detail.index", [ 'auth' => $auth ,'user_detail'=>$user_detail]);
+            return view("user_detail.index", [ 'auth' => $auth ,'user_detail'=>$user_detail,'users'=>$users]);
             
         }
     
@@ -48,7 +49,8 @@ use App\UserDetail;
             $this->validate($request, [
 				"user_id" => "nullable|integer", //integer('user_id')
 				"photo" => "nullable", //string('photo')->nullable()
-				"birthday" => "nullable|date", //date('birthday')->nullable()
+                "birthday" => "nullable|date", //date('birthday')->nullable()
+                "comment" => "nullable", //string('comment')->nullable()
 
             ]);
             
@@ -77,7 +79,8 @@ use App\UserDetail;
             UserDetail::create([
                 'user_id'=>Auth::user()->id,
                 'photo' => $filename,
-                'birthday'=>$request->birthday
+                'birthday'=>$request->birthday,
+                'comment'=>$request->comment,
                 ]);
             return redirect("user_detail")->with("flash_message", "user_detail added!");
             // ============================================
@@ -95,9 +98,10 @@ use App\UserDetail;
 
         public function edit($id)
         {
+            $user_dd = UserDetail::where('user_id',Auth::user()->id);
             $user_detail = UserDetail::findOrFail($id);
     
-            return view("user_detail.edit", compact("user_detail"));
+            return view("user_detail.edit", compact("user_detail",'user_dd'));
         }
     
 
@@ -106,7 +110,8 @@ use App\UserDetail;
             $this->validate($request, [
 				"user_id" => "required|integer", //integer('user_id')
 				"photo" => "nullable", //string('photo')->nullable()
-				"birthday" => "nullable|date", //date('birthday')->nullable()
+                "birthday" => "nullable|date", //date('birthday')->nullable()
+                "comment" => "nullable", //string('comment')->nullable()
 
             ]);
 
@@ -135,7 +140,8 @@ use App\UserDetail;
     
             return redirect("user_detail")->with("flash_message", "user_detail deleted!");
         }
+
+
     }
     //=======================================================================
-    
     

@@ -16,7 +16,7 @@
 						$table->bigIncrements('id')->unsigned();
 						$table->integer('user_id')->unsigned();
 						$table->string('photo')->nullable();
-						$table->date('birthday')->nullable();
+                        $table->date('birthday')->nullable();
 						$table->timestamps();
 						$table->softDeletes();
 						//$table->foreign("user_id")->references("id")->on("users");

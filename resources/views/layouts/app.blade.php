@@ -32,7 +32,7 @@
                 <header>
                     <div class="header_sub">
                         <div>
-                            <a class="navbar-brand" href="{{ url('/') }}">
+                            <a class="navbar-brand" href="{{ url('/family_note') }}">
                                 <img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo">
                             </a>
                         </div>

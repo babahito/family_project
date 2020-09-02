@@ -46,11 +46,11 @@
                 <div class="card_box">
                     @foreach($post as $item)
                         <div class="card">
-                        <div class="card_mini">
-                            <div class="card_img">
-                                <img src="{{ asset('storage/' . $item->photo) }}">
-                            </div>
-                            <div class="card_body">
+                            <div class="card_mini">
+                                <div class="card_img">
+                                    <img src="{{ asset('storage/' . $item->photo) }}">
+                                </div>
+                                <div class="card_body">
                                     <span class="card_title">{{ $item->title}}</span>
                                     <article-like
                                         :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
@@ -63,13 +63,10 @@
                                             <i class="fas fa-user-circle fa-1x mr-1"></i>
                                         </a> 
                                     </p>
-                                    
                                     {{ $item->created_at->format('Y/m/d H:i') }}
-                                    
-                                
+                                </div>
                             </div>
                         </div>
-</div>
                     @endforeach
                 </div>      
     </div>

@@ -1,17 +1,26 @@
 
 import './bootstrap'
 import Vue from 'vue'
+//いいねボタン
 import ArticleLike from './components/ArticleLike'
-// いいねボタン
+// フォローボタン
 import FollowButton from './components/FollowButton'
+//フォーム
+import MyInput from './components/MyInput'
+
+import ExampleComponent from './components/ExampleComponent'
+
 
 const app = new Vue({
   el: '#app',
   components: {
+    ExampleComponent,
     ArticleLike,
     FollowButton,
+    MyInput
   }
 })
+
 
 
 
@@ -23,7 +32,7 @@ const app = new Vue({
 
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('follow-button', require('./components/FollowButton.vue').default);
+
 
 // const app = new Vue({
 //     el: '#app',

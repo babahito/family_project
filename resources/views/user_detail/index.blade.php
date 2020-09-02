@@ -1,13 +1,59 @@
 
-        @extends("layouts.app")
-        @section("content")
-            <div class="container">
+@extends("layouts.app")
+@section("content")
+            <!-- <div class="container">
 
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">ユーザー詳細画面（一覧）</div>
+                        <div class="panel panel-default"> -->
+                            
+<div class="main_content">
+    <h2>My PAGE</h2>
+        <h3>マイページ</h3>
+        {{$auth->name}}さん
+        @foreach($user_detail as $item)
+            <img src="{{ asset('storage/' . $item->photo) }}" width="100px">
+            <p>{{ $item->birthday}}</p> 
+            <p>{{ $item->comment}} </P>
+        @endforeach
+
+
+        <div>
+            <div>
+                @if ($errors->any())
+                    <ul class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+                <form method="POST" action="/user_detail/store" class="form-horizontal" enctype='multipart/form-data'>
+                    {{ csrf_field() }}
+                    <div class="image_box_min">写真<input class="form-control" name="photo" type="file" id="photo" value="{{old('photo')}}" class="file_input"></div>
+                        <div>
+                            <label for="birthday" class="col-md-4 control-label">誕生日: </label>
+                                <input class="form-control" name="birthday" type="date" id="birthday" value="{{old('birthday')}}">
+                            <label for="comment" class="col-md-4 control-label">コメント: </label>
+                                <textarea name="" cols="50" rows="10"></textarea>
+                                <input class="form-control" name="comment" type="text" id="comment" value="{{old('comment')}}">
+                                <input type="submit" value="マイページ変更">
+                            
+                                <input class="form-control"  name="user_id" type="hidden" id="user_id" value="{{old('user_id')}}"> 
+                        </div>
+                </form>
+            </div>
+        </div>
+
+</div>
+
+
+
+
+
+
+
+                            
                             <div class="panel-body">
                             
                                 <p>{{$auth->name}}さん</p>
@@ -34,7 +80,7 @@
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
                                         <thead>
-                                            <tr><th>id</th><th>user_id</th><th>photo</th><th>birthday</th></tr>
+                                            <tr><th>id</th><th>user_id</th><th>photo</th><th>birthday</th><th>comment</th></tr>
                                         </thead>
                                         <tbody>
                                         @foreach($user_detail as $item)
@@ -48,7 +94,7 @@
                                             <td><img src="{{ asset('storage/' . $item->photo) }}" width="100px"></td>
                                             <td>{{ $item->birthday}}<td>
                                             
-
+                                            <td>{{ $item->comment}}<td>
                                             <td></td>
   
                                                 <td><a href="{{ url("/user_detail/" . $item->id) }}" title="View user_detail"><button class="btn btn-info btn-xs">View</button></a></td>
@@ -73,9 +119,7 @@
                                 
 
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            </div>
+
         @endsection
     

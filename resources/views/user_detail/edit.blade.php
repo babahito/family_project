@@ -1,15 +1,30 @@
 
         @extends("layouts.app")
         @section("content")
-            <div class="container">
+
+
+
+
+
+
+
+
+
+            <div class="main_content">
+    <h2>My PAG</h2>
+        <h3>マイページ</h3>
+
+        
+            <img src="{{ asset('storage/' . $user_detail->photo) }}" width="100px">
+            <p>{{$user_detail->birthday}}</p> 
+            <p>{{$user_detail->comment}} </P>
+        
+
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Edit user_detail #{{ $user_detail->id }}</div>
                             <div class="panel-body">
-                                <a href="{{ url("user_detail") }}" title="Back"><button class="btn btn-warning btn-xs">Back</button></a>
-                                <br />
-                                <br />
 
                             @if ($errors->any())
                                 <ul class="alert alert-danger">
@@ -20,37 +35,28 @@
                             @endif
     
                             <form method="POST" action="/user_detail/{{ $user_detail->id }}" class="form-horizontal">
-                                        {{ csrf_field() }}
-                                        {{ method_field("PUT") }}
-            
-										<div class="form-group">
-                                        <label for="id" class="col-md-4 control-label">id: </label>
-                                        <div class="col-md-6">{{$user_detail->id}}</div>
+                                    {{ csrf_field() }}
+                                    {{ method_field("PUT") }}
+
+                                    <div>
+                                        <input class="form-control" required="required" name="user_id" type="hidden" id="user_id" value="{{$user_detail->user_id}}">
                                     </div>
-										<div class="form-group">
-                                            <label for="user_id" class="col-md-4 control-label">user_id: </label>
-                                            <div class="col-md-6">
-                                                <input class="form-control" required="required" name="user_id" type="text" id="user_id" value="{{$user_detail->user_id}}">
-                                            </div>
-                                        </div>
-										<div class="form-group">
-                                            <label for="photo" class="col-md-4 control-label">photo: </label>
-                                            <div class="col-md-6">
-                                                <input class="form-control" name="photo" type="file" id="photo" value="{{$user_detail->photo}}">
-                                            </div>
-                                        </div>
-										<div class="form-group">
-                                            <label for="birthday" class="col-md-4 control-label">birthday: </label>
-                                            <div class="col-md-6">
-                                                <input class="form-control" name="birthday" type="date" id="birthday" value="{{$user_detail->birthday}}">
-                                            </div>
-                                        </div>
-               
-                                    <div class="form-group">
-                                        <div class="col-md-offset-4 col-md-4">
-                                            <input class="btn btn-primary" type="submit" value="Update">
-                                        </div>
-                                    </div>   
+                                    <div>
+                                        <label for="birthday">誕生日</label>
+                                            <input class="form-control" name="birthday" type="date" id="birthday" value="{{$user_detail->birthday}}">
+                                    </div>
+                                    <div>
+                                        <label for="photo">写真</label>
+                                            <input class="form-control" name="photo" type="file" id="photo" value="{{$user_detail->photo}}">
+                                    </div>
+                                    <div>
+                                        <label for="comment">コメント</label>
+                                        <textarea name="comment" cols="50" rows="10">{{$user_detail->comment}}</textarea>
+                                            <!-- <input class="form-control" name="comment" type="text" id="comment" value="{{$user_detail->comment}}"> -->
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="マイページ変更">
+                                    </div>
                                 </form>
                                 
 
@@ -58,6 +64,5 @@
                         </div>
                     </div>
                 </div>
-            </div>
         @endsection
     

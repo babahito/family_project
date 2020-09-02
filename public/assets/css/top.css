@@ -365,3 +365,15 @@ h3 {
             .icon_gray:hover{
                 color:#fff;
             }
+
+    /* ノートを書く */
+    input.write_btn{
+        background:#EEB0D2;
+        color:#fff;
+        border:1px solid #fff;
+        padding:10px 0;
+        width:100%;
+    }
+    input.write_btn:hover{
+        background:#EB8ABE; 
+    }
