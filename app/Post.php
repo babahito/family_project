@@ -20,12 +20,13 @@ class Post extends Model
         }
         // １対多(従テーブル：ユーザー詳細とノート記事）
         public function user_detail(){
-            return $this->belongsTo('App\UserDetail');
+            return $this->belongsToMany('App\UserDetail');
         }
 
         // 多対多（記事といいねボタン）
         public function likes(): BelongsToMany{
             return $this->belongsToMany('App\User', 'likes')->withTimestamps();
+
         }
 
         // 多対多（記事とユーザー詳細）

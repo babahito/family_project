@@ -6,9 +6,6 @@
                 <h3>ファミリーノート</h3>
         </div>
 
-        
-        <my-input></my-input>
-
 
 
             <div class="container">
@@ -30,7 +27,7 @@
 
                                     <div>
                                         <label for="title">タイトル</label>
-                                            <input name="tle" type="text" id="title" value="{{old('title')}}" placeholder="タイトル">
+                                            <input name="title" type="text" id="title" value="{{old('title')}}" placeholder="タイトル">
                                     </div>
                                     <div>
                                         <label for="body"></label>
@@ -44,14 +41,7 @@
                                         <label for="photo">photo: </label>
                                             <input name="photo" type="file" id="photo" value="{{old('photo')}}">
                                     </div>
-                                    <div>
-                                        <label for="attribute_id">attribute_id: </label>
-                                            <input required="required" name="attribute_id" type="text" id="attribute_id" value="{{old('attribute_id')}}">
-                                    </div>
-                                    <div>
-                                        <label for="status">status: </label>
-                                            <input required="required" name="status" type="text" id="status" value="{{old('status')}}">
-                                    </div>
+       
                                     <div>
                                         <label for="sendtime">sendtime: </label>
                                             <input required="required" name="sendtime" type="date" id="sendtime" value="{{old('sendtime')}}">

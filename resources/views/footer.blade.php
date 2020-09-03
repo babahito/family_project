@@ -9,10 +9,10 @@
                 <li><a href="/post/create">
                     <p><i class="far fa-sticky-note fa-3x icon_gray"></i></P>
                     NOTE</a></li>
-                <li><a href="">
+                <li><a href="/post">
                     <p><i class="fas fa-book-reader fa-3x icon_gray"></i></p>
                     MY NOTE</a></li>
-                <li><a href="user_detail/14/edit">
+                <li><a href="/user_detail">
                     <p><i class="fas fa-user-cog fa-3x icon_gray"></i></p>
                     MY PAGE</a></li>
             </ul>

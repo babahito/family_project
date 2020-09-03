@@ -56,8 +56,8 @@ use App\Post;
 				"body" => "nullable", //text('body')->nullable()
 				"user_id" => "nullable|integer", //integer('user_id')->nullable()
 				"photo" => "nullable", //string('photo')->nullable()
-				"attribute_id" => "required|integer", //integer('attribute_id')
-				"status" => "required|integer", //integer('status')
+				"attribute_id" => "integer", //integer('attribute_id')
+				"status" => "integer", //integer('status')
 				"sendtime" => "required|date", //integer('status')
 
             ]);
@@ -98,12 +98,12 @@ use App\Post;
             // ============================================
             }
     
+  
+
 
         public function show($id)
         {
-
             $posts=Post::find($id);
-            
             return view("post.show", compact("posts"));
         }
     
@@ -112,11 +112,12 @@ use App\Post;
 
             $post->likes()->detach($request->user()->id);
             $post->likes()->attach($request->user()->id);
-            dd($post);
+            
             return [
                 'id'=>$post->id,
                 'countLikes'=>$post->count_likes
             ];
+
         }
 
         public function unlike(Request $request, Post $post){

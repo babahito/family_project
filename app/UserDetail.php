@@ -1,9 +1,9 @@
 <?php
 
 namespace App;
-use Auth;
-use Post;
-
+use App\Auth;
+use App\Post;
+use App\UserDetail;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

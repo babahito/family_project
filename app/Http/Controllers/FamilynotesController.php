@@ -24,6 +24,7 @@ use App\Post;
             $keyword = $request->get("search");
             $perPage = 25;
             $users=User::all();
+            $user_details=UserDetail::all();
             // dd($user);
             if (!empty($keyword)) {
                 $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->paginate($perPage);
@@ -33,7 +34,7 @@ use App\Post;
                     
                                
             }          
-            return view("family_note.index", compact("post","users"));
+            return view("family_note.index", compact("post","users","user_details"));
         }
     
         /**

@@ -45,6 +45,7 @@
                 <!-- カード部分 -->
                 <div class="card_box">
                     @foreach($post as $item)
+                    <a href="{{ url("/post/" . $item->id) }}" title="View post">
                         <div class="card">
                             <div class="card_mini">
                                 <div class="card_img">
@@ -60,13 +61,15 @@
                                     </article-like>
                                     <p>
                                         <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">
-                                            <i class="fas fa-user-circle fa-1x mr-1"></i>
+                                        <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                                            {{$item->user->name}}
                                         </a> 
                                     </p>
                                     {{ $item->created_at->format('Y/m/d H:i') }}
                                 </div>
                             </div>
                         </div>
+                        </a>
                     @endforeach
                 </div>      
     </div>
