@@ -1,21 +1,13 @@
 <template>
-    <div>
-        <!-- get&axios -->
-        <p v-show="errorFlag">サーバとの通信にエラーが発生しています</p>
-        <input v-model="name"><br>
-        <button v-on:click="createNewUser">作成</button>
-        <ul>
-            <li v-for="user in users" :key="user.id">{{ user.name }}:<button v-on:click="deleteUser(user.id)">削除</button></li>
-        </ul>
-
-        <p>{{myTitle}}</p>
-        <form>
-           <input type="text" id="title" v-model="myTitle">
-        </form>
-
-        <p><input type="file" v-on:change="fileSelected"></p>
-        <button>アップロード</button>
-    </div>
+    <v-app>
+        <v-content>
+            <v-container fluid fill-height>
+                <v-layout wrap>
+                    <v-btn color='primary'>Button</v-btn>
+                </v-layout>
+            </v-container>
+        </v-content>
+    </v-app>
 </template>
 
 <script>

@@ -51660,16 +51660,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MyInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/MyInput */ "./resources/js/components/MyInput.vue");
 /* harmony import */ var _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/ExampleComponent */ "./resources/js/components/ExampleComponent.vue");
 
- //いいねボタン
+ //==== ビューティファイ関連
+// import Vuetify from 'vuetify';
+// import 'vuetify/dist/vuetify.min.css';
+// Vue.use(Vuetify);
+//いいねボタン
 
  // フォローボタン
 
  //フォーム
 
+ // sample
 
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
+  // ビューティファイ用
+  // vuetify: new Vuetify(),
   components: {
     ExampleComponent: _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_5__["default"],
     ArticleLike: _components_ArticleLike__WEBPACK_IMPORTED_MODULE_2__["default"],

@@ -27,7 +27,7 @@ export default {
 
                 axioss.post('/api/fileupload',formData).then(response=>{
                     console.log(response)
-                });
+                })
             }
         }
             // createNewUser(){
