@@ -8,6 +8,7 @@ use Storage;
 use Validator;
 use DB;
 use App\User;
+use App\UserDetail;
 use App\Post;
     
     
@@ -35,12 +36,14 @@ use App\Post;
                 $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%");
                 
             } else {
-                    $post = Post::where('user_id',Auth::user()->id)->paginate($perPage);              
+                    $post = Post::where('user_id',Auth::user()->id)->paginate($perPage);  
+                    $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);   
+                               
             }    
             
-            // $auths=Auth::user();
+            $auth=Auth::user();
 
-            return view("post.index", compact("post"));
+            return view("post.index", compact("post","auth","user_detail"));
         }
 
         public function create()

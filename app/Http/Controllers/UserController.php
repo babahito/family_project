@@ -18,7 +18,8 @@ class UserController extends Controller
         if (!empty($keyword)) {
             $users = User::where("id","LIKE","%$keyword%")->orWhere("name", "LIKE", "%$keyword%")->orWhere("email", "LIKE", "%$keyword%");
         } else {
-            $users = User::all();             
+            $users = User::all();  
+                   
         }    
         
         // $auths=Auth::user();
@@ -131,6 +132,7 @@ class UserController extends Controller
         return view('users.followings', [
             'user' => $user,
             'followings' => $followings,
+            
         ]);
     }
     // フォロワー一覧
