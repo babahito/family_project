@@ -126,13 +126,14 @@ class UserController extends Controller
     public function followings(string $name)
     {
         $user = User::where('name', $name)->first();
-
         $followings = $user->followings->sortByDesc('created_at');
+        $articles = $user->posts->sortByDesc('created_at');
 
+      
         return view('users.followings', [
             'user' => $user,
             'followings' => $followings,
-            
+            'articles'=>$articles
         ]);
     }
     // フォロワー一覧

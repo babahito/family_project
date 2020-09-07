@@ -11,7 +11,6 @@ use App\User;
 use App\UserDetail;
 use App\Post;
     
-    
     //=======================================================================
     class PostsController extends Controller
     {
@@ -38,6 +37,7 @@ use App\Post;
             } else {
                     $post = Post::where('user_id',Auth::user()->id)->paginate($perPage);  
                     $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);   
+                   
                                
             }    
             
@@ -46,9 +46,15 @@ use App\Post;
             return view("post.index", compact("post","auth","user_detail"));
         }
 
-        public function create()
+        public function create(Request $request)
         {
-            return view("post.create");
+            $perPage = 25;
+            $post = Post::where('user_id',Auth::user()->id)->paginate($perPage);  
+            $user_detail = UserDetail::where('user_id',Auth::user()->id);  
+           
+           
+            $auth=Auth::user();
+            return view("post.create",compact("post","auth","user_detail"));
         }
     
 

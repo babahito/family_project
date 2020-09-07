@@ -4,8 +4,8 @@
 @section("content")
 
 <div class="main_content">
-    <h2>Family NOTE</h2>
-        <h3>ファミリーノート</h3>
+    <h2>NOTE</h2>
+        <h3>ノート</h3>
 
             <div class="family_top">
                 <div class="family_user">
@@ -21,9 +21,7 @@
                         </div>            
                     @endforeach
                 </div>
-                <!-- <div>
-                    <button class="note_btn"><a href="/post">ノートをかく</a></button>
-                </div> -->
+
             </div>
 
             <!-- 検索 -->

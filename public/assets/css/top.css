@@ -377,3 +377,8 @@ h3 {
     input.write_btn:hover{
         background:#EB8ABE; 
     }
+
+    /* CANVAS */
+    #canvas {
+        background: #666;
+      }

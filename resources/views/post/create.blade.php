@@ -22,11 +22,15 @@
                                 @endif
                                 
                                 <div class="card">
+
+                                <div>
+                    <button class="note_btn"><a href="/paint">絵を描く</a></button>
+                </div>
                                 <form method="POST" action="/post/store" class="form-horizontal" enctype='multipart/form-data'>
                                     {{ csrf_field() }}
 
                                     <div>
-                                        <label for="title">タイトル</label>
+                                        <label for="title">タイトaaa</label>
                                             <input name="title" type="text" id="title" value="{{old('title')}}" placeholder="タイトル">
                                     </div>
                                     <div>
@@ -48,14 +52,54 @@
                                     </div>
                                     <div>
                                             <input class="write_btn" type="submit" value="ノートをかく">
-                                    </div>     
+                                    </div>
+
+                                    
+                                         
                                 </form>
                                 
 </div>
+                <!-- カード部分 -->
+                <div class="card_box">
+                    @foreach($post as $item)
+                    <a href="{{ url("/post/" . $item->id) }}" title="View post">
+                        <div class="card">
+                            <div class="card_mini">
+                                <div class="card_img">
+                                    <img src="{{ asset('storage/' . $item->photo) }}">
+                                </div>
+                                <div class="card_body">
+                                    <span class="card_title">{{ $item->title}}</span>
+                                    <article-like
+                                        :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
+                                        :initial-count-likes='@json($item->count_likes)'
+                                        :authorized='@json(Auth::check())'
+                                        endpoint="{{ route('posts.like', ['post' => $post]) }}">
+                                    </article-like>
+                                    <p>
+                                        <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">
+                                        <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                                            {{$item->user->name}}
+                                        </a> 
+                                    </p>
+                                    {{ $item->created_at->format('Y/m/d H:i') }}
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    @endforeach
+                </div>  
+
+
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
+
             </div>
         @endsection
     

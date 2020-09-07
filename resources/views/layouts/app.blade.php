@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- css -->
     <link href="{{asset('/assets/css/top.css')}}" rel="stylesheet">
     <link href="{{asset('/assets/css/normalize.css')}}" rel="stylesheet">
@@ -33,13 +33,14 @@
                     <div class="header_sub">
                         <div>
                             <a class="navbar-brand" href="{{ url('/family_note') }}">
+                            <!-- <a href="{{-- route('users.followings', ['name' => Auth::user()->name ]) --}}"  class="text-muted"> -->
                                 <img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo">
                             </a>
                         </div>
                         <div>
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
-                                <!-- Authentication Links -->
+                                <!-- Authentication Links --> 
                                 @guest
                                     <li>
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -84,7 +85,8 @@
        </div>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+    <script src="{{ mix('js/canva.js') }}"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   -->
 
         <!-- Scripts -->
         <!-- <script src="{{ asset('js/app.js') }}" ></script> -->

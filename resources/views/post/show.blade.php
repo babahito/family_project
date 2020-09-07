@@ -23,7 +23,8 @@
 
 
                                             <p><img src="{{ asset('storage/' . $posts->photo) }}" width="100px"></p>
-                                            <p>タイトル:{{$posts->title}}</p>
+                                            <p>タイトルaa:{{$posts->title}}</p>
+                                            <p>送信者:{{$posts->user->name}}</p>
                                             <p>本文:{{$posts->body}}</p>
                                             <!-- <p>送信相手:{{--$posts->attribute_id--}}</p> -->
                                             <p>送信日時:{{$posts->sendtime}}</p>
