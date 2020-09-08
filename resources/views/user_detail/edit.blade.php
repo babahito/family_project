@@ -45,10 +45,7 @@
                                         <label for="birthday">誕生日</label>
                                             <input class="form-control" name="birthday" type="date" id="birthday" value="{{$user_detail->birthday}}">
                                     </div>
-                                    <div>
-                                        <label for="photo">写真</label>
-                                            <input class="form-control" name="photo" type="file" id="photo" value="{{$user_detail->photo}}">
-                                    </div>
+    
                                     <div>
                                         <label for="comment">コメント</label>
                                         <textarea name="comment" cols="50" rows="10">{{$user_detail->comment}}</textarea>
