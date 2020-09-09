@@ -63,7 +63,7 @@
                                             {{$item->user->name}}
                                         </a> 
                                     </p>
-                                    {{ $item->created_at->format('Y/m/d H:i') }}
+                                    {{ $item->created_at->format('Y/m/d ') }}
                                 </div>
                             </div>
                         </div>

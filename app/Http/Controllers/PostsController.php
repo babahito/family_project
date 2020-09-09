@@ -56,7 +56,12 @@ use Image;
            
            
             $auth=Auth::user();
-            return view("post.create",compact("post","auth","user_detail"));
+
+            $clients=Post::select('id','body')->get();
+            //  dd($clients);
+            $client_id_loop = $clients->pluck('client_name','id');
+            
+            return view("post.create",compact("post","auth","user_detail",'client_id_loop'));
         }
     
 
@@ -88,19 +93,19 @@ use Image;
             // ================画像保存======================
             $image = $request->file('photo');
 
-            $img = Image::make($image);  
-            $save_path = storage_path('app/test.jpg');
-            //横幅
-            $width = 500;
-            //縦幅
-            $height = 500;
-            //左からの座標
-            $x = 0;
-            //上からの座標
-            $y = 0;
-            $img->crop($width,$height,$x,$y);
-            $img->save($save_path);  
-            dd($img);
+            // $img = Image::make($image);  
+            // $save_path = storage_path('app/test.jpg');
+            // //横幅
+            // $width = 500;
+            // //縦幅
+            // $height = 500;
+            // //左からの座標
+            // $x = 0;
+            // //上からの座標
+            // $y = 0;
+            // $img->crop($width,$height,$x,$y);
+            // $img->save($save_path);  
+            // dd($img);
 
             $disk = Storage::disk('local');
 

@@ -180,6 +180,23 @@ Route::get("paint/", function () {
 //=======================================================================
 
 
+// 家族グループ作成=====================================
+Route::get("kazoku/", "KazokusController@index");
+//create
+Route::get("kazoku/create", "KazokusController@create");
+// //show
+Route::get("kazoku/{id}", "KazokusControlle@show");
+// //store
+Route::post("kazoku/store", "KazokusController@store");
+// //edit
+// Route::get("kazoku/{id}/edit", "KazokusController@edit");
+// //update
+// Route::put("kazoku/{id}", "KazokusController@update");
+// //destroy
+// Route::delete("kazoku/{id}", "KazokusController@destroy");
+// ============================================
+
+
 //=======================================================================
 //index
 Route::get("family_note/", "familynotesController@index");

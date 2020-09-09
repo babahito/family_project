@@ -10,7 +10,8 @@ use DB;
 use App\UserDetail;
 use App\User;
 use App\Post;
-    
+
+use Carbon\Carbon;
     //=======================================================================
     class FamilynotesController extends Controller
     {
@@ -31,6 +32,13 @@ use App\Post;
                 
             } else {
                     $post = Post::paginate($perPage);  
+                    
+                    $sendtime=Post::select('sendtime')->get();
+                    $datetime = Carbon::now();
+                    
+                    // $data = Carbon::now($sendtime)->year;
+                    // $sendtime=Post::whereYear('sendtime','2020')->get();
+                    // dd($sendtime);
                     
                                
             }          

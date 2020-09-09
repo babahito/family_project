@@ -45,10 +45,15 @@
                                         <label for="photo">photo: </label>
                                             <input name="photo" type="file" id="photo" value="{{old('photo')}}">
                                     </div>
+                                    <div>
+                                        <label for="att">だれに: </label>
+                                            <select name="attribute_id"  id="att" value="{{old('photo')}}">
+                                                <option value="サンプル1">サンプル1</option>
+                                    </div>
        
                                     <div>
                                         <label for="sendtime">sendtime: </label>
-                                            <input required="required" name="sendtime" type="date" id="sendtime" value="{{old('sendtime')}}">
+                                            <input name="sendtime" type="date" id="sendtime" value="{{old('sendtime')}}">
                                     </div>
                                     <div>
                                             <input class="write_btn" type="submit" value="ノートをかく">
@@ -57,7 +62,7 @@
                                     
                                          
                                 </form>
-                                
+                                {{ Form::select('FORM_NAME', $client_id_loop, null, ['class' => 'my_class']) }}
 </div>
                 <!-- カード部分 -->
                 <div class="card_box">

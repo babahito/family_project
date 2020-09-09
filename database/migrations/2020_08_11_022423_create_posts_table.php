@@ -19,7 +19,7 @@
 						$table->integer('user_id')->unsigned();
 						$table->string('photo')->nullable();
 						$table->integer('attribute_id')->nullable()->unsigned();
-						$table->integer('status')
+						$table->integer('status');
 						$table->date('sendtime');
 						$table->timestamps();
 						$table->softDeletes();

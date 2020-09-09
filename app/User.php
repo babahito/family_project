@@ -4,6 +4,7 @@ namespace App;
 use Auth;
 use Post;
 use UserDetail;
+use Kazoku;
 
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -45,6 +46,14 @@ class User extends Authenticatable
     public function likes(): BelongsToMany
     {
         return $this->belongsToMany('App\Post', 'likes')->withTimestamps();
+    }
+
+ // ------------------------------------------------
+    // -----------------家族グループ--------------------
+    // ------------------------------------------------
+    // 多対多(ユーザーと家族）
+    public function kazokus(){
+        return $this->belongsToMany('App\Kazoku');
     }
 
     // --------------------------------------------------
