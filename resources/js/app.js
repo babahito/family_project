@@ -9,6 +9,8 @@ import Vue from 'vue'
 
 //いいねボタン
 import ArticleLike from './components/ArticleLike'
+// 家族参加ボタン
+import KazokuLike from './components/KazokuLike'
 // フォローボタン
 import FollowButton from './components/FollowButton'
 //フォーム
@@ -24,6 +26,7 @@ const app = new Vue({
   components: {
     ExampleComponent,
     ArticleLike,
+    KazokuLike,
     FollowButton,
     MyInput
   }

@@ -185,9 +185,15 @@ Route::get("kazoku/", "KazokusController@index");
 //create
 Route::get("kazoku/create", "KazokusController@create");
 // //show
-Route::get("kazoku/{id}", "KazokusControlle@show");
+Route::get("kazoku/{id}", "KazokusController@show");
 // //store
 Route::post("kazoku/store", "KazokusController@store");
+
+
+ROute::prefix('kazoku')->name('kazokus.')->group(function(){
+    Route::put('/{kazoku}/like','KazokusController@like')->name('like')->middleware('auth');
+    Route::delete('/{kazoku}/like','KazokusController@unlike')->name('unlike')->middleware('auth');
+});
 // //edit
 // Route::get("kazoku/{id}/edit", "KazokusController@edit");
 // //update
@@ -199,7 +205,7 @@ Route::post("kazoku/store", "KazokusController@store");
 
 //=======================================================================
 //index
-Route::get("family_note/", "familynotesController@index");
+Route::get("family_note/", "FamilynotesController@index");
 //create
 // Route::get("family_note/like", "PostsController@like");
 // //show

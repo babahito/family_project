@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use Auth;
 use DB;
 use Storage;
@@ -119,6 +120,30 @@ class KazokusController extends Controller
 
     //    return redirect("mail_received")->with("flash_message", "mail_received deleted!");
    }
+
+//  参加ボタンが押されたとき、一回user-idを削除して、つけなおす⇒user_idとカウントの数を連想配列の形で渡す
+   public function like(Request $request,Kazoku $kazoku)
+   {
+       $kazoku->kazoku_user()->detach($request->user()->id);
+       $kazoku->kazoku_user()->attach($request->user()->id);
+       return [
+           'id'=>$kazoku->id,
+           'countKazokus'=>$kazoku->count_kazokus,
+       ];
+   }
+
+//  参加ボタンをはなした時、一回user-idを削除して、つけなおす⇒user_idとカウントの数を連想配列の形で渡す
+public function unlike(Request $request,Kazoku $kazoku)
+{
+    $kazoku->kazoku_user()->detach($request->user()->id);
+
+    return [
+        'id'=>$kazoku->id,
+        'countKazokus'=>$kazoku->count_kazokus,
+    ];
+}
+
+
 }
 //=======================================================================
 

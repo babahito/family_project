@@ -34,6 +34,12 @@ class User extends Authenticatable
         return $this->hasOne('App\UserDetail');
     }
 
+    // 1対１(ユーザーと家族テーブル（管理者用）)
+    public function fami(){
+        return $this->hasOne('App\Kazoku');
+    }
+
+
     // 1対多(ユーザーとノート記事）
     public function posts(){
         return $this->hasMany('App\Post');
