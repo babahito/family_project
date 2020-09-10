@@ -36,5 +36,39 @@ class Kazoku extends Model
         return $this->kazoku_user->count();
     }
 
+    // アクセサ（表示・非表示）
+
+
+    const STATUS=[
+        0 => [ 'label' => '非表示','class'=>'display:none;' ],
+        1 => [ 'label' => '表示' ,'class'=>'diaplay:block'],
+    ];
+
+    // ラベルを定義
+    public function getStatusLabelAttribute()
+    {
+        // 状態値
+        $status = $this->attributes['status'];
+
+        // 定義されていなければ空文字を返す
+        if (!isset(self::STATUS[$status])) {
+            return '';
+        }
+
+        return self::STATUS[$status]['label'];
+    }
+
+
+
+// クラスを定義
+    public function getStatusClassAttribute(){
+        // 状態値
+        $status = $this->attributes['status'];
+        // 定義されていなければ空文字を返す
+        if (!isset(self::STATUS[$status])) {
+            return '';
+        }
+        return self::STATUS[$status]['class'];
+    }
 
 }

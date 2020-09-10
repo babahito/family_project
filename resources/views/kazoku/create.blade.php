@@ -39,7 +39,11 @@
                                         <label for="f_date">家族誕生日: </label>
                                         <input name="family_date" type="date" id="f_date" value="{{old('family_date')}}">
                                     </div>
-       
+                                    <div>
+                                        <label for="f_history">家族ものがたり</label>
+                                        <textarea name="history" id="f_history" value="{{old('history')}}" rows="3"></textarea>
+                                            
+                                    </div>
                                     <div>
                                         <select name="status">
                                             <option value="0">非公開</option>

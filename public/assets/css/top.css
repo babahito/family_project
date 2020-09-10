@@ -382,3 +382,11 @@ h3 {
     #canvas {
         background: #666;
       }
+
+/* 家族表示・非表示用 */
+.label_hide{
+    display:none;
+  }
+  .label_open{
+    display:block;
+  }

@@ -43,6 +43,7 @@ class KazokusController extends Controller
            "family_name" => "nullable|string", //integer('received_user_id')
            "famil_date" => "nullable|date", //date('received_day')
            "status" => "nullable|integer", //integer('received_life')
+           "history" => "nullable|string", //integer('received_user_id')
 
        ]);
             // ====画像ファイルの保存=====
@@ -75,6 +76,7 @@ class KazokusController extends Controller
                'family_date'=>$request->family_date,
 
                'status'=>$request->status,
+               'history'=>$request->history,
                ]);
             
 
