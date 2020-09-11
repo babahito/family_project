@@ -1,12 +1,12 @@
 <?php
 
 namespace App;
+use Illuminate\Database\Eloquent\Model;
 use App\User;
-
-use App\Like;
+use App\Auth;
 use App\UserDetail;
 
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
@@ -23,11 +23,12 @@ class Post extends Model
             return $this->belongsToMany('App\UserDetail');
         }
 
-        // 多対多（記事といいねボタン）
+        // 多対多（ユーザーとポストの中間テーブル）
         public function likes(): BelongsToMany{
-            return $this->belongsToMany('App\User', 'likes')->withTimestamps();
+            return $this->belongsToMany('App\User', 'likes');
 
         }
+ 
 
         // 多対多（記事とユーザー詳細）
         // public function deposts(): BelongsToMany{
@@ -45,6 +46,7 @@ class Post extends Model
             //$userが空
             : false;
         }
+
 
         public function getCountLikesAttribute(): int
         {

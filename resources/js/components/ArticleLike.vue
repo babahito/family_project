@@ -1,19 +1,22 @@
 <template>
-    <div>
-    <button type="button" class="btn m-0 p-1 shadow-none">
-      <i class="fas fa-heart fa-1x  mr-1"
-      :class="{'red-text':this.isLikedBy, 'animated heartBeat fast':this.gotToLike}"
-      @click="clickLike" 
+  <div>
+    <button
+      type="button"
+      class="btn m-0 p-1 shadow-none"
+    >
+      <i class="fas fa-heart mr-1"
+         :class="{'red-text':this.isLikedBy}"
+         
+         @click="clickLike"
+        
       />
     </button>
     {{ countLikes }}
-    </div>
+  </div>
 </template>
 
 <script>
-export default {
-    name: "ArticleLike",
-    // props:['postId'],
+  export default {
     props: {
       initialIsLikedBy: {
         type: Boolean,
@@ -35,48 +38,32 @@ export default {
       return {
         isLikedBy: this.initialIsLikedBy,
         countLikes: this.initialCountLikes,
-        gotToLike: false,
       }
     },
    methods: {
-      clickLike() {
+     clickLike() {
         if (!this.authorized) {
           alert('いいね機能はログイン中のみ使用できます')
           return
         }
+
         this.isLikedBy
           ? this.unlike()
           : this.like()
       },
       async like() {
         const response = await axios.put(this.endpoint)
+
         this.isLikedBy = true
         this.countLikes = response.data.countLikes
-        this.gotToLike = true
       },
       async unlike() {
         const response = await axios.delete(this.endpoint)
+
         this.isLikedBy = false
         this.countLikes = response.data.countLikes
-        this.gotToLike = false
       },
     },
   }
 </script>
 
-
-
-<style scoped>
-    p {
-        margin: 10px;
-    }
-    .positive {
-        color: blue;
-    }
-    .negative {
-        color: red;
-    }
-    .warning{
-        background-color:red;
-    }
-</style>

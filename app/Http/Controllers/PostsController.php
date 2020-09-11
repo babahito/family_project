@@ -140,25 +140,24 @@ use Image;
         }
     
         //---------いいねボタン用------
-        public function like(Request $request, Post $post){
+        public function like(Request $request, Post $item){
 
-            $post->likes()->detach($request->user()->id);
-            $post->likes()->attach($request->user()->id);
-            
+            $item->likes()->detach($request->user()->id);
+            $item->likes()->attach($request->user()->id);
             return [
-                'id'=>$post->id,
-                'countLikes'=>$post->count_likes
+                'id'=>$item->id,
+                'countLikes'=>$item->count_likes,
             ];
 
         }
 
-        public function unlike(Request $request, Post $post){
+        public function unlike(Request $request, Post $item){
         
-            $post->likes()->detach($request->user()->id);
+            $item->likes()->detach($request->user()->id);
    
             return [
-                'id'=>$post->id,
-                'countLikes'=>$post->count_likes
+                'id'=>$item->id,
+                'countLikes'=>$item->count_likes
             ];
         }
 

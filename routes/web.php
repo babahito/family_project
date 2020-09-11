@@ -161,8 +161,8 @@ Route::delete("post/{id}", "PostsController@destroy");
 // -------------unlike用---------------------------
 
 Route::prefix('post')->name('posts.')->group(function () {
-    Route::put('/{post}/like', 'PostsController@like')->name('like')->middleware('auth');
-    Route::delete('/{post}/like', 'PostsController@unlike')->name('unlike')->middleware('auth');
+    Route::put('/{item}/like', 'PostsController@like')->name('like')->middleware('auth');
+    Route::delete('/{item}/like', 'PostsController@unlike')->name('unlike')->middleware('auth');
 });
 
 // ------------------------------------------------
