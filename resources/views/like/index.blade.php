@@ -7,13 +7,9 @@
 
         
           
-       
-       @foreach($posts->id as $item)
-        {{$item}}
-        
-       @endforeach
-         
-       
+        <a class="nav-link text-muted active"
+           href="{{ route('users.likes', ['name' => $user->name]) }}">
+       ぼたん</a>
 
   
         @endsection

@@ -36,8 +36,14 @@ class LikesController extends Controller
                     $posts=Post::where('user_id',Auth::user()->id)->paginate($perPage);  
                                
             }    
-            
-            return view("like.index", compact("likes","posts"));
+            $user=Auth::user();
+
+
+
+
+         
+           
+            return view("like.index", compact("likes","posts","user"));
         }
 
 }

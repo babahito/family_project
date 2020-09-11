@@ -1,28 +1,48 @@
 @extends("layouts.app")
-        @section("content")
-
-@section('title', $user->name . 'のいいねした記事')
-
-@section('content')
-  @include('nav')
+@section("content")
   <div class="container">
-    @include('user.user')
+   
     <ul class="nav nav-tabs nav-justified mt-3">
       <li class="nav-item">
-        <a class="nav-link text-muted"
-           href="{{ route('user.show', ['name' => $user->name]) }}">
-          記事
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link text-muted active"
-           href="{{ route('user.likes', ['name' => $user->name]) }}">
+           href="{{ route('users.likes', ['name' => $user->name]) }}">
           いいね
         </a>
       </li>
     </ul>
-    @foreach($articles as $article)
-      @include('articles.card')
-    @endforeach
+
+
+    @foreach($post as $item)
+                    
+                        <div class="card">
+                            <div class="card_mini">
+                                <div class="card_img">
+                                    <img src="{{ asset('storage/' . $item->photo) }}">
+                                </div>
+                                <div class="card_body">
+                                <a href="{{ url("/post/" . $item->id) }}" title="View post">
+                                    <span class="card_title">{{ $item->title}}</span>
+                                    </a>
+                                    <article-like
+                                        :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
+                                        :initial-count-likes='@json($item->count_likes)'
+                                        :authorized='@json(Auth::check())'
+                                        endpoint="{{-- route('posts.like', ['item' => $item]) --}}">
+                                    </article-like>
+                                    <p>
+                                        <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">
+                                        <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                                            {{$item->user->name}}
+                                        </a> 
+                                    </p>
+                                    {{ $item->created_at->format('Y/m/d H:i') }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        @endforeach
+
+
+
   </div>
 @endsection

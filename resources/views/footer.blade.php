@@ -1,9 +1,9 @@
 <div class="nav">
             <ul class="nav_list">
-                <li><a href="user">
+                <li><a href="/user">
                     <p><i class="fas fa-users fa-3x icon_gray"></i></p>
                     ファミリー</a></li>
-                <li><a href="/like">
+                <li><a href="/users/{{Auth::user()->name}}/likes">
                     <p><i class="fab fa-gratipay fa-3x icon_gray"></i></p>
                     お気に入り</a></li>
                 <li><a href="/post/create">
