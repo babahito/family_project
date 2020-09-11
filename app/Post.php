@@ -4,6 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Auth;
+use App\Like;
 use App\UserDetail;
 
 
@@ -29,6 +30,10 @@ class Post extends Model
 
         }
  
+        // 1対１(ユーザーとlikeのpostid）)
+        public function likepost(){
+            return $this->hasOne('App\Like');
+        }
 
         // 多対多（記事とユーザー詳細）
         // public function deposts(): BelongsToMany{
