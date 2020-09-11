@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.app_sub")
         @section("content")
 
             絵を描きます

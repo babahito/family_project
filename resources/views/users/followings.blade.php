@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.app_sub")
         @section("content")
         <div class="main_content">
         <h2>フォロー</h2>

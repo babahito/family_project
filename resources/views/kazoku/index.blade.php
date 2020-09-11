@@ -1,5 +1,4 @@
-
-        @extends("layouts.app")
+@extends("layouts.app_sub")
         @section("content")
         
                     <a href="/kazoku/create">家族をつくる</a>

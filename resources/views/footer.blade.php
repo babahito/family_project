@@ -1,8 +1,11 @@
 <div class="nav">
             <ul class="nav_list">
+            <li><a href="/kazoku">
+                    <p><i class="fas fa-3x fa-smile-wink"></i></p>
+                    家族をつくる</a></li>
                 <li><a href="/user">
                     <p><i class="fas fa-users fa-3x icon_gray"></i></p>
-                    ファミリー</a></li>
+                    メンバー</a></li>
                 <li><a href="/users/{{Auth::user()->name}}/likes">
                     <p><i class="fab fa-gratipay fa-3x icon_gray"></i></p>
                     お気に入り</a></li>

@@ -1,16 +1,8 @@
-@extends("layouts.app")
+@extends("layouts.app_sub")
 @section("content")
-  <div class="container">
-   
-    <ul class="nav nav-tabs nav-justified mt-3">
-      <li class="nav-item">
-        <a class="nav-link text-muted active"
-           href="{{ route('users.likes', ['name' => $user->name]) }}">
-          いいね
-        </a>
-      </li>
-    </ul>
-
+<h2>Favorite</h2>
+        <h3>お気に入りノート</h3>
+        <div class="main_content">
 
     @foreach($post as $item)
                     

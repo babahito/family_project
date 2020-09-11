@@ -77,7 +77,10 @@
                 <main>
                     @yield('content')
                 </main>
-
+            <!-- footer -->
+                <div class="navi">
+                    @include('footer')
+                </div>
 
        </div>
     </div>
