@@ -36,6 +36,9 @@ class Kazoku extends Model
         return $this->kazoku_user->count();
     }
 
+
+
+
     // アクセサ（表示・非表示）
 
 

@@ -57,11 +57,12 @@ use Image;
            
             $auth=Auth::user();
 
-            $clients=Post::select('id','body')->get();
-            //  dd($clients);
-            $client_id_loop = $clients->pluck('client_name','id');
-            
-            return view("post.create",compact("post","auth","user_detail",'client_id_loop'));
+             $users=User::get();
+
+            $clients=User::select('id','name')->get();
+            $client_id_loop = $clients->pluck('name','id');
+            // dd($client_id_loop);
+            return view("post.create",compact("post","auth","user_detail",'client_id_loop','users'));
         }
     
 

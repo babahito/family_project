@@ -1,7 +1,12 @@
 <template>
     <div>
-    <button type="button" class="btn shadow-none" @click="clickLike">
-      参加ボタン
+    <button type="button" class="btn-sm shadow-none border border-primary p-2" 
+    :class="buttonColor"
+    @click="clickLike">
+            <i
+        class="mr-1"
+        :class="buttonIcon"
+      ></i>{{buttonText}}
     </button>
     {{countKazokus}}
     </div>
@@ -26,6 +31,23 @@ export default {
       endpoint: {
         type: String,
       },
+    },
+    computed:{
+      buttonColor(){
+        return this.isKazokuBy
+        ? 'bg-primary text-white'
+        : 'bg-white'
+      },
+      buttonIcon() {
+        return this.isKazokuBy
+          ? 'fas fa-user-check'
+          : 'fas fa-user-plus'
+      },
+      buttonText(){
+        return this.isKazokuBy
+        ? '参加中'
+        : '参加する'
+      }
     },
     data() {
       return {

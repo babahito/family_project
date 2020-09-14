@@ -45,9 +45,8 @@
                                             <input name="photo" type="file" id="photo" value="{{old('photo')}}">
                                     </div>
                                     <div>
-                                        <label for="att">だれに: </label>
-                                            <select name="attribute_id"  id="att" value="{{old('photo')}}">
-                                                <option value="サンプル1">サンプル1</option>
+                                    {{ Form::select('attribute_id', $client_id_loop,)}}
+                                    
                                     </div>
        
                                     <div>
@@ -61,7 +60,7 @@
                                     
                                          
                                 </form>
-                                {{ Form::select('FORM_NAME', $client_id_loop, null, ['class' => 'my_class']) }}
+                                
 </div>
                 <!-- カード部分 -->
                 <div class="card_box">

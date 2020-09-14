@@ -19,7 +19,7 @@
                                         :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
                                         :initial-count-likes='@json($item->count_likes)'
                                         :authorized='@json(Auth::check())'
-                                        endpoint="{{-- route('posts.like', ['item' => $item]) --}}">
+                                        endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                     </article-like>
                                     <p>
                                         <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">

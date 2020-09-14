@@ -2221,6 +2221,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "KazokuLike",
   props: {
@@ -2238,6 +2243,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     endpoint: {
       type: String
+    }
+  },
+  computed: {
+    buttonColor: function buttonColor() {
+      return this.isKazokuBy ? 'bg-primary text-white' : 'bg-white';
+    },
+    buttonIcon: function buttonIcon() {
+      return this.isKazokuBy ? 'fas fa-user-check' : 'fas fa-user-plus';
+    },
+    buttonText: function buttonText() {
+      return this.isKazokuBy ? '参加中' : '参加する';
     }
   },
   data: function data() {
@@ -39532,11 +39548,15 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "btn shadow-none",
+        staticClass: "btn-sm shadow-none border border-primary p-2",
+        class: _vm.buttonColor,
         attrs: { type: "button" },
         on: { click: _vm.clickLike }
       },
-      [_vm._v("\n  参加ボタン\n")]
+      [
+        _c("i", { staticClass: "mr-1", class: _vm.buttonIcon }),
+        _vm._v(_vm._s(_vm.buttonText) + "\n")
+      ]
     ),
     _vm._v("\n" + _vm._s(_vm.countKazokus) + "\n")
   ])

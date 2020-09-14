@@ -40,32 +40,38 @@
 
 <div>
 <!-- ノート -->
-  @foreach($post as $item)
-  <div class="card mt-3">
-      <div class="card-body d-flex flex-row">
-
-          <div>
-              <div class="font-weight-bold">
-                  <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">{{ $item->user->name }}から</a>
-                  <span><i class="fas fa-user-circle mr-1"></i>{{ $item->attribute_id}} へ</span>
-              </div>
-              <div class="font-weight-lighter">送信日：{{ $item->sendtime}}</div>
-          </div>
-          <article-like
-              :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
-              :initial-count-likes='@json($item->count_likes)'
-              :authorized='@json(Auth::check())'
-              endpoint="{{-- route('posts.like', ['post' => $post]) --}}">
-          </article-like>
-      </div>                          
-      <div class="card-body">
-          <p>タイトル：{{ $item->title}}</p>
-          <p>本文：{{ $item->body}}</p>
-          <div><img src="{{ asset('storage/' . $item->photo) }}" width="100px"></div>
-          <p>作成日：{{ $item->created_at->format('Y/m/d H:i') }}</p>
-      </div>
-  </div>
-@endforeach
+<div class="card_box">
+                    @foreach($post as $item)
+                    
+                        <div class="card">
+                            <div class="card_mini">
+                                <div class="card_img">
+                                    <img src="{{ asset('storage/' . $item->photo) }}">
+                                </div>
+                                <div class="card_body">
+                                <a href="{{ url("/post/" . $item->id) }}" title="View post">
+                                    <span class="card_title">{{ $item->title}}</span>
+                                    </a>
+                                    <article-like
+                                        :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
+                                        :initial-count-likes='@json($item->count_likes)'
+                                        :authorized='@json(Auth::check())'
+                                        endpoint="{{ route('posts.like', ['item' => $item]) }}">
+                                    </article-like>
+                                    <p>
+                                        <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">
+                                        <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                                            {{$item->user->name}}
+                                        </a> 
+                                    </p>
+                                    <p>{{ $item->created_at->format('Y/m/d ') }}</p>
+                                    <p>{{ $item->history}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    @endforeach
+                </div>  
   </div>
 @endsection
 
