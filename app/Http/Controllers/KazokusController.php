@@ -100,27 +100,27 @@ class KazokusController extends Controller
 
    public function update(Request $request, $id)
    {
-    //    $this->validate($request, [
-    //        "user_id" => "required|integer", //integer('user_id')
-    //        "received_user_id" => "required|integer", //integer('received_user_id')
-    //        "post_id" => "required|integer", //integer('post_id')
-    //        "received_day" => "required|date", //date('received_day')
-    //        "received_life" => "required|integer", //integer('received_life')
+       $this->validate($request, [
+        "user_id" => "nullable|integer", //integer('user_id')
+        "family_name" => "nullable|string", //integer('received_user_id')
+        "famil_date" => "nullable|date", //date('received_day')
+        "status" => "nullable|integer", //integer('received_life')
+        "history" => "nullable|string", //integer('received_user_id')
 
-    //    ]);
-    //    $requestData = $request->all();
+       ]);
+       $requestData = $request->all();
        
-    //    $mail_received = MailReceived::findOrFail($id);
-    //    $mail_received->update($requestData);
+       $kazoku = Kazoku::findOrFail($id);
+       $kazoku->update($requestData);
 
-    //    return redirect("mail_received")->with("flash_message", "mail_received updated!");
+       return redirect("kazoku")->with("flash_message", "mail_received updated!");
    }
 
    public function destroy($id)
    {
-    //    MailReceived::destroy($id);
+       Kazoku::destroy($id);
 
-    //    return redirect("mail_received")->with("flash_message", "mail_received deleted!");
+       return redirect("kazoku")->with("flash_message", "mail_received deleted!");
    }
 
 //  参加ボタンが押されたとき、一回user-idを削除して、つけなおす⇒user_idとカウントの数を連想配列の形で渡す

@@ -3,7 +3,9 @@
         
                     <a href="/kazoku/create">家族をつくる</a>
                 @foreach($kazokus as $kazoku)
+               
                 <div style="{{ $kazoku->status_class }}">
+                <div style="border:1px solid #aaa;margin-bottom:10px;">
                 <kazoku-like
                         :initial-is-kazoku-by='@json($kazoku->isKazokuBy(Auth::user()))'
                         :initial-count-kazokus='@json($kazoku->count_kazokus)'
@@ -16,14 +18,26 @@
                         <p>家族誕生日：{{$kazoku->family_date}}</p>
                          <img src="{{ asset('storage/' . $kazoku->photo) }}" class="person_icon"> 
                         <p>メンバー：
-                        <p>状態：{{ $kazoku->status_label }}</p>
                         @foreach($kazoku->kazoku_user as $user)
-                        
-                        {{$user->name}}
-                        
+                        <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
+                                {{$user->name}}
+                        </a>
                         @endforeach
                         </p>
+                        <p>状態：{{ $kazoku->status_label }}</p>
+                        <p>ものがたり：{{ $kazoku->history }}</p>
+
+                        <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><button class="btn btn-primary btn-xs">編集</button></a>
+                                    <form method="POST" action="/kazoku/{{ $kazoku->id }}" class="form-horizontal" style="display:inline;">
+                                                        {{ csrf_field() }}
+                                                        
+                                                        {{ method_field("DELETE") }}
+                                                        <button type="submit" class="btn btn-danger btn-xs" title="Delete User" onclick="return confirm('Confirm delete')">
+                                                        削除
+                                                        </button>    
+                                    </form>
                         
+                </div>
                 </div>
                 @endforeach
         @endsection

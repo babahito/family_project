@@ -93,19 +93,19 @@ Route::delete("user_detail/{id}", "UserDetailsController@destroy");
 
 //=======================================================================
 //index
-// Route::get("kazoku/", "KazokusController@index");
+Route::get("kazoku/", "KazokusController@index");
 // //create
-// Route::get("kazoku/create", "KazokusController@create");
+Route::get("kazoku/create", "KazokusController@create");
 // //show
-// Route::get("kazoku/{id}", "KazokusController@show");
+Route::get("kazoku/{id}", "KazokusController@show");
 // //store
-// Route::post("kazoku/store", "KazokusController@store");
+Route::post("kazoku/store", "KazokusController@store");
 // //edit
-// Route::get("kazoku/{id}/edit", "KazokusController@edit");
+Route::get("kazoku/{id}/edit", "KazokusController@edit");
 // //update
-// Route::put("kazoku/{id}", "KazokusController@update");
+Route::put("kazoku/{id}", "KazokusController@update");
 // //destroy
-// Route::delete("kazoku/{id}", "KazokusController@destroy");
+Route::delete("kazoku/{id}", "KazokusController@destroy");
 //=======================================================================
 
 //=======================================================================
