@@ -38,7 +38,7 @@
                 <header>
                     <div class="header_sub">
                         <div>
-                            <a class="navbar-brand" href="{{ url('/family_note') }}">
+                        <a href="{{ route('users.followings', ['name' => Auth::user()->name]) }}"  class="text-muted">
                             <!-- <a href="{{-- route('users.followings', ['name' => Auth::user()->name ]) --}}"  class="text-muted"> -->
                                 <img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo">
                             </a>

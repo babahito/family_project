@@ -16,7 +16,7 @@ class ChangePostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
             //
             $table->integer('status')->nullable()->change();
-            $table->date('sendtime')->nullable()->change();
+            $table->datetime('sendtime')->nullable()->change();
         });
     }
 
@@ -30,7 +30,7 @@ class ChangePostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
             //
             $table->integer('status')->nullable(false)->change();
-            $table->date('sendtime')->nullable(false)->change();
+            $table->datetime('sendtime')->nullable(false)->change();
         });
     }
 }

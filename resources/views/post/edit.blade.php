@@ -40,29 +40,30 @@
                                             </div>
                                         </div>
 										<div class="form-group">
-                                            <label for="user_id" class="col-md-4 control-label">user_id: </label>
+                                            <!-- <label for="user_id" class="col-md-4 control-label">user_id: </label> -->
                                             <div class="col-md-6">
-                                                <input class="form-control" name="user_id" type="text" id="user_id" value="{{$post->user_id}}">
+                                                <input class="form-control" name="user_id" type="hidden" id="user_id" value="{{$post->user_id}}">
                                             </div>
                                         </div>
-										<div class="form-group">
+                                        <div class="form-group">
+                                            <label for="stime" class="col-md-4 control-label">photo: </label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" name="sendtime" type="datetime-local" id="stime" value="{{$post->semdtime}}">
+                                            </div>
+                                        </div>
+										<!-- <div class="form-group">
                                             <label for="photo" class="col-md-4 control-label">photo: </label>
                                             <div class="col-md-6">
-                                                <input class="form-control" name="photo" type="file" id="photo" value="{{$post->photo}}">
+                                                <input class="form-control" name="photo" type="file" id="photo" value="{{--$post->photo--}}">
                                             </div>
-                                        </div>
-										<div class="form-group">
+                                        </div> -->
+										<!-- <div class="form-group">
                                             <label for="attribute_id" class="col-md-4 control-label">attribute_id: </label>
                                             <div class="col-md-6">
                                                 <input class="form-control" required="required" name="attribute_id" type="text" id="attribute_id" value="{{$post->attribute_id}}">
                                             </div>
-                                        </div>
-										<div class="form-group">
-                                            <label for="status" class="col-md-4 control-label">status: </label>
-                                            <div class="col-md-6">
-                                                <input class="form-control" required="required" name="status" type="text" id="status" value="{{$post->status}}">
-                                            </div>
-                                        </div>
+                                        </div> -->
+
                
                                     <div class="form-group">
                                         <div class="col-md-offset-4 col-md-4">

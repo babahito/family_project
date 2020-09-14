@@ -1,8 +1,8 @@
 @extends("layouts.app_sub")
         @section("content")
         <div class="main_content">
-        <h2>フォロー</h2>
-        <h3>ノート</h3>
+        <h2>Family NOTE</h2>
+        <h3>ファミリーノート</h3>
 
             <div class="family_top">
                 <div class="family_user">

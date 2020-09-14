@@ -10,6 +10,7 @@ use DB;
 use App\User;
 use App\UserDetail;
 use App\Post;
+use Carbon\Carbon;
 // 画像加工用
 use Image;
     
@@ -51,18 +52,25 @@ use Image;
         public function create(Request $request)
         {
             $perPage = 25;
-            $post = Post::where('user_id',Auth::user()->id)->paginate($perPage);  
+            $post = Post::where('user_id',Auth::user()->id)->orderBy('sendtime','desc')->paginate($perPage);  
             $user_detail = UserDetail::where('user_id',Auth::user()->id);  
            
            
             $auth=Auth::user();
+            $users=User::get();
 
-             $users=User::get();
+            $tests=Post::select()->join('users','users.id','=','posts.attribute_id')->where('user_id',Auth::user()->id)
+                        ->get();
+            
+            //現在時刻
+            $day=Carbon::now();
+            $sendtimes=Post::select('sendtime')->get();
 
+            // dd($tests);
+            // 送る方のユーザーselect
             $clients=User::select('id','name')->get();
             $client_id_loop = $clients->pluck('name','id');
-            // dd($client_id_loop);
-            return view("post.create",compact("post","auth","user_detail",'client_id_loop','users'));
+            return view("post.create",compact("post","auth","user_detail",'client_id_loop','users','tests','day','sendtimes'));
         }
     
 
@@ -127,7 +135,7 @@ use Image;
                 'status'=>$request->status,
                 'sendtime'=>$request->sendtime,
                 ]);
-            return redirect("post")->with("flash_message", "user_detail added!");
+            return redirect("post/create")->with("flash_message", "user_detail added!");
             // ============================================
             }
     
@@ -182,16 +190,19 @@ use Image;
 				"body" => "nullable", //text('body')->nullable()
 				"user_id" => "nullable|integer", //integer('user_id')->nullable()
 				"photo" => "nullable", //string('photo')->nullable()
-				"attribute_id" => "required|integer", //integer('attribute_id')
-				"status" => "required|integer", //integer('status')
+				"attribute_id" => "nullable|integer", //integer('attribute_id')
+				"status" => "nullable|integer", //integer('status')
 
             ]);
             $requestData = $request->all();
             
             $post = Post::findOrFail($id);
             $post->update($requestData);
+                         $users=User::get();
+
+
     
-            return redirect("post")->with("flash_message", "post updated!");
+            return redirect("post/create")->with("flash_message", "post updated!");
         }
     
 
@@ -199,7 +210,7 @@ use Image;
         {
             Post::destroy($id);
     
-            return redirect("post")->with("flash_message", "post deleted!");
+            return redirect("post/create")->with("flash_message", "post deleted!");
         }
 
 

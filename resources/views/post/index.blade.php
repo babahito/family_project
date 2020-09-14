@@ -44,6 +44,7 @@
                                             {{$item->user->name}}
                                         </a> 
                                     </p>
+                                    <p>{{ $item->attribute_id }}さんへ</p>
                                     {{ $item->created_at->format('Y/m/d H:i') }}
                                     
                                     <a href="{{ url("/post/" . $item->id . "/edit") }}" title="Edit post"><button class="btn btn-primary btn-xs">編集</button></a>
