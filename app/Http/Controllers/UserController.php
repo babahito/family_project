@@ -15,10 +15,12 @@ class UserController extends Controller
         $keyword = $request->get("search");
         $perPage = 25;
 
+
+
         if (!empty($keyword)) {
-            $users = User::where("id","LIKE","%$keyword%")->orWhere("name", "LIKE", "%$keyword%")->orWhere("email", "LIKE", "%$keyword%");
+            $users = User::where("id","LIKE","%$keyword%")->orWhere("name", "LIKE", "%$keyword%")->orWhere("email", "LIKE", "%$keyword%")->paginate($perPage);
         } else {
-            $users = User::all();  
+            $users = User::paginate($perPage);   
                    
         }    
         
@@ -55,7 +57,7 @@ class UserController extends Controller
     }
 
 
-    public function show(string $name)
+    public function show(Request $request,string $name)
     {
         $user = User::where('name', $name)->first();
         $post = $user->posts->sortByDesc('created_at');
@@ -70,12 +72,17 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
 
+
+
+
+
         $post = $user->likes->sortByDesc('created_at');
 
         return view('users.likes', [
             'user' => $user,
             'post' => $post,
         ]);
+        
     }
 
 

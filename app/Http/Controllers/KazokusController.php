@@ -21,9 +21,10 @@ class KazokusController extends Controller
        $perPage = 25;
 
        if (!empty($keyword)) {
-        //    $mail_received = MailReceived::where("id","LIKE","%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("received_user_id", "LIKE", "%$keyword%")->orWhere("post_id", "LIKE", "%$keyword%")->orWhere("received_life", "LIKE", "%$keyword%")->paginate($perPage);
+            $kazokus = Kazoku::where("id","LIKE","%$keyword%")->orWhere("family_name", "LIKE", "%$keyword%")->paginate($perPage);
+        
        } else {
-               $kazokus = Kazoku::all();         
+            $kazokus = Kazoku::paginate($perPage);           
                  
        }          
        return view("kazoku.index", compact("kazokus"));

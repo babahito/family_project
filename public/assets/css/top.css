@@ -18,7 +18,12 @@ body{
     cursor: pointer;
     text-decoration: none;
 }
+a:link{
+    color: #888;
+    text-decoration: none;
+}
 a:hover {
+    color: #333;
     text-decoration: none;
 }
 ul {
@@ -232,6 +237,32 @@ h3 {
     color: #fff;
     text-align: center;
   }
+
+
+/* 家族をつくる */
+    .pink_btn{
+        background:#EEB0D2;
+        color:#fff;
+        border:1px solid #fff;
+        padding:10px 0;
+        width:20%;
+        float:right;
+        color:#fff;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        transition: color 1s, background 1s;
+    }
+    .pink_btn:hover{
+        background:#EB8ABE;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2); 
+    }
+    .family_icon{
+        border-radius: 50%;
+        height:100px;
+        width:100px;
+    }
+
 
 /* ファミリーノート */
 .family_top{

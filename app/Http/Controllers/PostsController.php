@@ -13,6 +13,7 @@ use App\Post;
 use Carbon\Carbon;
 // 画像加工用
 use Image;
+use InterventionImage;
     
     //=======================================================================
     class PostsController extends Controller
@@ -34,15 +35,16 @@ use Image;
             $perPage = 25;
     
             if (!empty($keyword)) {
-                // $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->orWhere("attribute_id", "LIKE", "%$keyword%")->orWhere("status", "LIKE", "%$keyword%")->paginate($perPage);
-                $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%");
+                $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->orWhere("attribute_id", "LIKE", "%$keyword%")->orWhere("status", "LIKE", "%$keyword%")->paginate($perPage);
+                // $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%");
                 
             } else {
                     $post = Post::where('user_id',Auth::user()->id)->paginate($perPage);  
-                    $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);   
+                    
                    
                                
-            }    
+            }   
+            $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);    
             
             $auth=Auth::user();
 
@@ -99,28 +101,16 @@ use Image;
                 ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
             }
 
-            // ================画像保存======================
+            // ================画像保存(S3)======================
             $image = $request->file('photo');
-
-            // $img = Image::make($image);  
-            // $save_path = storage_path('app/test.jpg');
-            // //横幅
-            // $width = 500;
-            // //縦幅
-            // $height = 500;
-            // //左からの座標
-            // $x = 0;
-            // //上からの座標
-            // $y = 0;
-            // $img->crop($width,$height,$x,$y);
-            // $img->save($save_path);  
-            // dd($img);
+       
+        
 
             $disk = Storage::disk('local');
+      
 
 
-
-            $path = $disk->put('public' ,$image);
+            $path = $disk->put('public' ,$image );
             // ファイル名のみ
             $filename = pathinfo($path,  PATHINFO_BASENAME);
 
@@ -137,6 +127,32 @@ use Image;
                 ]);
             return redirect("post/create")->with("flash_message", "user_detail added!");
             // ============================================
+
+
+            // ================画像保存(S3)======================
+            // $imagefile = $request->file('photo');
+            // $now = date_format(Carbon::now(), 'YmdHis');
+            // $name = $imagefile->getClientOriginalName();
+            // // S3の保存先のパスを生成
+            // $storePath="hogeimage/".$now."_".$name;
+            
+                
+            
+            // Post::create([
+            //     'photo' => $filename,
+           
+            //     'title'=>$request->title,
+            //     'body'=>$request->body,
+            //     'user_id'=>Auth::user()->id,
+            //     'attribute_id'=>$request->attribute_id,
+            //     'status'=>$request->status,
+            //     'sendtime'=>$request->sendtime,
+            //     ]);
+            // return redirect("post/create")->with("flash_message", "user_detail added!");
+            // // ============================================
+
+
+
             }
     
   

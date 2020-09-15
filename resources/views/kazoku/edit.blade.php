@@ -22,10 +22,10 @@
                                         {{ csrf_field() }}
                                         {{ method_field("PUT") }}
             
-										<div class="form-group">
+										<!-- <div class="form-group">
                                             <label for="id" class="col-md-4 control-label">id: </label>
-                                             <div class="col-md-6">{{$kazoku->id}}</div>
-                                        </div>
+                                             <div class="col-md-6">{{--$kazoku->id--}}</div>
+                                        </div> -->
 										<div class="form-group">
                                             <!-- <label for="user_id" class="col-md-4 control-label">user_id: </label> -->
                                             <div class="col-md-6">

@@ -1,6 +1,5 @@
 @extends("layouts.app_sub")
-        @section("content")
-        @include('nav')
+@section("content")
   <div class="container">
     <div class="card mt-3">
       <div class="card-body">
@@ -8,7 +7,7 @@
           <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
             <i class="fas fa-user-circle fa-3x"></i>
           </a>
-          {{----------ここから追加----------}}
+            
           @if( Auth::id() !== $user->id )
             <follow-button
               class="ml-auto"
@@ -19,7 +18,7 @@
             >
             </follow-button>
           @endif
-          {{----------ここまで追加----------}}
+          
         </div>
         <h2 class="h5 card-title m-0">
           <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">

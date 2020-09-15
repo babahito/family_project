@@ -24,6 +24,9 @@
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css">
 
+    <!-- ファビコン -->
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+
 </head>
 <body>
     <div id="app">
