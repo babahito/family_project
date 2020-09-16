@@ -17,7 +17,7 @@
                                 </span>
                                 </div>
                         </form>
-
+                <!-- カード部分 -->
                 <div class="row">
       
                 @foreach($kazokus as $kazoku)
@@ -37,7 +37,7 @@
                                                                 <form method="POST" action="/kazoku/{{ $kazoku->id }}" class="form-horizontal" style="display:inline;">
                                                                         {{ csrf_field() }}
                                                                         {{ method_field("DELETE") }}
-                                                                        <button type="submit"  title="Delete User" onclick="return confirm('削除しても大丈夫ですか')"><i class="fas fa-trash fa-2x"></i></button>   
+                                                                        <button type="submit"  title="Delete User" onclick="return confirm('削除してもよろしいでしょうか')"><i class="fas fa-trash fa-2x"></i></button>   
                                                                 </form>
                                                         @endif 
                                                         

@@ -48,7 +48,11 @@ use InterventionImage;
             
             $auth=Auth::user();
 
-            return view("post.index", compact("post","auth","user_detail"));
+            //現在時刻
+            $day=Carbon::now();
+            $sendtimes=Post::select('sendtime')->get();
+
+            return view("post.index", compact("post","auth","user_detail","day","sendtimes"));
         }
 
         public function create(Request $request)
@@ -125,7 +129,7 @@ use InterventionImage;
                 'status'=>$request->status,
                 'sendtime'=>$request->sendtime,
                 ]);
-            return redirect("post/create")->with("flash_message", "user_detail added!");
+            return redirect("post")->with("flash_message", "user_detail added!");
             // ============================================
 
 
