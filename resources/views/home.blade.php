@@ -9,7 +9,7 @@
 
     <br><br>
     登録お済の方は、こちらへ
-    <a href="/family_note">TOP画面</a>
+    <a href="{{ route('users.followings', ['name' => Auth::user()->name]) }}" >TOP画面</a>
 
 </div>
 @endsection
