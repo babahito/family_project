@@ -10,11 +10,7 @@ Route::get("/", function () {
 Route::get("/top", function () {
     return view("top");
 });
-// ===-vue&laravel=======================
 
-
-
-// ====================================
 
 //=======================================================================
 //index
@@ -54,109 +50,105 @@ Route::prefix('users')->name('users.')->group(function () {
     //==========ここまで追加==========
 });
 
-// フォロー一覧
-// http://localhost/users/ママ/followings
+
 
 //=======================================================================
 //index
-Route::get("attribute/", "AttributesController@index");
-//create
-Route::get("attribute/create", "AttributesController@create");
-//show
-Route::get("attribute/{id}", "AttributesController@show");
-//store
-Route::post("attribute/store", "AttributesController@store");
-//edit
-Route::get("attribute/{id}/edit", "AttributesController@edit");
-//update
-Route::put("attribute/{id}", "AttributesController@update");
-//destroy
-Route::delete("attribute/{id}", "AttributesController@destroy");
-//=======================================================================
-
-//=======================================================================
-//index
-Route::get("user_detail/", "UserDetailsController@index")->middleware();
-//create
-Route::get("user_detail/create", "UserDetailsController@create");
-//show
-Route::get("user_detail/{id}", "UserDetailsController@show");
-//store
-Route::post("user_detail/store", "UserDetailsController@store");
-//edit
-Route::get("user_detail/{id}/edit", "UserDetailsController@edit");
-//update
-Route::put("user_detail/{id}", "UserDetailsController@update");
-//destroy
-Route::delete("user_detail/{id}", "UserDetailsController@destroy");
-//=======================================================================
-
-//=======================================================================
-//index
-Route::get("kazoku/", "KazokusController@index");
+// Route::get("attribute/", "AttributesController@index");
 // //create
-Route::get("kazoku/create", "KazokusController@create");
+// Route::get("attribute/create", "AttributesController@create");
 // //show
-Route::get("kazoku/{id}", "KazokusController@show");
+// Route::get("attribute/{id}", "AttributesController@show");
 // //store
-Route::post("kazoku/store", "KazokusController@store");
+// Route::post("attribute/store", "AttributesController@store");
 // //edit
-Route::get("kazoku/{id}/edit", "KazokusController@edit");
+// Route::get("attribute/{id}/edit", "AttributesController@edit");
 // //update
-Route::put("kazoku/{id}", "KazokusController@update");
+// Route::put("attribute/{id}", "AttributesController@update");
 // //destroy
-Route::delete("kazoku/{id}", "KazokusController@destroy");
+// Route::delete("attribute/{id}", "AttributesController@destroy");
 //=======================================================================
 
 //=======================================================================
-//index
-Route::get("follow/", "FollowsController@index");
-//create
-Route::get("follow/create", "FollowsController@create");
-//show
-Route::get("follow/{id}", "FollowsController@show");
-//store
-Route::post("follow/store", "FollowsController@store");
-//edit
-Route::get("follow/{id}/edit", "FollowsController@edit");
-//update
-Route::put("follow/{id}", "FollowsController@update");
-//destroy
-Route::delete("follow/{id}", "FollowsController@destroy");
+Route::middleware('auth')->group(function () {
+    //index
+    Route::get("user_detail/", "UserDetailsController@index");
+    //create
+    Route::get("user_detail/create", "UserDetailsController@create");
+    //show
+    Route::get("user_detail/{id}", "UserDetailsController@show");
+    //store
+    Route::post("user_detail/store", "UserDetailsController@store");
+    //edit
+
+    Route::get("user_detail/{id}/edit", "UserDetailsController@edit");
+    //update
+    Route::put("user_detail/{id}", "UserDetailsController@update");
+    //destroy
+    Route::delete("user_detail/{id}", "UserDetailsController@destroy");
+});
 //=======================================================================
 
-//=======================================================================
-//index
-Route::get("bookmark/", "BookmarksController@index");
-//create
-Route::get("bookmark/create", "BookmarksController@create");
-//show
-Route::get("bookmark/{id}", "BookmarksController@show");
-//store
-Route::post("bookmark/store", "BookmarksController@store");
-//edit
-Route::get("bookmark/{id}/edit", "BookmarksController@edit");
-//update
-Route::put("bookmark/{id}", "BookmarksController@update");
-//destroy
-Route::delete("bookmark/{id}", "BookmarksController@destroy");
-//=======================================================================
 
 //=======================================================================
+Route::middleware('auth')->group(function () {
+    //index
+    Route::get("kazoku/", "KazokusController@index");
+    // //create
+    Route::get("kazoku/create", "KazokusController@create");
+    // //show
+    Route::get("kazoku/{id}", "KazokusController@show");
+    // //store
+    Route::post("kazoku/store", "KazokusController@store");
+    // //edit
+    Route::get("kazoku/{id}/edit", "KazokusController@edit");
+    // //update
+    Route::put("kazoku/{id}", "KazokusController@update");
+    // //destroy
+    Route::delete("kazoku/{id}", "KazokusController@destroy");
+});
+//=======================================================================
 
-Route::get("post/", "PostsController@index");
-//create
-Route::get("post/create", "PostsController@create");
-//show
-Route::get("post/{id}", "PostsController@show");
-//store
-Route::post("post/store", "PostsController@store");
-//edit
-Route::get("post/{id}/edit", "PostsController@edit");
-//update
-Route::put("post/{id}", "PostsController@update");
-//destroy
-Route::delete("post/{id}", "PostsController@destroy");
+
+//=======================================================================
+Route::middleware('auth')->group(function () {
+    //index
+    Route::get("follow/", "FollowsController@index");
+    //create
+    Route::get("follow/create", "FollowsController@create");
+    //show
+    Route::get("follow/{id}", "FollowsController@show");
+    //store
+    Route::post("follow/store", "FollowsController@store");
+    //edit
+    Route::get("follow/{id}/edit", "FollowsController@edit");
+    //update
+    Route::put("follow/{id}", "FollowsController@update");
+    //destroy
+    Route::delete("follow/{id}", "FollowsController@destroy");
+});
+//=======================================================================
+
+
+//=======================================================================
+// 記事
+//=======================================================================
+Route::middleware('auth')->group(function () {
+
+    Route::get("post/", "PostsController@index");
+    //create
+    Route::get("post/create", "PostsController@create");
+    //show
+    Route::get("post/{id}", "PostsController@show");
+    //store
+    Route::post("post/store", "PostsController@store");
+    //edit
+    Route::get("post/{id}/edit", "PostsController@edit");
+    //update
+    Route::put("post/{id}", "PostsController@update");
+    //destroy
+    Route::delete("post/{id}", "PostsController@destroy");
+});
 
 // -------------unlike用---------------------------
 
@@ -169,31 +161,56 @@ Route::prefix('post')->name('posts.')->group(function () {
 //=======================================================================
 
 
-
-//=====================絵を描く==================================
+//=======================================================================
+// 絵を描く
+//=======================================================================
 
 Route::get("paint/", function () {
     return view("paint.index");
 });
 
-
 //=======================================================================
 
 
-// 家族グループ作成=====================================
-Route::get("kazoku/", "KazokusController@index");
-//create
-Route::get("kazoku/create", "KazokusController@create");
-// //show
-Route::get("kazoku/{id}", "KazokusController@show");
-// //store
-Route::post("kazoku/store", "KazokusController@store");
+//=======================================================================
+// 署名用
+//=======================================================================
 
+Route::middleware('auth')->group(function () {
+    Route::get('/hello/create', 'HelloController@create')->name('hello.create');
+    // メール送信
+    Route::post('/hello', 'HelloController@send')->name('hello.send');
+    // 承諾リンクをクリック
+    Route::get('/kazoku/20', 'KazokusController@index')->name('hello.hi')->middleware('auth');
+    // 拒否リンクをクリック
+    Route::get('/hello/bye', 'HelloController@bye')->name('hello.bye');
+    // 期限切れ or 無効URL
+    Route::get('/hello/invalid', 'HelloController@invalid')->name('hello.invalid');
 
-ROute::prefix('kazoku')->name('kazokus.')->group(function(){
-    Route::put('/{kazoku}/like','KazokusController@like')->name('like')->middleware('auth');
-    Route::delete('/{kazoku}/like','KazokusController@unlike')->name('unlike')->middleware('auth');
 });
+
+//=======================================================================
+// 家族グループ作成=====================================
+//=======================================================================
+
+Route::middleware('auth')->group(function () {
+    Route::get("kazoku/", "KazokusController@index");
+    //create
+    // Route::group(['middleware' => ['auth','verified']], function () {
+    Route::get("kazoku/create", "KazokusController@create");
+        // });
+    Route::get("kazoku/thank", "KazokusController@thank");
+    // // //show
+    Route::get("kazoku/{id}", "KazokusController@show");
+    // //store
+    Route::post("kazoku/store", "KazokusController@store");
+    Route::prefix('kazoku')->name('kazokus.')->group(function(){
+        Route::put('/{kazoku}/like','KazokusController@like')->name('like')->middleware('auth');
+        Route::delete('/{kazoku}/like','KazokusController@unlike')->name('unlike')->middleware('auth');
+    });
+});
+
+
 // //edit
 // Route::get("kazoku/{id}/edit", "KazokusController@edit");
 // //update
@@ -204,20 +221,11 @@ ROute::prefix('kazoku')->name('kazokus.')->group(function(){
 
 
 //=======================================================================
+// ファミリーノート
+//=======================================================================
 //index
 Route::get("family_note/", "FamilynotesController@index");
-//create
-// Route::get("family_note/like", "PostsController@like");
-// //show
-// Route::get("family_note/{id}", "familynotesController@show");
-// //store
-// Route::post("family_note/store", "familynotesController@store");
-// //edit
-// Route::get("family_note/{id}/edit", "familynotesController@edit");
-// //update
-// Route::put("family_note/{id}", "familynotesController@update");
-// //destroy
-// Route::delete("family_note/{id}", "familynotesController@destroy");
+
 //=======================================================================
 
 //=======================================================================
@@ -237,14 +245,8 @@ Route::put("like/{id}", "LikesController@update");
 Route::delete("like/{id}", "LikesController@destroy");
 //=======================================================================
 
-//==============family_note========================================
-// Route::get("family_note/", "PostsController@top");
-// Route::get("family", function () {
-//     return view("family_note.index");
-// });
-
-// ==================================================================
-
+//=======================================================================
+// （未設定）＃タグ用
 //=======================================================================
 //index
 Route::get("posts_tag/", "PostsTagsController@index");
@@ -263,6 +265,8 @@ Route::delete("posts_tag/{id}", "PostsTagsController@destroy");
 //=======================================================================
 
 //=======================================================================
+// （未設定）＃タグ用
+//=======================================================================
 //index
 Route::get("tag/", "TagsController@index");
 //create
@@ -279,66 +283,12 @@ Route::put("tag/{id}", "TagsController@update");
 Route::delete("tag/{id}", "TagsController@destroy");
 //=======================================================================
 
-//=======================================================================
-//index
-Route::get("post_hist/", "PostHistsController@index");
-//create
-Route::get("post_hist/create", "PostHistsController@create");
-//show
-Route::get("post_hist/{id}", "PostHistsController@show");
-//store
-Route::post("post_hist/store", "PostHistsController@store");
-//edit
-Route::get("post_hist/{id}/edit", "PostHistsController@edit");
-//update
-Route::put("post_hist/{id}", "PostHistsController@update");
-//destroy
-Route::delete("post_hist/{id}", "PostHistsController@destroy");
-//=======================================================================
-
-//=======================================================================
-//index
-Route::get("mail_send/", "MailSendsController@index");
-//create
-Route::get("mail_send/create", "MailSendsController@create");
-//show
-Route::get("mail_send/{id}", "MailSendsController@show");
-//store
-Route::post("mail_send/store", "MailSendsController@store");
-//edit
-Route::get("mail_send/{id}/edit", "MailSendsController@edit");
-//update
-Route::put("mail_send/{id}", "MailSendsController@update");
-//destroy
-Route::delete("mail_send/{id}", "MailSendsController@destroy");
-//=======================================================================
-
-//=======================================================================
-//index
-Route::get("mail_received/", "MailReceivedsController@index");
-//create
-Route::get("mail_received/create", "MailReceivedsController@create");
-//show
-Route::get("mail_received/{id}", "MailReceivedsController@show");
-//store
-Route::post("mail_received/store", "MailReceivedsController@store");
-//edit
-Route::get("mail_received/{id}/edit", "MailReceivedsController@edit");
-//update
-Route::put("mail_received/{id}", "MailReceivedsController@update");
-//destroy
-Route::delete("mail_received/{id}", "MailReceivedsController@destroy");
-//=======================================================================
-
-
-// --------axios練習------
-// Route::get('/{app}', function () {  //←追記
-//     return view('www');
-//   })->where('app', '.*');
 
 
 
 
-Auth::routes();
+
+//ユーザー認証を作成した時に自動的に作成されるルートを下記のように変更// メール認証用
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');

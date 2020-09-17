@@ -12,8 +12,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+// 新規会員登録時にカスタムメールを送信する処理を読み込む
+use App\Notifications\CustomVerify;
 
-class User extends Authenticatable
+// class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -97,6 +100,11 @@ class User extends Authenticatable
         return $this->followings->count();
     }
 
+    // 新規登録時のカスタムメール
+    public function sendCustomMail($user)
+    {
+        $this->notify(new CustomVerify($user));
+    }
 
 
 }

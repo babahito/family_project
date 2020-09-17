@@ -9,6 +9,15 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
+//追加した関数にRequestがあるので追記
+use Illuminate\Http\Request;
+//作成したメール関数用のファイルを追記
+use App\Notifications\CustomVerify;
+//メール送信時に使うので追記
+use Notification;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -64,10 +73,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
+        $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        return $user;
+
+
+
     }
+// 新規登録時にメール送信
+    protected function registered(Request $request, $user)
+    {
+        //コントローラーでsendを使う場合、第一引数にemailカラムを持つ人を用意する感じ。
+        // Notification::send($user, new CustomVerify());
+        // ユーザーモデルの関数を呼び出す
+        $user->sendCustomMail($user);
+
+    }
+
 }

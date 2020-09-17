@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Test;
 
 
 use Auth;
@@ -11,6 +13,15 @@ use Storage;
 use Validator;
 use App\Kazoku;
 use App\User;
+use App\Jobs\TestJob;
+
+//追加した関数にRequestがあるので追記
+//作成したメール関数用のファイルを追記
+use App\Notifications\CustomVerify;
+//メール送信時に使うので追記
+use Notification;
+
+
 
 class KazokusController extends Controller
 {
@@ -24,7 +35,9 @@ class KazokusController extends Controller
             $kazokus = Kazoku::where("id","LIKE","%$keyword%")->orWhere("family_name", "LIKE", "%$keyword%")->paginate($perPage);
         
        } else {
-            $kazokus = Kazoku::paginate($perPage);           
+            $kazokus = Kazoku::paginate($perPage); 
+            
+   
                  
        }          
        return view("kazoku.index", compact("kazokus"));
@@ -36,6 +49,16 @@ class KazokusController extends Controller
        return view("kazoku.create");
    }
 
+   public function thank(){
+
+            //    メール送信
+            // $auth=Auth::user()->name;
+            // $family_name=Kazoku()->family_name;
+            // $users=User::get();
+            //    Mail::to($users)->send(new Test($auth));    
+
+            return view("kazoku.thank");
+    }
 
    public function store(Request $request)
    {
@@ -69,7 +92,7 @@ class KazokusController extends Controller
             $filename = pathinfo($path,  PATHINFO_BASENAME);
 
             // $requestData = $request->all();
-            Kazoku::create([
+            $kazoku=Kazoku::create([
                 'user_id'=>Auth::user()->id,
                'photo' => $filename,
           
@@ -79,15 +102,23 @@ class KazokusController extends Controller
                'status'=>$request->status,
                'history'=>$request->history,
                ]);
-            
+                        //    メール送信
+            $auth=Auth::user()->name;
+            $family_name=Kazoku::get();
+            // dd($family_name);
+            $users=User::get();
+               Mail::to($users)->send(new Test($auth,$family_name));    
 
-       return redirect("kazoku")->with("flash_message", "mail_received added!");
+
+       return redirect("kazoku/thank")->with("flash_message", "mail_received added!");
    }
+
+   
 
    public function show($id)
    {
        $kazoku = Kazoku::findOrFail($id);
-       return view("kazoku.show");
+       return view("kazoku.show",compact('kazoku'));
    }
 
 

@@ -26,7 +26,9 @@
                         <div class="card mb-2" style="max-width: 500px;">
                                 <div class="row no-gutters">
                                         <div class="col-lg-6">
+                                        <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post">
                                                 <img src="{{ asset('storage/' . $kazoku->photo) }}" class="family_icon"> 
+                                                </a>
                                                 <p>家族誕生日：{{$kazoku->family_date}}</p>
                                         </div>
                                         <div class="col-lg-6">
