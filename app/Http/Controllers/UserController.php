@@ -5,6 +5,7 @@ use App\User;
 use App\UserDetail;
 use App\Post;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -61,10 +62,10 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
         $post = $user->posts->sortByDesc('created_at');
-        return view('users.show', [
-            'user' => $user,
-            'post'=>$post
-        ]);
+        $day=Carbon::now();
+        $sendtimes=Post::select('sendtime')->get();
+
+        return view('users.show', compact('user','post','day','sendtimes'));
     }
 
 
@@ -133,6 +134,7 @@ class UserController extends Controller
         $user = User::where('name', $name)->first();
         $followings = $user->followings->sortByDesc('created_at');
         $articles = $user->posts->sortByDesc('created_at');
+      
 
       
         return view('users.followings', [

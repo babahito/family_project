@@ -164,8 +164,13 @@ use InterventionImage;
 
         public function show($id)
         {
-            $posts=Post::find($id);
-            return view("post.show", compact("posts"));
+            $item=Post::find($id);
+
+            //現在時刻
+            $day=Carbon::now();
+            $sendtimes=Post::select('sendtime')->get();
+
+            return view("post.show", compact("item","day","sendtimes"));
         }
     
         //---------いいねボタン用------
@@ -222,7 +227,7 @@ use InterventionImage;
 
 
     
-            return redirect("post/create")->with("flash_message", "post updated!");
+            return redirect("post")->with("flash_message", "post updated!");
         }
     
 
@@ -230,7 +235,7 @@ use InterventionImage;
         {
             Post::destroy($id);
     
-            return redirect("post/create")->with("flash_message", "post deleted!");
+            return redirect("post")->with("flash_message", "post deleted!");
         }
 
 

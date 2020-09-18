@@ -1,20 +1,29 @@
 @extends("layouts.app_sub")
 @section("content")
-        <div class="main_content">
-                <h2>Member</h2>
-                <h3>メンバー</h3>
+    <div class="main_content">
+        <h2>Member</h2>
+        <h3>メンバー</h3>
             
-                        <!-- 検索 -->
-                        <form method="GET" action="{{ url("user") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="search" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-info" type="submit">
-                                                <span>Search</span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
+
+
+            <!-- 検索 -->
+            <div class="search_box">
+              <form method="GET" action="{{ url("user") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <input type="text" class="form-control form-control-lg" name="search" placeholder="検索する">
+                      </div>
+                      <div class="col-auto">
+                          <button type="submit" class="btn btn-light">検索</button>
+                      </div>
+                  </div>
+              </form>
+            </div>
+            <!-- end -->
+
+
+
+
                                 <div class="row">
             @foreach($users as $user)
             <div class="col-lg-4">

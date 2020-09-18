@@ -2,16 +2,15 @@
   <div>
     <button
       type="button"
-      class="btn m-0 p-1 shadow-none"
+      class="btn m-0 p-1 shadow-none btn_p"
     >
-      <i class="fas fa-heart mr-1"
-         :class="{'red-text':this.isLikedBy}"
-         
+      <i class="fas fa-heart mr-1 fa-2x heart_gray"
+         :class="{'orange-text':this.isLikedBy}"
          @click="clickLike"
-        
-      />
+      >
+      <span class="like_font">{{ countLikes }}</span></i>
     </button>
-    {{ countLikes }}
+    
   </div>
 </template>
 
@@ -66,4 +65,13 @@
     },
   }
 </script>
+<style scoped>
+.btn_p{
+  z-index: 2;
+  position:relative;
+}
+.like_font{
+    font-size: 1.4rem;
 
+}
+</style>

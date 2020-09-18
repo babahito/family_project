@@ -12,7 +12,7 @@ html{
     margin: 0;
 }
 body{
-    font-size:1.6rem;/* 16px*/
+    font-size:1.8rem;/* 16px*/
 }
  a{
     cursor: pointer;
@@ -71,7 +71,7 @@ h3 {
         font-size: 2rem;/* 20px*/
     }
     h3 {
-        font-size: 1.2rem;/* 16px*/
+        font-size: 1.2rem;/* 12px*/
     }
 }
 /* ナビ */
@@ -91,15 +91,7 @@ h3 {
     justify-content: space-between;
     font-weight: bold;
 }
-/* メイン画像部分 */
-.main_content{
-    /* position:static; */
 
-    /* margin:0 auto;
-    max-width:980px;
-    background: #FBFAF2; */
-    
-}
 .main_img{
     width: 100%;
     height:650px;
@@ -245,17 +237,35 @@ h3 {
         color:#fff;
         border:1px solid #fff;
         padding:10px 0;
-        width:20%;
+        width:100%;
         float:right;
         color:#fff;
         text-align: center;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         transition: color 1s, background 1s;
+        margin-bottom:10px;
     }
     .pink_btn:hover{
         background:#EB8ABE;
         box-shadow: 0 0 2px rgba(0,0,0,0.2); 
+    }
+    .pink_btn2{
+        background:#fff;
+        border:1px solid #EEB0D2;
+        padding:10px 0;
+        width:100%;
+        float:right;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        transition: color 1s, background 1s;
+        margin-bottom:10px;
+    }
+    .pink_btn2:hover{
+        background:#EB8ABE;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2); 
+        margin-bottom:10px;
     }
     .family_icon{
         border-radius: 50%;
@@ -268,16 +278,36 @@ h3 {
 .family_top{
     display:flex;
     justify-content: space-between;
+    margin-bottom:20px;
 }
     .family_user{
         display:flex;
         justify-content: space-between;
         width:50%;
+        
     }
         .person_icon{
-            width:80px;
+            max-width:90px;
             border-radius: 50%;
+            margin-right: 5px;
         }
+        .effect-color {
+            background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+            max-width:90px;
+            margin-right: 5px;
+            border-radius: 50%;
+          }
+          .effect-color img {
+            opacity: 1;
+            -webkit-transition: .3s ease-in-out;
+            transition: .3s ease-in-out;
+            box-shadow: inset 0px 3px 0 rgba(255,255,255,0.3), 0 3px 3px rgba(0, 0, 0, 0.5);
+            
+          }
+          .effect-color img:hover {
+            opacity: .8;
+        
+          }
         .note_btn{
             display: inline-block;
             padding: 0.5em 1em;
@@ -296,36 +326,10 @@ h3 {
         .note_btn:hover{
             background-image: linear-gradient(45deg, #fae0b9 0%, #FFCE85 100%);
         }
-    .card_box{
-        /* display: flex; */
-        /* flex-wrap: wrap; */
-        /* width: 100%; */
-    }
-        .card{
-            width:calc(100%-20px);
-            margin:0 10px 25px 10px;
-            border: 1px solid rgba(0, 0, 0, 0.125);
-            margin-bottom:10px;
-            /* border-radius: 10px; */
-        }
-        .card_mini{
-            display:flex;
-            justify-content: space-between;
-        }
-        .card_img{
-            width:50%;
-
-            /* height:224px; */
-            /* border-radius: 10px; */
-        }
-        .card_body{
-            width:50%;
-            
-
-        }
-        .card_title{
-            font-weight: 600;
-        }
+/* 検索ボックス */
+.search_box{
+    margin:20px 0;
+}
 
     /* APPファイル */
         /* メイン */
@@ -344,7 +348,7 @@ h3 {
             display: flex;
         }
         main{
-            margin:50px auto 0 auto;
+            margin:50px auto 50px auto;
             max-width:980px;
             background: #fff;
             padding:10px;
@@ -421,3 +425,26 @@ h3 {
   .label_open{
     display:block;
   }
+
+
+/* カードイメージ */
+.card_fit{
+    width:100%;
+    height: 180px;
+    object-fit: cover;
+}
+/* likeボタン */
+.like_font{
+    font-size: 1.4rem;
+}
+.c_title{
+    color:#aaa;
+}
+.heart_gray{
+    color:#777;
+}
+.up_btn{
+    position: relative;
+     z-index: 2;
+}
+

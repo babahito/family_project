@@ -1,6 +1,7 @@
 @extends("layouts.app_sub")
         @section("content")
-        <h2>フォロワー</h2>
+        <div class="main_content">
+            <h2>フォロワー</h2>
 
         <div class="family_top">
                 <div class="family_user">
