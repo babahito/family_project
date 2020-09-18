@@ -134,14 +134,11 @@ class UserController extends Controller
         $user = User::where('name', $name)->first();
         $followings = $user->followings->sortByDesc('created_at');
         $articles = $user->posts->sortByDesc('created_at');
-      
+        $day=Carbon::now();
+        $sendtimes=Post::select('sendtime')->get();
 
       
-        return view('users.followings', [
-            'user' => $user,
-            'followings' => $followings,
-            'articles'=>$articles
-        ]);
+        return view('users.followings', compact("user","followings","articles","day","sendtimes"));
     }
     // フォロワー一覧
     public function followers(string $name)

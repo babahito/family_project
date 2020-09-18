@@ -16,7 +16,7 @@
                             <div class="card">
                                 <div class="row no-gutters">
                                     <div class="col-lg-4">
-                                        <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                        <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: auto;object-fit: cover;">
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="card-body">

@@ -43,25 +43,30 @@
                     <div class="row">
                         @foreach($followings as $person)
                         @foreach($person->posts as $item)
+
                         <div class="col-lg-4 mb-5">
-                            <div class="card">
-                                <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                        <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">
-                                                <span class="card_title">{{ $item->title}}</span>
-                                                </a>
-                                        </h4>
-                                        <article-like
-                                            :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
-                                            :initial-count-likes='@json($item->count_likes)'
-                                            :authorized='@json(Auth::check())'
-                                            endpoint="{{ route('posts.like', ['item' => $item]) }}">
-                                        </article-like>
-                                        <p class="card-text"><a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">{{$item->user->name}}</a> </p>
-                                        <p class="card-text">{{ $item->sendtime }}</p>
-                                    </div>
-                            </div>
+                                <!-- 表示の場合 -->
+                                @if($day>$item->sendtime)
+                                <div class="card">
+                                    <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                            <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">
+                                                    <span class="card_title">{{ $item->title}}</span>
+                                                    </a>
+                                            </h4>
+                                            <article-like
+                                                :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
+                                                :initial-count-likes='@json($item->count_likes)'
+                                                :authorized='@json(Auth::check())'
+                                                endpoint="{{ route('posts.like', ['item' => $item]) }}">
+                                            </article-like>
+                                            <p class="card-text"><a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">{{$item->user->name}}</a> </p>
+                                            <p class="card-text">{{ $item->sendtime }}</p>
+                                        </div>
+                                </div>
+                            @endif
+     
                         </div>
                         @endforeach
                         @endforeach
