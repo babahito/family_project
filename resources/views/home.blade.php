@@ -7,9 +7,6 @@
 
     <a href="/user_detail">ユーザー詳細画面</a>
 
-    <br><br>
-    登録お済の方は、こちらへ
-    <a href="{{ route('users.followings', ['name' => Auth::user()->name]) }}" >TOP画面</a>
 
 </main>
 @endsection

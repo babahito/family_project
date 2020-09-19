@@ -83,7 +83,7 @@ use App\UserDetail;
                 'birthday'=>$request->birthday,
                 'comment'=>$request->comment,
                 ]);
-            return redirect("user_detail")->with("flash_message", "user_detail added!");
+            return redirect("user_detail.show")->with("flash_message", "user_detail added!");
             // ============================================
         }
     

@@ -39,12 +39,13 @@ use InterventionImage;
                 // $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%");
                 
             } else {
-                    $post = Post::where('user_id',Auth::user()->id)->paginate($perPage);  
+                    $post = Post::where('user_id',Auth::user()->id)->paginate($perPage); 
+                    $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);     
                     
                    
                                
             }   
-            $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);    
+            
             
             $auth=Auth::user();
 

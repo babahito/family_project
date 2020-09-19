@@ -30,6 +30,7 @@
         </div>
         <div class="col-lg-3">
             <a href="/post/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;ノートをかく</div></a>
+
         </div>
     </div>
           <!-- ノートをかく -->
@@ -40,6 +41,9 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <img src="{{ asset('storage/' . $item->photo) }}" class="person_icon" style="margin-left:-5px;">
+                        @foreach($user_detail as $user_de)
+                            <p><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}">プロフィール変更</a></p>
+                        @endforeach
                     </div>
                     <div class="col-xs-8">
                         <div class="card-body">

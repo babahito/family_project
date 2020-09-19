@@ -65,12 +65,7 @@
                 @endif
                 <form method="POST" action="/user_detail/store"  enctype='multipart/form-data'>
                     {{ csrf_field() }}
-                    <!-- <div class="image_box_min">写真<input class="form-control" name="photo" type="file" id="photo" value="{{old('photo')}}" class="form-control-file"></div> -->
-                        
-                            <!-- <label for="birthday" class="col-md-4 control-label">誕生日: </label>
-                                <input class="form-control" name="birthday" type="date" id="birthday" value="{{old('birthday')}}"> -->
-                            <!-- <label for="comment" class="col-md-4 control-label">コメント: </label>
-                                <textarea name="" cols="50" rows="3"></textarea> -->
+
 
 
                                 <div class="form-group">
@@ -90,7 +85,7 @@
                                 </div>
 
                                 <div>
-                                    <input type="submit" value="マイページ変更"　class="pink_btn">
+                                    <input type="submit" value="マイページ登録"　class="pink_btn">
                                 </div>
                                 <input class="form-control"  name="user_id" type="hidden" id="user_id" value="{{old('user_id')}}"> 
                         

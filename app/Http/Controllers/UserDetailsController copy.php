@@ -83,7 +83,7 @@ use App\UserDetail;
                 'birthday'=>$request->birthday,
                 'comment'=>$request->comment,
                 ]);
-            return redirect("user_detail")->with("flash_message", "user_detail added!");
+            return redirect("post")->with("flash_message", "user_detail added!");
             // ============================================
         }
     
@@ -110,47 +110,50 @@ use App\UserDetail;
         {
             $this->validate($request, [
 				"user_id" => "required|integer", //integer('user_id')
-				"photo" => "nullable", //string('photo')->nullable()
+				// "photo" => "nullable", //string('photo')->nullable()
                 "birthday" => "nullable|date", //date('birthday')->nullable()
                 "comment" => "nullable", //string('comment')->nullable()
 
             ]);
 
             // ====画像ファイルの保存=====
-            $validator = Validator::make($request->all(), [
-                'photo' => 'required|max:5000' //動画の容量を決める->5MB
-            ]);
+            // $validator = Validator::make($request->all(), [
+            //     'photo' => 'max:5000' //動画の容量を決める->5MB
+            // ]);
     
             //バリデーション:エラー
-            if ($validator->fails()) {
-                return redirect()->back()
-                ->withInput()
-                ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
-            }
+            // if ($validator->fails()) {
+            //     return redirect()->back()
+            //     ->withInput()
+            //     ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
+            // }
 
             // ================画像保存======================
-            $image = $request->file('photo');
+            // $image = $request->file('photo');
             
-            $disk = Storage::disk('local');
+            // $disk = Storage::disk('local');
             
-            $path = $disk->put('public' ,$image);
-            // ファイル名のみ
-            $filename = pathinfo($path,  PATHINFO_BASENAME);
+            // $path = $disk->put('public' ,$image);
+            // // ファイル名のみ
+            // $filename = pathinfo($path,  PATHINFO_BASENAME);
 
-            $requestData = $request->all();
-            UserDetail::create([
-                'user_id'=>Auth::user()->id,
-                'photo' => $filename,
-                'birthday'=>$request->birthday,
-                'comment'=>$request->comment,
-                ]);
+            // $requestData = $request->all();
+            
+
+
+            // UserDetail::create([
+            //     'user_id'=>Auth::user()->id,
+            //     // 'photo' => $filename,
+            //     'birthday'=>$request->birthday,
+            //     'comment'=>$request->comment,
+            //     ]);
             // ============================================
 
 
-            $image = $request->file('photo');
+            // $image = $request->file('photo');
             
-            $disk = Storage::disk('local');
-            $path = $disk->put('public' ,$image);
+            // $disk = Storage::disk('local');
+            // $path = $disk->put('public' ,$image);
             
             $requestData = $request->all();
             
@@ -158,7 +161,7 @@ use App\UserDetail;
            
             $user_detail->update($requestData);
     
-            return redirect("user_detail")->with("flash_message", "user_detail updated!");
+            return redirect("post")->with("flash_message", "user_detail updated!");
         }
     
 
