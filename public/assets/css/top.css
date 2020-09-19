@@ -4,7 +4,7 @@
     margin:0;
 }
 html{
-    background-color: #F1F1F1;
+    /* background-color: #F1F1F1; */
     color: #555;
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 62.5%;
@@ -102,6 +102,9 @@ h3 {
     position: relative;
     
 }
+
+
+
     /* mirai_box */
     .mirai_box{
         position: absolute;
@@ -229,7 +232,95 @@ h3 {
     color: #fff;
     text-align: center;
   }
+/* パンくずリスト */
+.bread-crumbs {
+    position: relative;
+    /* top: 60px; */
+    padding-top: 40px;
+    margin-bottom: 25px;
+background:#e9ecef;
+    -webkit-box-shadow: 0 2px 8px rgba(33, 89, 111, 0.2);
+    box-shadow: 0 2px 8px rgba(33, 89, 111, 0.2);
 
+    z-index: 1;
+  
+}
+
+.breadcrumb {
+    overflow: visible;
+    max-width: 980px;
+    width: 100%;
+    margin: 10px auto;
+    white-space: normal;
+}
+
+.breadcrumb li {
+    display: inline;
+    list-style: none;
+    font-size: 12px;
+}
+
+.breadcrumb li:last-child span {
+    font-weight: bold;
+    color:#343f46;
+}
+
+.breadcrumb li:after {
+    /* >繧定｡ｨ遉ｺ*/
+    content: ">";
+    padding: 0 0.2em;
+    color: #555;
+}
+
+.breadcrumb li:last-child:after {
+    content: "";
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color: gray;
+}
+
+.breadcrumb li a:hover {
+    text-decoration: underline;
+}
+
+.fas .fa-home {
+    /*螳ｶ繧｢繧､繧ｳ繝ｳ*/
+    /* font-family: "Font Awesome 5 Free"; */
+    /* content: "\f015"; */
+    font-weight: normal;
+    font-size: 1em;
+    color: #2e7fea;
+}
+
+@media screen and (max-width: 1176px) {
+    .breadcrumb {
+        width: 95%;
+        padding-top: 0px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .bread-crumbs {
+        margin: 0px 0 15px;
+        padding-top: 60px;
+    }
+    .breadcrumb {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .bread-crumbs {
+        display: none;
+    }
+    .breadcrumb li {
+        display: inline;
+        list-style: none;
+        font-size: 10px;
+    }
+}
 
 /* 家族をつくる */
     .pink_btn{
@@ -351,7 +442,12 @@ h3 {
             margin:50px auto 50px auto;
             max-width:980px;
             background: #fff;
-            padding:10px;
+            }
+            @media screen and (min-width:768px) {
+                main{
+                    margin-top:0px;
+                    margin-bottom:80px;
+                }
             }
         .navi{
             width:100%;

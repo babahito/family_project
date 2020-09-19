@@ -25,8 +25,9 @@ use App\UserDetail;
             $keyword = $request->get("search");
             $perPage = 25;
             $auth = Auth::user();
-            $users = User::all();    
+   
 
+            dd($users);
             if (!empty($keyword)) {
                 $user_detail = UserDetail::where("id","LIKE","%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->paginate($perPage);
             } else {

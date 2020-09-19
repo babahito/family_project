@@ -1,9 +1,31 @@
 @extends("layouts.app_sub")
 @section("content")
-<div class="main_content">
 
-    <h2>MY NOTE</h2>
-            <h3>マイノート</h3>
+<!-- gnavi -->
+<nav class="bread-crumbs">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+          <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
+        </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="#">
+          <span itemprop="name">NOTE(ノート)</span>
+        </a>
+      <meta itemprop="position" content="2" />
+    </li>
+  </ol>
+</nav>
+<!-- end -->
+
+<main>
+
+    <h2>NOTE</h2>
+            <h3>ノート</h3>
            <!-- カード部分 -->
            <div class="card_box">
               <div class="row">
@@ -103,6 +125,6 @@
 </div>
 
 
-            </div>
+</main>
         @endsection
     

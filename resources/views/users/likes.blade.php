@@ -1,9 +1,32 @@
 @extends("layouts.app_sub")
 @section("content")
-<h2>Favorite</h2>
+
+<!-- gnavi -->
+<nav class="bread-crumbs">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+          <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
+        </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="#">
+          <span itemprop="name">Favorite(お気に入り)</span>
+        </a>
+      <meta itemprop="position" content="2" />
+    </li>
+  </ol>
+</nav>
+<!-- end -->
+
+
+<main>
+    <h2>Favorite</h2>
         <h3>お気に入りノート</h3>
-        <div class="main_content">
-          
+
             <!-- 検索 -->
             <div class="search_box">
               <form method="GET" action="{{ url("post") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
@@ -47,6 +70,10 @@
                   
               </div>  
           </div>
+
           <!-- end -->
-  </div>
+
+
+
+    </main>
 @endsection

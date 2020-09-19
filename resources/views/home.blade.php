@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section('content')
-<div class="container">
+<main style="margin-top:50px;">
     ご利用ありがとうございます<br>
     つづきまして、ユーザー詳細の設定をお願いします。
 
@@ -11,5 +11,5 @@
     登録お済の方は、こちらへ
     <a href="{{ route('users.followings', ['name' => Auth::user()->name]) }}" >TOP画面</a>
 
-</div>
+</main>
 @endsection

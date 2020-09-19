@@ -1,21 +1,57 @@
 @extends("layouts.app_sub")
 @section("content")
-            <!-- <div class="container">
+
+<!-- gnavi -->
+<nav class="bread-crumbs">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+          <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
+        </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="#">
+          <span itemprop="name">MY PAGE(ユーザー設定)</span>
+        </a>
+      <meta itemprop="position" content="2" />
+    </li>
+  </ol>
+</nav>
+<!-- end -->
 
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-default"> -->
-                            
-<div class="main_content">
+<main>
     <h2>My PAGE</h2>
-        <h3>マイページ</h3>
-        {{$auth->name}}さん
-        @foreach($user_detail as $item)
-            <img src="{{ asset('storage/' . $item->photo) }}" width="100px">
-            <p>{{ $item->birthday}}</p> 
-            <p>{{ $item->comment}} </P>
+        <h3>ユーザー設定</h3>
+
+              <!-- 本人紹介 -->
+        @foreach($user_detail as $user_de)
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-xs-5">
+                      <img src="{{ asset('storage/' .  $user_de->photo) }}" class="person_icon">
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="card-body">
+                            <h4 class="cartitle">{{ $auth->name }}さん</h4>
+                            <p class="card-text">Birthday:<br>{{ $user_de->birthday}}</p>
+                            <p class="card-text">comment:<br>{{ $user_de->comment}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">        
+            <a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}" title="Edit user_detail"><button class="btn btn-primary btn-xs">Edit</button></a>
+            </div>
+        </div>
         @endforeach
+
+
+
 
 
         <div>
@@ -27,98 +63,43 @@
                         @endforeach
                     </ul>
                 @endif
-                <form method="POST" action="/user_detail/store" class="form-horizontal" enctype='multipart/form-data'>
+                <form method="POST" action="/user_detail/store"  enctype='multipart/form-data'>
                     {{ csrf_field() }}
-                    <div class="image_box_min">写真<input class="form-control" name="photo" type="file" id="photo" value="{{old('photo')}}" class="file_input"></div>
-                        <div>
-                            <label for="birthday" class="col-md-4 control-label">誕生日: </label>
-                                <input class="form-control" name="birthday" type="date" id="birthday" value="{{old('birthday')}}">
-                            <label for="comment" class="col-md-4 control-label">コメント: </label>
-                                <textarea name="" cols="50" rows="10"></textarea>
-                                <input class="form-control" name="comment" type="text" id="comment" value="{{old('comment')}}">
-                                <input type="submit" value="マイページ変更">
-                            
+                    <!-- <div class="image_box_min">写真<input class="form-control" name="photo" type="file" id="photo" value="{{old('photo')}}" class="form-control-file"></div> -->
+                        
+                            <!-- <label for="birthday" class="col-md-4 control-label">誕生日: </label>
+                                <input class="form-control" name="birthday" type="date" id="birthday" value="{{old('birthday')}}"> -->
+                            <!-- <label for="comment" class="col-md-4 control-label">コメント: </label>
+                                <textarea name="" cols="50" rows="3"></textarea> -->
+
+
+                                <div class="form-group">
+                                    <label for="com">自己紹介</label>
+                                    <textarea class="form-control" id="com" rows="3" name="comment"></textarea>
+                                </div>
+
+                                <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="photo">写真をえらぶ </label>
+                                    <input name="photo" type="file" id="photo" value="{{old('photo')}}"　class="form-control-file" >
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="birthday">誕生日: </label><br>
+                                        <input name="birthday" type="date" id="birthday" value="{{old('birthday')}}">
+                                </div>
+                                </div>
+
+                                <div>
+                                    <input type="submit" value="マイページ変更"　class="pink_btn">
+                                </div>
                                 <input class="form-control"  name="user_id" type="hidden" id="user_id" value="{{old('user_id')}}"> 
-                        </div>
+                        
                 </form>
             </div>
         </div>
 
 </div>
 
-
-
-
-
-
-
-                            
-                            <div class="panel-body">
-                            
-                                <p>{{$auth->name}}さん</p>
-                                <a href="{{ url("user_detail/create") }}" class="btn btn-success btn-sm" title="Add New user_detail">
-                                    Add New
-                                </a>
-
-                                <form method="GET" action="{{ url("user_detail") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="search" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-info" type="submit">
-                                                <span>Search</span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
-
-
-                                <br/>
-                                <br/>
-                                
-                                
-                                <div class="table-responsive">
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <tr><th>id</th><th>user_id</th><th>photo</th><th>birthday</th><th>comment</th></tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($user_detail as $item)
-                                    
-                                    <tr>
-
-                                            <td>{{ $item->id}} </td>
-
-                                            <td>{{ $item->user_id}} </td>
-
-                                            <td><img src="{{ asset('storage/' . $item->photo) }}" width="100px"></td>
-                                            <td>{{ $item->birthday}}<td>
-                                            
-                                            <td>{{ $item->comment}}<td>
-                                            <td></td>
-  
-                                                <td><a href="{{ url("/user_detail/" . $item->id) }}" title="View user_detail"><button class="btn btn-info btn-xs">View</button></a></td>
-                                                <td><a href="{{ url("/user_detail/" . $item->id . "/edit") }}" title="Edit user_detail"><button class="btn btn-primary btn-xs">Edit</button></a></td>
-                                                <td>
-                                                    <form method="POST" action="/user_detail/{{ $item->id }}" class="form-horizontal" style="display:inline;">
-                                                        {{ csrf_field() }}
-                                                        
-                                                        {{ method_field("DELETE") }}
-                                                        <button type="submit" class="btn btn-danger btn-xs" title="Delete User" onclick="return confirm('Confirm delete')">
-                                                        Delete
-                                                        </button>    
-                                                    </form>
-                                                   </td>
-                                              </tr>
-
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="pagination-wrapper"> {!! $user_detail->appends(["search" => Request::get("search")])->render() !!} </div>
-                                </div>
-                                
-
-                            </div>
-                            </div>
-
+</main>
         @endsection
     

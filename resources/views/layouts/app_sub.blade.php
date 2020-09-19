@@ -84,9 +84,9 @@
                     </div>
                 </header>
             <!-- <メイン> -->
-                <main>
+                
                     @yield('content')
-                </main>
+                
             <!-- footer -->
                 <div class="navi">
                     @include('footer')

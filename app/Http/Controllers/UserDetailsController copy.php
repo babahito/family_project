@@ -31,7 +31,8 @@ use App\UserDetail;
                 $user_detail = UserDetail::where("id","LIKE","%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->paginate($perPage);
             } else {
                 $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);   
-                   
+                
+              
             }          
             return view("user_detail.index", [ 'auth' => $auth ,'user_detail'=>$user_detail,'users'=>$users]);
             

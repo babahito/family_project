@@ -146,12 +146,10 @@ class UserController extends Controller
         $user = User::where('name', $name)->first();
         $followers = $user->followers->sortByDesc('created_at');
         $articles = $user->posts->sortByDesc('created_at');
+        $day=Carbon::now();
+        $sendtimes=Post::select('sendtime')->get();
 
-        return view('users.followers', [
-            'user' => $user,
-            'followers' => $followers,
-            'articles'=>$articles
-            ]);
+        return view('users.followers',compact("user","followers","articles","day","sendtimes"));
         }
 
 }
