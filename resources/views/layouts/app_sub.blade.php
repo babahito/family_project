@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/app.css') }}" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- css -->
@@ -83,14 +83,18 @@
                         </div>
                     </div>
                 </header>
-            <!-- <メイン> -->
-                
-                    @yield('content')
-                
-            <!-- footer -->
+                <div class="navigation">
                 <div class="navi">
                     @include('footer')
                 </div>
+</div>
+            <!-- <メイン> -->
+            
+                
+                    @yield('content')
+                
+            <!-- navi -->
+
 
        </div>
     </div>

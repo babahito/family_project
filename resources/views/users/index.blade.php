@@ -43,7 +43,7 @@
 
 
 
-                                <div class="row">
+                        <div class="row">
             @foreach($users as $user)
             <div class="col-lg-4">
             <div class="card mb-3" style="max-width: 500px;">

@@ -4,8 +4,8 @@
     margin:0;
 }
 html{
-    /* background-color: #F1F1F1; */
-    color: #555;
+    background-color: #fff;
+    /* color: #555; */
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 62.5%;
     height: 100vh;
@@ -235,10 +235,8 @@ h3 {
 /* パンくずリスト */
 .bread-crumbs {
     position: relative;
-    /* top: 60px; */
-    padding-top: 40px;
     margin-bottom: 25px;
-background:#e9ecef;
+    background:#e9ecef;
     -webkit-box-shadow: 0 2px 8px rgba(33, 89, 111, 0.2);
     box-shadow: 0 2px 8px rgba(33, 89, 111, 0.2);
 
@@ -252,6 +250,7 @@ background:#e9ecef;
     width: 100%;
     margin: 10px auto;
     white-space: normal;
+    background: #fff;
 }
 
 .breadcrumb li {
@@ -445,16 +444,10 @@ background:#e9ecef;
             }
             @media screen and (min-width:768px) {
                 main{
-                    margin-top:0px;
+                    margin-top:50px;
                     margin-bottom:80px;
                 }
             }
-        .navi{
-            width:100%;
-            background: #333;
-            position: fixed;
-            bottom:0;
-        }
 
 
 
@@ -467,26 +460,41 @@ background:#e9ecef;
     }
 
     /* nav */
+.navigation{
+    background-color:  #8b8383;
+    width:100%;
+    margin-bottom:-10px;
+}
+     .navi{
+        max-width:980px;
+        margin:0 auto;
+
+        /* -webkit-box-shadow: 0 2px 8px rgba(33, 89, 111, 0.2);
+        box-shadow: 0 2px 8px rgba(33, 89, 111, 0.2); */
+        }
 
     .nav_list{
         display:flex;
+        margin-top:50px;
         width:100%;
     }
 
     .nav_list li{
         font-size:1.0rem;
-        background: #EDEDED;
+        background: #8b8383;
         text-align: center;
         color:#999;
-        width: calc(100%/5);
+        width: calc(100%/4);
     }
     .nav_list li a{
         display: block;
         color:#ccc;
+        padding:10px 0;
         font-weight: 600;
     }
     .nav_list li a:hover{
         background-color: #FFCE85;
+
         color:#fff;
     }
             /* フォントオーサム色 */

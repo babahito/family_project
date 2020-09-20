@@ -224,7 +224,8 @@ use InterventionImage;
             
             $post = Post::findOrFail($id);
             $post->update($requestData);
-                         $users=User::get();
+            
+            $users=User::get();
 
 
     

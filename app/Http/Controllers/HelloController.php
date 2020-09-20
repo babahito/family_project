@@ -31,7 +31,7 @@ class HelloController extends Controller
         ];
         $mail = new HelloMail($request, $urls);
         Mail::to($request->email)->send($mail);
-        return 'sent';
+        return '送信完了しました。';
     }
 
     public function hi(Request $request)
@@ -40,7 +40,7 @@ class HelloController extends Controller
         if (!$request->hasValidSignature()) {
             return redirect()->route('hello.invalid');
         }
-        return 'hi';
+        return '参加ありがとうございます';
     }
 
     public function bye(Request $request)
@@ -49,7 +49,7 @@ class HelloController extends Controller
         if (!$request->hasValidSignature()) {
             return redirect()->route('hello.invalid');
         }
-        return 'bye';
+        return '家族にはならないです';
     }
 
     public function invalid()

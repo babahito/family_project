@@ -17,6 +17,7 @@ class HelloRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email',
             'text' => 'required|string',
+            'send_name' => 'required|string',
         ];  
     }
 }

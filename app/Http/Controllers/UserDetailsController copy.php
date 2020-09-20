@@ -101,8 +101,9 @@ use App\UserDetail;
         {
             $user_dd = UserDetail::where('user_id',Auth::user()->id);
             $user_detail = UserDetail::findOrFail($id);
+            $auth = Auth::user();
     
-            return view("user_detail.edit", compact("user_detail",'user_dd'));
+            return view("user_detail.edit", compact("user_detail",'user_dd','auth'));
         }
     
 

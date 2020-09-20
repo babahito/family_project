@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Auth;
 
 class HelloMail extends Mailable
 {
@@ -25,6 +26,7 @@ class HelloMail extends Mailable
             ->with([
                 'urls' => $this->urls,
                 'text' => $this->request->text,
+                'send_name'=>$this->request->send_name,
             ]);
     }
 }
