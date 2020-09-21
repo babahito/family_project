@@ -182,13 +182,15 @@ Route::middleware('auth')->group(function () {
     // メール送信
     Route::post('/hello', 'HelloController@send')->name('hello.send');
     // 承諾リンクをクリック
-    Route::get('/kazoku/20', 'KazokusController@index')->name('hello.hi')->middleware('auth');
+    Route::get('/kazoku/{id}', 'KazokusController@index')->name('hello.hi')->middleware('auth');
     // 拒否リンクをクリック
     Route::get('/hello/bye', 'HelloController@bye')->name('hello.bye');
     // 期限切れ or 無効URL
     Route::get('/hello/invalid', 'HelloController@invalid')->name('hello.invalid');
 
 });
+
+
 
 //=======================================================================
 // 家族グループ作成=====================================

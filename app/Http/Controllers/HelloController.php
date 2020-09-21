@@ -31,7 +31,9 @@ class HelloController extends Controller
             'hi' => URL::temporarySignedRoute(
                 'hello.hi',
                 now()->addMinutes(1),  // 1分間だけ有効
-                ['from' => $request->name=$auth->name]
+                ['from' => $request->name=$auth->name,
+                'id'=>47]
+                
             ),
             'bye' => URL::temporarySignedRoute(
                 'hello.bye',
@@ -52,7 +54,7 @@ class HelloController extends Controller
         if (!$request->hasValidSignature()) {
             return redirect()->route('hello.invalid');
         }
-        return view('kazoku.index',compact('kazokus'));
+        return view('kazoku.show',compact('kazokus'));
     }
 
     public function bye(Request $request)
