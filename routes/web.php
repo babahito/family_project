@@ -92,8 +92,9 @@ Route::middleware('auth')->group(function () {
 
 //=======================================================================
 Route::middleware('auth')->group(function () {
-    //index
-    Route::get("kazoku/", "KazokusController@index");
+//index
+Route::get("kazoku/", "KazokusController@index");
+
     // //create
     Route::get("kazoku/create", "KazokusController@create");
     // //show

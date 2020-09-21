@@ -29,19 +29,27 @@
 <!-- end -->
 
 <main>
+    <h2>Family</h2>
+    <h3>仲間をさそう</h3>
         <form action="{{ route('hello.send') }}" method="POST">
             @csrf
-            <label for="name">送信する人の名前</label>
-            <input name="name" type="text" required>
+            <!-- <label for="name">送信する人の名前</label>
+            <input name="name" type="text" required> -->
+            {{$auth->name}}より
             <br>
             <label for="name">送信したい人の名前</label>
             <input name="send_name" type="text" required>
+
+            <!-- <div class="form-group">
+            <label for="exampleFormControlSelect2">誰におくる</label>
+            {{ Form::select('attribute_id', $client_id_loop,)}}
+        </div> -->
             <br>
             <label for="name">送信したい人のメールアドレス</label>
             <input name="email" type="email" required>
             <br>
-            <label for="text">一言</label>
-            <input name="text" type="text" required>
+            <label for="text">コメント</label>
+                <input name="text" type="text" required>
             <br>
             <input type="submit" value="送信">
         </form>

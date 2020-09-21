@@ -14,7 +14,7 @@ class HelloRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
+            'name' => 'string',
             'email' => 'required|email',
             'text' => 'required|string',
             'send_name' => 'required|string',
