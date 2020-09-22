@@ -52,10 +52,10 @@ class KazokusController extends Controller
    public function thank(){
 
             //    メール送信
-            // $auth=Auth::user()->name;
-            // $family_name=Kazoku()->family_name;
-            // $users=User::get();
-            //    Mail::to($users)->send(new Test($auth));    
+            $auth=Auth::user()->name;
+            $family_name=Kazoku()->family_name;
+            $users=User::get();
+               Mail::to($users)->send(new Test($auth));    
 
             return view("kazoku.thank");
     }
@@ -110,7 +110,7 @@ class KazokusController extends Controller
                Mail::to($users)->send(new Test($auth,$family_name));    
 
 
-       return redirect("kazoku/thank")->with("flash_message", "mail_received added!");
+       return redirect("hello/create")->with("flash_message", "mail_received added!");
    }
 
    

@@ -1,39 +1,8 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Family NOTE　</title>
+@extends("layouts.app")
+        @section("content")
+            <div class="container">
 
-<script src="/js/jquery.min.js"></script>
 
-<!-- css -->
-    <link href="{{asset('/assets/css/top.css')}}" rel="stylesheet">
-    <link href="{{asset('/assets/css/normalize.css')}}" rel="stylesheet">
-
-<!-- Fonts -->
-    <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css">
-</head>
-<body>
-        
-
-    <!-- header -->
-        <div class="header">
-            <ul class="sub980">
-
-                <li>CONCEPT</li>
-                <li>PRODUCT</li>
-                <li><img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo"></li>
-                <li>
-                    <a href="{{ route('register') }}" class="sign_btn">Sing In</a>
-                </li>
-                <li>   
-                    <a hrmain_imgef="{{ route('login') }}" class="login_btn">Log In</a>
-                </li>
-            </ul>
-        </div>
-    <!-- main_img -->
         <div class="main_img">
         </div>
         
@@ -95,5 +64,5 @@
         <!-- @endif -->
 
 
-</body>
-</html>
+        @endsection
+    

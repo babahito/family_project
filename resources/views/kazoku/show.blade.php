@@ -2,7 +2,7 @@
         @section("content")
             <div class="container">
                 <div class="row">
-                    < <div class="col-lg-4">
+                    <div class="col-lg-4">
                 <div style="{{ $kazoku->status_class }}">
                         <!-- <div class="card mb-2" style="max-width: 500px;"> -->
                                 <div class="row no-gutters">
