@@ -35,7 +35,13 @@ class KazokusController extends Controller
             $kazokus = Kazoku::where("id","LIKE","%$keyword%")->orWhere("family_name", "LIKE", "%$keyword%")->paginate($perPage);
         
        } else {
-            $kazokus = Kazoku::paginate($perPage); 
+            $kazokus = Kazoku::where('user_id',Auth::user()->id)->paginate($perPage); 
+
+            // $user = Kazoku::where('family_name', $family_name)->first();
+            // dd($user);
+            // $aa=$kazokus->kazoku_user->sortByDesc('created_at');
+            // dd($aa);
+            
             
    
                  

@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\URL;
 
 //default
 Route::get("/", function () {
@@ -212,7 +213,7 @@ Route::middleware('auth')->group(function () {
     // メール送信
     Route::post('/hello', 'HelloController@send')->name('hello.send');
     // 承諾リンクをクリック
-    Route::get('/hello/hi', 'HelloController@hi')->name('hello.hi');
+    Route::get('/kazoku/{id}', 'KazokusController@show')->name('kazoku');
     // 拒否リンクをクリック
     Route::get('/hello/bye', 'HelloController@bye')->name('hello.bye');
     // 期限切れ or 無効URL
@@ -305,8 +306,21 @@ Route::delete("tag/{id}", "TagsController@destroy");
 //=======================================================================
 
 
+// Route::get('/aa', function () {
+//     // URL生成
+//     $url = URL::temporarySignedRoute('kazoku', 
+//                                       now()->addSeconds(5), 
+//                                       ['user' => 1]);
 
+//     // とりあえずwelcomページにリンクを出して見る
+//     return view('aa')->with('url',$url);
+// });
 
+// Route::get('/kazoku/{user}', function (Request $request) {
+
+//     return view('safe');
+
+// })->name('kazoku')->middleware('signed');
 
 
 //ユーザー認証を作成した時に自動的に作成されるルートを下記のように変更// メール認証用

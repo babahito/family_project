@@ -18,21 +18,28 @@ class HelloController extends Controller
         $auth=Auth::user();
         // dd($tests);
         // 送る方のユーザーselect
-        $clients=User::select('id','name')->get();
+        $clients=User::select('name','id')->get();
         $client_id_loop = $clients->pluck('name','id');
 
-        return view('hello.create',compact('auth','client_id_loop'));
+
+        $famis= Kazoku::where('user_id',Auth::user()->id)->select('id','family_name')->get();
+        $fami_id_loop=$famis->pluck('family_name','id');
+
+        return view('hello.create',compact('auth','client_id_loop','fami_id_loop'));
     }
 
     public function send(HelloRequest $request)
     {
         $auth=Auth::user();
+        $kazoku_id=Kazoku::select('kazoku_id');
         $urls = [
             'hi' => URL::temporarySignedRoute(
-                'hello.hi',
-                now()->addMinutes(1),  // 1分間だけ有効
+                'kazoku',
+                now()->addMinutes(30),  // 1分間だけ有効
                 ['from' => $request->name=$auth->name,
-                'id'=>47]
+                'id' => $request->kazoku_id,
+                // 'id'=>69
+                ]
                 
             ),
             'bye' => URL::temporarySignedRoute(
@@ -46,16 +53,16 @@ class HelloController extends Controller
         return view('hello/mail/find');
     }
 
-    public function hi(Request $request)
-    {
-        $perPage = 25;
-        $kazokus = Kazoku::paginate($perPage); 
-        // リンクの検証
-        if (!$request->hasValidSignature()) {
-            return redirect()->route('hello.invalid');
-        }
-        return view('kazoku.show',compact('kazokus'));
-    }
+    // public function hi(Request $request)
+    // {
+    //     $perPage = 25;
+    //     $kazoku = Kazoku::paginate($perPage); 
+    //     // リンクの検証
+    //     if (!$request->hasValidSignature()) {
+    //         return redirect()->route('hello.invalid');
+    //     }
+    //     return view('kazoku.show',compact('kazoku'));
+    // }
 
     public function bye(Request $request)
     {

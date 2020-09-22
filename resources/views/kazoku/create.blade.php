@@ -51,10 +51,11 @@
                                         <label for="f_name">家族グループ名</label>
                                             <input name="family_name"  class="form-control"  type="text" id="f_name" value="{{old('family_name')}}" placeholder="家族名">
                                     </div>
+
+
                                     <div class="form-group">
-                                        <label for="f_history">家族ものがたり</label>
-                                        <textarea name="history" class="form-control" id="f_history" value="{{old('history')}}" rows="3" placeholder="家族のものがたりを…"></textarea>
-                                            
+                                          <label for="f_history">家族ものがたり</label>
+                                                <textarea name="history" id="f_history" value="{{old('history')}}" rows="4" class="form-control"></textarea>
                                     </div>
 
                                     <div>
@@ -65,11 +66,14 @@
                                         <label for="f_date">家族誕生日: </label>
                                         <input name="family_date" type="date" id="f_date" value="{{old('family_date')}}">
                                     </div>
+        
+   
 
                                     <div>
                                         <select name="status">
+                                        <option value="0">非公開</option>
                                             <option value="1">公開</option>
-                                            <option value="0">非公開</option>
+
                                         </select>
                                     </div>
                                     <p></p>

@@ -23,13 +23,15 @@
 
 <main>
     <div class="row mb-3">
-        <div class="col-lg-9">
+        <div class="col-lg-6">
                 <h2>Family</h2>
                 <h3>ファミリー</h3>
         </div>
         <div class="col-lg-3">
                 <a href="/kazoku/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;家族をつくる</div></a>
-
+        </div>
+        <div class="col-lg-3">
+                <a href="/hello/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;家族を誘う</div></a>
         </div>
     </div>
 
@@ -52,7 +54,9 @@
       
                 @foreach($kazokus as $kazoku)
                 <div class="col-lg-4">
-                <div style="{{ $kazoku->status_class }}">
+                <!-- 表示非表示を設定 -->
+                <!-- <div style="{{ $kazoku->status_class }}"> -->
+                <!-- @if( Auth::id() === $kazoku->user_id ) -->
                         <div class="card mb-2" style="max-width: 500px;">
                                 <div class="row no-gutters">
                                         <div class="col-lg-6">
@@ -64,14 +68,14 @@
                                         <div class="col-lg-6">
                                                 <div class="card-body">
                                                         <h4 class="card-title">{{$kazoku->family_name}}</h4>
-                                                        @if( Auth::id() === $kazoku->user_id )
+                                                        
                                                                 <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><i class="far fa-edit fa-2x"></i></a>
                                                                 <form method="POST" action="/kazoku/{{ $kazoku->id }}" class="form-horizontal" style="display:inline;">
                                                                         {{ csrf_field() }}
                                                                         {{ method_field("DELETE") }}
                                                                         <button type="submit"  title="Delete User" onclick="return confirm('削除してもよろしいでしょうか')"><i class="fas fa-trash fa-2x"></i></button>   
                                                                 </form>
-                                                        @endif 
+                                                         
                                                         
                                                         <p class="card-text">{{ $kazoku->history }}</p>
                                                         <p>メンバー：
@@ -92,7 +96,8 @@
                                                 </div>
                                         </div>
                                 </div>
-                        </div>
+                        <!-- </div> -->
+                        <!-- @endif -->
                 </div>
 
 

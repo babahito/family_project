@@ -18,6 +18,7 @@ class HelloRequest extends FormRequest
             'email' => 'required|email',
             'text' => 'required|string',
             'send_name' => 'required|string',
+            'kazoku_id' => 'integer',
         ];  
     }
 }

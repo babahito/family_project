@@ -52,18 +52,27 @@
                     <div class="col-xs-8">
                         <div class="card-body">
                             <h4 class="cartitle">{{ $user->name }}さん</h4>
-                            <p class="card-text">Birthday:-----------<br>{{-- $item->birthday--}}</p>
-                            <p class="card-text">comment:---------{{-- $item->comment--}}</p>
+                            <p class="card-text">Birthday:<br>{{ $user->user_detail->birthday}}</p>
+                            <p class="card-text">comment:<br>{{ $user->user_detail->comment}}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">        
-                <p>
+                  <p>
                   <a href="{{ route('users.followings', ['name' => $user->name]) }}"  class="text-muted">{{ $user->count_followings }}  フォロー</a>
-                </p>
+                  </p>
+                  <p>
+                    @foreach($user->followers as $follower)
+                      {{$follower->name}},
+                    @endforeach
+                  </p>
+                <p><a href="{{ route('users.followers', ['name' => $user->name]) }}" class="text-muted">{{ $user->count_followers }} フォロワー</a></p>
                 <p>
-                  <a href="{{ route('users.followers', ['name' => $user->name]) }}" class="text-muted">{{ $user->count_followers }} フォロワー</a></p>
+                    @foreach($user->followings as $following)
+                      {{$following->name}},
+                    @endforeach
+                </p>
             </div>
         </div>
         

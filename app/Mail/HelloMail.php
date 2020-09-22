@@ -27,6 +27,8 @@ class HelloMail extends Mailable
                 'urls' => $this->urls,
                 'text' => $this->request->text,
                 'send_name'=>$this->request->send_name,
+                'id'=>$this->request->id,
+                'kazoku_id'=>$this->request->kazoku_id,
             ]);
     }
 }

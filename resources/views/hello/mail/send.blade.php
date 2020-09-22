@@ -67,6 +67,7 @@
     </div>
 
     <main>
+    @csrf
         <h3>{{$send_name}}へ</h3>
         <div class="comment">
             <h4>メッセージ</h4>
