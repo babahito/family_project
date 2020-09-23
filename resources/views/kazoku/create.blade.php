@@ -71,8 +71,9 @@
 
                                     <div>
                                         <select name="status">
+                                        <option value="1">公開</option>
                                         <option value="0">非公開</option>
-                                            <option value="1">公開</option>
+
 
                                         </select>
                                     </div>

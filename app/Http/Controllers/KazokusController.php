@@ -116,7 +116,7 @@ class KazokusController extends Controller
                Mail::to($users)->send(new Test($auth,$family_name));    
 
 
-       return redirect("hello/create")->with("flash_message", "mail_received added!");
+       return redirect("kazoku")->with("flash_message", "mail_received added!");
    }
 
    

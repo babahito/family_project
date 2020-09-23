@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 // 新規会員登録時にカスタムメールを送信する処理を読み込む
 use App\Notifications\CustomVerify;
+// ソフトデリート
+ use Illuminate\Database\Eloquent\Model;
+ use Illuminate\Database\Eloquent\SoftDeletes;
 
 // class User extends Authenticatable
 class User extends Authenticatable implements MustVerifyEmail
@@ -23,6 +26,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+    // ユーザーのソフトデリート
+    use SoftDeletes;
+    protected $table = 'users';
+    protected $dates = ['deleted_at'];
 
 
     protected $hidden = [

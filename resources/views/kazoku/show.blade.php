@@ -1,6 +1,37 @@
 @extends("layouts.app_sub")
-        @section("content")
-            <div class="container">
+@section("content")
+<!-- gnavi -->
+<nav class="bread-crumbs">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+          <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
+        </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="#">
+          <span itemprop="name">Family(家族)</span>
+        </a>
+      <meta itemprop="position" content="2" />
+    </li>
+
+  </ol>
+</nav>
+<!-- end -->
+<main>
+        <div class="row mb-3">
+                <div class="col-lg-9">
+                <h2>Family</h2>
+                <h3>ファミリー</h3>
+                </div>
+                <div class="col-lg-3">
+                <a href="/kazokupost/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;ノートをかく</div></a>
+
+                </div>
+        </div>
                 <div class="row">
                     <div class="col-lg-4">
                 <div style="{{ $kazoku->status_class }}">
@@ -44,11 +75,13 @@
                                         </div>
                                 </div>
                         </div>
+
                 </div>
 
 
 
 
-            </div>
+            <!-- </div> -->
+            </main>
         @endsection
     

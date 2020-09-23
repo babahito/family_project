@@ -305,22 +305,11 @@ Route::put("tag/{id}", "TagsController@update");
 Route::delete("tag/{id}", "TagsController@destroy");
 //=======================================================================
 
+//=======================================================================
+// ソフトデリート用
+Route::get('/deactive', 'Auth\DeactiveController@showDeactiveForm')->name('deactive.form');
+Route::post('/deactive', 'Auth\DeactiveController@deactive')->name('deactive');
 
-// Route::get('/aa', function () {
-//     // URL生成
-//     $url = URL::temporarySignedRoute('kazoku', 
-//                                       now()->addSeconds(5), 
-//                                       ['user' => 1]);
-
-//     // とりあえずwelcomページにリンクを出して見る
-//     return view('aa')->with('url',$url);
-// });
-
-// Route::get('/kazoku/{user}', function (Request $request) {
-
-//     return view('safe');
-
-// })->name('kazoku')->middleware('signed');
 
 
 //ユーザー認証を作成した時に自動的に作成されるルートを下記のように変更// メール認証用
