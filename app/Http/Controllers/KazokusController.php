@@ -35,8 +35,12 @@ class KazokusController extends Controller
             $kazokus = Kazoku::where("id","LIKE","%$keyword%")->orWhere("family_name", "LIKE", "%$keyword%")->paginate($perPage);
         
        } else {
-            $kazokus = Kazoku::where('user_id',Auth::user()->id)->paginate($perPage); 
+        $user_id = Auth::id();
+        $kazokus=User::find($user_id)->kazokus()->get();
+        $kazokuadmin = Kazoku::where('user_id',Auth::user()->id)->get(); 
+        // $kazokus=$kazokujoin->union($kazokuadmin)->get();
 
+        // dd($kazokus);
             // $user = Kazoku::where('family_name', $family_name)->first();
             // dd($user);
             // $aa=$kazokus->kazoku_user->sortByDesc('created_at');
@@ -46,7 +50,7 @@ class KazokusController extends Controller
    
                  
        }          
-       return view("kazoku.index", compact("kazokus"));
+       return view("kazoku.index", compact("kazokus","kazokuadmin"));
    }
 
 
@@ -97,7 +101,7 @@ class KazokusController extends Controller
             // ファイル名のみ
             $filename = pathinfo($path,  PATHINFO_BASENAME);
 
-            // $requestData = $request->all();
+            $requestData = $request->all();
             $kazoku=Kazoku::create([
                 'user_id'=>Auth::user()->id,
                'photo' => $filename,
@@ -109,11 +113,11 @@ class KazokusController extends Controller
                'history'=>$request->history,
                ]);
                         //    メール送信
-            $auth=Auth::user()->name;
-            $family_name=Kazoku::get();
+            // $auth=Auth::user()->name;
+            // $family_name=Kazoku::get();
             // dd($family_name);
-            $users=User::get();
-               Mail::to($users)->send(new Test($auth,$family_name));    
+            // $users=User::get();
+            //    Mail::to($users)->send(new Test($auth,$family_name));    
 
 
        return redirect("kazoku")->with("flash_message", "mail_received added!");

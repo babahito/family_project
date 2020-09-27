@@ -45,13 +45,22 @@
                             <p><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}">プロフィール変更</a></p>
                         @endforeach
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-5">
                         <div class="card-body">
                             <h4 class="cartitle">{{$auth->name}}さん</h4>
                             <p class="card-text">Birthday:<br>{{ $item->birthday}}</p>
                             <p class="card-text">{{ $item->comment}}</p>
                         </div>
                     </div>
+                    
+                    <div class="col-xs-3">
+                        <button type="button" class="btn btn-secondary btn-sm">
+                        <a href="{{ route('users.followings', ['name' => $auth->name]) }}"  class="text-muted">{{ $auth->count_followings }}  フォロー一覧</a>
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm">
+                        <a href="{{ route('users.followers', ['name' => $auth->name]) }}" class="text-muted">{{ $auth->count_followers }} フォロワー</a>
+                        </button>
+                  </div>
                 </div>
             </div>
 

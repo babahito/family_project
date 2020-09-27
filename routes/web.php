@@ -164,6 +164,27 @@ Route::prefix('post')->name('posts.')->group(function () {
 
 
 //=======================================================================
+// 記事
+//=======================================================================
+Route::middleware('auth')->group(function () {
+
+    Route::get("kazokupost/", "KazokupostsController@index");
+    //create
+    Route::get("kazokupost/create", "KazokupostsController@create");
+    //show
+    Route::get("kazokupost/{id}", "KazokupostsController@show");
+    //store
+    Route::post("kazokupost/store", "KazokupostsController@store");
+    //edit
+    Route::get("kazokupost/{id}/edit", "KazokupostsController@edit");
+    //update
+    Route::put("kazokupost/{id}", "KazokupostsController@update");
+    //destroy
+    Route::delete("kazokupost/{id}", "KazokupostsController@destroy");
+});
+
+
+//=======================================================================
 // 絵を描く
 //=======================================================================
 

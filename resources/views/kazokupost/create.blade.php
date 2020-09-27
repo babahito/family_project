@@ -13,7 +13,7 @@
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
         <a itemprop="item" href="#">
-          <span itemprop="name">MY NOTE(マイノート)</span>
+          <span itemprop="name">Family(家族)</span>
         </a>
       <meta itemprop="position" content="2" />
     </li>
@@ -36,9 +36,9 @@
                 <h2>MY NOTE</h2>
                 <h3>ノートをかく</h3>
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
                 <button class="btn btn-light"><a href="/paint">絵を描く</a></button>
-            </div>
+            </div> -->
         </div>
         
 
@@ -54,7 +54,7 @@
                                     @endif
                                         
 
-                                        <form method="POST" action="/post/store"  enctype='multipart/form-data'>
+                                        <form method="POST" action="/kazokupost/store"  enctype='multipart/form-data'>
                                         {{ csrf_field() }}
 
                                             <div class="form-group">
@@ -69,10 +69,10 @@
                                                 <label for="photo">写真をえらぶ </label>
                                                 <input name="photo" type="file" id="photo" value="{{old('photo')}}"　class="form-control-file" >
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="exampleFormControlSelect2">誰におくる</label>
-                                                {{ Form::select('attribute_id', $client_id_loop,)}}
-                                            </div>
+                                                {{-- Form::select('attribute_id', $client_id_loop,)--}}
+                                            </div> -->
                                             <div>
                                                 <label for="sendtime">おくる日時: </label>
                                                     <input name="sendtime" type="datetime-local" id="sendtime" value="{{old('sendtime')}}">

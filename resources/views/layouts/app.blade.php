@@ -20,8 +20,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- css -->
-    <link href="{{asset('/assets/css/top.css')}}" rel="stylesheet">
+
     <link href="{{asset('/assets/css/normalize.css')}}" rel="stylesheet">
+    <link href="{{asset('/assets/css/top.css')}}" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css">
@@ -30,10 +31,12 @@
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
 </head>
-<body>
+<body style="background-color:#fff;">
     <div id="app">
         <div class="content">
             <!-- ヘッダー -->
+
+            <header  style="background-color:#f8fafc;">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <!-- <a class="navbar-brand" href="{{ url('/family_note') }}"> -->
                     <img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo">
@@ -81,6 +84,7 @@
                     </span>
                 </div>
             </nav>
+            </header>
 
             <!--本文  -->
             @yield('content')
@@ -88,6 +92,7 @@
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/canva.js') }}"></script>
+
 
 </body>
 </html>

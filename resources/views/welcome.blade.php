@@ -1,13 +1,15 @@
 @extends("layouts.app")
         @section("content")
+        
+        <!-- <div class="main_img"></div> -->
+        
             <div class="container">
 
 
-        <div class="main_img">
-        </div>
-        
-    <div class="concept sub980">
 
+    <main> 
+    <!-- <div class="concept sub980"> -->
+    <div><img class="logo" src="{{ asset('/assets/images/main.png') }}" alt="FamilyNote3"></div>
         <h2>CONCEPT</h2>
         <div class="concept_title"> 
             恥ずかしくていつも言えない。<br>けど、大切な家族。<br>みらいの家族にメッセージを送って、ちょっと幸せにしたい
@@ -63,6 +65,6 @@
         <!-- </div> -->
         <!-- @endif -->
 
-
+</main>
         @endsection
     
