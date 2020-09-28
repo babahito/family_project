@@ -6,14 +6,15 @@
 html{
     background-color: #fff;
     /* color: #555; */
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 62.5%;
+    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
     height: 100vh;
     margin: 0;
+    font-size: 62.5%;
 }
 body{
-    /* font-size:1.8rem; */
+    font-size:1.8rem;
     background-color: #fff;
+    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
 }
  a{
     cursor: pointer;
@@ -75,6 +76,8 @@ h3 {
         font-size: 1.2rem;/* 12px*/
     }
 }
+
+
 /* ナビ */
 .header{
     background-color:#f8fafc;
@@ -92,6 +95,7 @@ h3 {
     font-weight: bold;
 }
 
+
 .main_img{
     width: 100%;
     height:650px;
@@ -106,11 +110,11 @@ h3 {
 
 
     /* mirai_box */
-    .mirai_box{
+    /* .mirai_box{
         position: absolute;
         top:32%;
         left:10%;
-    }
+    } */
     /* ログインボックス */
     .log_box{
         position :absolute;
@@ -160,8 +164,24 @@ h3 {
     .sign_btn:hover{
         background-image: linear-gradient(45deg, #fae0b9 0%, #FFCE85 100%);
     }
+
+
 /*  コンセプト */
-.concept{
+    .concept_title{
+        text-align: center;
+
+        margin-bottom:20px;
+        font-size:1.4rem;
+        line-height: 1.5em;
+    }
+    @media screen and (min-width:768px) {
+        .concept_title{
+            line-height: 2.0em;
+            font-size:1.8rem;
+        }
+    }
+/*  コンセプト */
+/* .concept{
     margin:30px auto;
 }
 
@@ -194,44 +214,8 @@ h3 {
     .logo_mini{
         margin:40px auto;
         text-align: center;
-    }
-/* 斜めレイアウト */
-/* https://qiita.com/sho012b/items/3478ca65fe5b6de0450a */
-.contents {
-    position: relative;
-    overflow: hidden;
-    margin: 10% 0;
-    padding: 80px 0;
-  }
-  
-  .contents:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 80%;
-    margin: 3% -10% 0;
-    background: #E0EDF1;
-    -webkit-transform-origin: left center;
-    -ms-transform-origin: left center;
-    transform-origin: left center;
-    -webkit-transform: rotate(3deg);
-    -ms-transform: rotate(3deg);
-    transform: rotate(3deg);
-    z-index: -1;
-  }
-  
-  .contents_inner {
-    box-sizing: boder-box;
-    width: 100%;
-    max-width: 640px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 100px 10px 120px;
-    color: #fff;
-    text-align: center;
-  }
+    } */
+
 /* パンくずリスト */
 .bread-crumbs {
     position: relative;
@@ -285,9 +269,6 @@ h3 {
 }
 
 .fas .fa-home {
-    /*螳ｶ繧｢繧､繧ｳ繝ｳ*/
-    /* font-family: "Font Awesome 5 Free"; */
-    /* content: "\f015"; */
     font-weight: normal;
     font-size: 1em;
     color: #2e7fea;
@@ -321,6 +302,13 @@ h3 {
     }
 }
 
+/* カード部分のフォントサイズ */
+.card-body{
+    font-size:1.6rem;
+}
+.card-text{
+    font-size:1.8rem;
+}
 /* 家族をつくる */
     .pink_btn{
         background:#EEB0D2;
@@ -404,8 +392,8 @@ h3 {
             text-decoration: none;
             border-radius: 3px;
             font-weight: bold;
-            /* width:80%; */
-            /* margin:3em 0; */
+            width:80%;
+             margin:3em 0;
             color: #FFF;
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
             border:1px solid #FFCE85;
@@ -415,7 +403,7 @@ h3 {
         }
         .note_btn:hover{
             background-image: linear-gradient(45deg, #fae0b9 0%, #FFCE85 100%);
-        }
+        } 
 /* 検索ボックス */
 .search_box{
     margin:20px 0;
@@ -427,37 +415,58 @@ h3 {
             width:100%;
             margin:0 auto;
         }
-        /* header */
+        /* ヘッダー */
         header{
             width:100%;
-            background:#aaa;
+            background:#f8fafc;;
             position: fixed;
             top:0;
             height:50px;
             z-index: 100;
             display: flex;
         }
+        @media screen and (min-width:768px) {
+            main{
+                height:50px;
+            }
+        }
         main{
-            margin:50px auto 50px auto;
+            margin:20px auto 50px auto;
             max-width:980px;
             background: #fff;
+        }
+        @media screen and (min-width:768px) {
+            main{
+
+                margin-bottom:80px;
             }
-            @media screen and (min-width:768px) {
-                main{
-                    margin-top:50px;
-                    margin-bottom:80px;
-                }
+        }
+        /* メインイメージ */
+        .main_image{
+            margin-top:50px;
+        }
+        @media screen and (min-width:768px) {
+            .main_image{
+                margin-top:80px;
             }
+        }
+        /* メイン画像の切り替え */
+        img.miniimage { display: none; }   /* ※1 */
+
+        /* ▼表示領域が600px以上の場合 */
+        @media (min-width: 600px) {
+            img.miniimage { display: none; }  /* miniを非表示 */
+            img.bigimage  { display: block; } /* bigを表示 */
+        }
+        /* ▼表示領域が600px未満の場合 */
+        @media (max-width: 599px) {
+            img.miniimage { display: block; } /* miniを表示 */
+            img.bigimage  { display: none; }  /* bigを非表示 */
+        }
+
+        .resizeimage img { width: 100%; }   /* ※2 */
 
 
-
-    /* header */
-    .header_sub{
-        display: flex;
-        max-width: 980px;
-        margin:0 auto;
-        justify-content: space-between;
-    }
 
     /* nav */
 .navigation{

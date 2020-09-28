@@ -39,17 +39,13 @@
     <div id="app">
         <div class="content">
             <!-- ヘッダー -->
-                <header>
-                    <div class="header_sub">
-                        <div>
-                        <a href="{{ route('users.followings', ['name' => Auth::user()->name]) }}"  class="text-muted">
-                            <!-- <a href="{{-- route('users.followings', ['name' => Auth::user()->name ]) --}}"  class="text-muted"> -->
-                                <img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo">
-                            </a>
-                        </div>
-                        <div>
-                            <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
+            <header style="background-color:#f8fafc;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                    <img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo">
+                
+                <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links --> 
                                 @guest
                                     <li>
@@ -87,9 +83,15 @@
                                     </li>
                                 @endguest
                             </ul>
-                        </div>
-                    </div>
-                </header>
+                    </span>
+                </div>
+            </nav>
+            </header>
+
+
+
+
+
                 <div class="navigation">
                 <div class="navi">
                     @include('footer')

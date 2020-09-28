@@ -167,7 +167,7 @@ use InterventionImage;
         {
             $item=Post::find($id);
 
-            dd($user);
+            
             //現在時刻
             $day=Carbon::now();
             $sendtimes=Post::select('sendtime')->get();
