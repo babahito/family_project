@@ -1,23 +1,12 @@
-@extends('layouts.app')
+@extends("layouts.app")
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+<main style="margin-top:50px;">
+    ご利用ありがとうございます<br>
+    つづきまして、ユーザー詳細の設定をお願いします。
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <a href="/user_detail">ユーザー詳細画面</a>
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+</main>
 @endsection

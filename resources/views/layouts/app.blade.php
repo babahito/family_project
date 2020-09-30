@@ -4,77 +4,95 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+     <!-- CSRF Token(vueにも必要) -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <title>Family NOTE</title>
+
+
+    <!--★★ fontawsam ★★-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    
+    <!-- Styles -->
+    <link href="{{ asset('/assets/css/app.css') }}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- css -->
+
+    <link href="{{asset('/assets/css/normalize.css')}}" rel="stylesheet">
+    <link href="{{asset('/assets/css/top.css')}}" rel="stylesheet">
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/earlyaccess/notosansjp.css">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- ファビコン -->
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+
 </head>
-<body>
+<body style="background-color:#fff;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <div class="content">
+            <!-- ヘッダー -->
+
+            <header style="background-color:#f8fafc;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin:0 auto;">
+
+                    <img class="logo" src="{{ asset('/assets/images/logo.png') }}" alt="logo">
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item active"></li>
                     </ul>
-
+                    <span class="navbar-text">
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                        <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links --> 
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li>
+                                <a class="nav-link" href="{{ route('login') }}"><button type="button" class="btn btn-secondary">{{ __('Login') }}</button></a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"><button type="button" class="btn btn-secondary">{{ __('Register') }}</button></a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <i class="fas fa-user-circle"></i>{{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <!-- ログアウト -->
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
                         @endguest
-                    </ul>
+                        </ul>
+                    </span>
                 </div>
-            </div>
-        </nav>
+            </nav>
+            </header>
 
-        <main class="py-4">
+            <!--本文  -->
             @yield('content')
-        </main>
+       </div>
     </div>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/canva.js') }}"></script>
+
+
 </body>
 </html>
