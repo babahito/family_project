@@ -113,7 +113,7 @@ use InterventionImage;
             // $filename = pathinfo($path,  PATHINFO_BASENAME);
             // ============================================
 
-            $image = base64_encode(file_get_contents($request->photo->getRealPath()));
+            $image = base64_encode(file_get_contents($request->photo));
 
             // ファイル名のみ
 
