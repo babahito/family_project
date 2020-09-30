@@ -17,7 +17,7 @@ class CreateKazokusTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->integer('user_id');
 
-            $table->string('photo')->nullable();
+            $table->text('photo')->nullable();
             $table->string('family_name')->nullable();
             $table->date('family_date')->nullable();
             $table->integer('status')->nullable();

@@ -15,7 +15,7 @@
                     Schema::create("user_details", function (Blueprint $table) {
 						$table->bigIncrements('id')->unsigned();
 						$table->integer('user_id')->unsigned();
-						$table->string('photo')->nullable();
+						$table->text('photo')->nullable();
                         $table->date('birthday')->nullable();
 						$table->timestamps();
 						$table->softDeletes();

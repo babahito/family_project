@@ -94,6 +94,7 @@ use InterventionImage;
 
             ]);
             
+            
             // ====画像ファイルの保存=====
             $validator = Validator::make($request->all(), [
                 'photo' => 'required|max:5000' //動画の容量を決める->5MB
@@ -114,7 +115,7 @@ use InterventionImage;
             // ============================================
 
             $image = base64_encode(file_get_contents($request->photo));
-
+           
             // ファイル名のみ
 
 
