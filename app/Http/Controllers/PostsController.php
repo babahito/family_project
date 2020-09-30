@@ -122,7 +122,6 @@ use InterventionImage;
             $requestData = $request->all();
             Post::create([
                 'photo' => $image,
-           
                 'title'=>$request->title,
                 'body'=>$request->body,
                 'user_id'=>Auth::user()->id,

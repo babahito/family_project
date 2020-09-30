@@ -68,18 +68,20 @@ use App\UserDetail;
             }
 
             // ================画像保存======================
-            $image = $request->file('photo');
-            
-            $disk = Storage::disk('local');
-            
-            $path = $disk->put('public' ,$image);
-            // ファイル名のみ
-            $filename = pathinfo($path,  PATHINFO_BASENAME);
+            // $image = $request->file('photo');
+            // $disk = Storage::disk('local');
+            // $path = $disk->put('public' ,$image);
+            // $filename = pathinfo($path,  PATHINFO_BASENAME);
+            // ==============================================
 
+
+
+            $image = base64_encode(file_get_contents($request->photo));
             $requestData = $request->all();
             UserDetail::create([
                 'user_id'=>Auth::user()->id,
-                'photo' => $filename,
+                // 'photo' => $filename,
+                'photo' => $image,
                 'birthday'=>$request->birthday,
                 'comment'=>$request->comment,
                 ]);
