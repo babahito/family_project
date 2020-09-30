@@ -97,7 +97,8 @@
                         @if($day>$item->sendtime)
 
                             <div class="card">
-                                <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                <img src="data:image/png;base64,{{$item->image}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                <!-- <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                     <div class="card-body">
                                         <h4 class="card-title">
                                         <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">

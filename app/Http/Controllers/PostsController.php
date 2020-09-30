@@ -107,21 +107,20 @@ use InterventionImage;
             }
 
             // ================画像保存(S3)======================
-            $image = $request->file('photo');
-       
-        
+            // $image = $request->file('photo');
+            // $disk = Storage::disk('local');
+            // $path = $disk->put('public' ,$image );
+            // $filename = pathinfo($path,  PATHINFO_BASENAME);
+            // ============================================
 
-            $disk = Storage::disk('local');
-      
+            $image = base64_encode(file_get_contents($request->photo->getRealPath()));
 
-
-            $path = $disk->put('public' ,$image );
             // ファイル名のみ
-            $filename = pathinfo($path,  PATHINFO_BASENAME);
+
 
             $requestData = $request->all();
             Post::create([
-                'photo' => $filename,
+                'photo' => $image,
            
                 'title'=>$request->title,
                 'body'=>$request->body,
