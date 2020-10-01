@@ -1,6 +1,7 @@
 @extends("layouts.app_sub")
 @section("content")
 <!-- gnavi -->
+<main style="margin-top:80px;">
 <nav class="bread-crumbs">
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope

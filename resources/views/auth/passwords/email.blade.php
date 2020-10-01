@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<main style="margin-top:80px;">
 <div class="container">
     <div class="row">
       <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
@@ -36,4 +37,5 @@
       </div>
     </div>
   </div>
+  </main>
 @endsection
