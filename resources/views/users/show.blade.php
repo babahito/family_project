@@ -56,8 +56,16 @@
                     <div class="col-xs-8">
                         <div class="card-body">
                             <h4 class="cartitle">{{ $user->name }}さん</h4>
-                            <p class="card-text">Birthday:<br>{{ $user->user_detail->birthday}}</p>
+                            @if(!isset($user->user_detail->birthday))
+                              <p class="card-text">----</p>
+                            @else
+                              <p class="card-text">Birthday:<br>{{ $user->user_detail->birthday}}</p>
+                            @endif
+                            @if(!isset($user->user_detail->comment))
+                              <p class="card-text">----</p>
+                            @else
                             <p class="card-text">comment:<br>{{ $user->user_detail->comment}}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -131,28 +139,9 @@
                     
                       <!-- 非表示の場合 -->
                       @else
-                            <div class="card"　style="display:none">
-                                <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                        <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">
-                                                <span class="card_title">{{ $item->title}}</span>
-                                                </a>
-                                        </h4>
-                                        <article-like
-                                            :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
-                                            :initial-count-likes='@json($item->count_likes)'
-                                            :authorized='@json(Auth::check())'
-                                            endpoint="{{ route('posts.like', ['item' => $item]) }}">
-                                        </article-like>
-                                            <p>
-                                                <a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="up_btn">
-                                                    {{$item->user->name}}
-                                                </a> 
-                                            </p>
-                                            <p class="card-text">{{ $item->attribute_id }}さんへ</p>
-                                            <p class="card-text">{{ $item->sendtime }}</p>
-                                    </div>
+                            <div class="card">
+                                <p>メッセージが届きます<p>
+                                <p class="card-text">{{ $item->sendtime }}</p>
                             </div>
                     @endif
                    
