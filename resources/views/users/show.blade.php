@@ -50,7 +50,8 @@
                     @if(!isset($user->user_detail->photo))
                       <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
                     @else
-                      <img src="{{ asset('storage/' .  $user->user_detail->photo) }}" class="person_icon">
+                    <img src="data:image/png;base64,{{ $user->user_detail->photo }}" class="person_icon">
+                      <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
                     @endif
                     </div>
                     <div class="col-xs-8">
@@ -140,7 +141,10 @@
                       <!-- 非表示の場合 -->
                       @else
                             <div class="card">
-                                <p>メッセージが届きます<p>
+                              <img src="{{ asset('/assets/images/noimage.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                              <div class="card-body">
+                                <h4 class="card-title">メッセージが届きます</h4>
+                              
                                 <p class="card-text">{{ $item->sendtime }}</p>
                             </div>
                     @endif
