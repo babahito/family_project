@@ -40,7 +40,8 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-xs-5">
-                        <img src="{{ asset('storage/' . $item->photo) }}" class="person_icon" style="margin-left:-5px;">
+                        <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon" style="margin-left:-5px;">
+                        <!-- <img src="{{ asset('storage/' . $item->photo) }}" class="person_icon" style="margin-left:-5px;"> -->
                         @foreach($user_detail as $user_de)
                             <p><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}">プロフィール変更</a></p>
                         @endforeach
