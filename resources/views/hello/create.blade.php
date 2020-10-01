@@ -44,10 +44,10 @@
           {{ csrf_field() }}
               <!-- <label for="name">送信する人の名前</label>
               <input name="name" type="text" required> -->
-              <div>
-                <label for="name">家族をえらぶ</label>
-                  {{ Form::select('kazoku_id', $fami_id_loop,)}}
-              </div>
+              <!-- <div> -->
+                <!-- <label for="name">家族をえらぶ</label> -->
+                  <!-- {{-- Form::select('kazoku_id', $fami_id_loop,)--}} -->
+              <!-- </div> -->
               <div class="form-group">
                 <label for="name">送信したい人</label>
                     <input name="send_name"  class="form-control"  type="text" id="name" value="" placeholder="送りたい人">
