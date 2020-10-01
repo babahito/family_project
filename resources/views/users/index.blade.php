@@ -50,7 +50,7 @@
       <div class="row no-gutters">
         <div class="col-lg-6">
             <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-                <!-- <img src="data:image/png;base64,{{ $user->user_detail->photo }}" class="person_icon"> -->
+                <!-- <img src="data:image/png;base64,{{-- $user->user_detail->photo --}}" class="person_icon"> -->
                 <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
             </a>
         </div>
@@ -61,7 +61,7 @@
                     {{ $user->name }}
                 </a>
             </h4>
-            <p class="card-text">{{$user->user_detail->comment}}</p>
+            <!-- <p class="card-text">{{--$user->user_detail->comment--}}</p> -->
             <follow-button
                 class="ml-auto"
                 :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))'
