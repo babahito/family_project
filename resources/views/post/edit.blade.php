@@ -20,11 +20,12 @@
   </ol>
 </nav>
 <!-- end -->
-            <div class="container">
+<main>
+<h2>MY NOTE</h2>
+            <h3>マイノート</h3>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Edit post #{{ $post->id }}</div>
                             <div class="panel-body">
 
                             @if ($errors->any())
@@ -94,6 +95,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
         @endsection
     

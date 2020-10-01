@@ -47,20 +47,18 @@
             @foreach($users as $user)
             <div class="col-lg-4">
             <div class="card mb-3" style="max-width: 500px;">
-      <div class="row no-gutters">
-        <div class="col-lg-6">
-          @if(!isset($user->user_detail->photo))
-            <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
-            @else
-            <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-
-  
-                <img src="data:image/png;base64,{{ $user->user_detail->photo}}" class="person_icon">
-           
-                <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
-            </a>
-            @endif
-        </div>
+         <div class="row no-gutters">
+          <div class="col-lg-6">
+            @if(!isset($user->user_detail->photo))
+              <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
+              @else
+              <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
+                  <img src="data:image/png;base64,{{ $user->user_detail->photo}}" class="person_icon">
+            
+                  <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+              </a>
+              @endif
+          </div>
         <div class="col-lg-6">
           <div class="card-body">
             <h4 class="card-title"> 
