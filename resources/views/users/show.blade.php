@@ -141,7 +141,7 @@
                       <!-- 非表示の場合 -->
                       @else
                             <div class="card">
-                              <img src="{{ asset('/assets/images/noimage.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                              <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
                                 <h4 class="card-title">メッセージが届きます</h4>
                               
