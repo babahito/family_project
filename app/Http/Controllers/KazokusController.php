@@ -93,18 +93,19 @@ class KazokusController extends Controller
             }
 
             // ================画像保存======================
-            $image = $request->file('photo');
+            // $image = $request->file('photo');
             
-            $disk = Storage::disk('local');
+            // $disk = Storage::disk('local');
             
-            $path = $disk->put('public' ,$image);
-            // ファイル名のみ
-            $filename = pathinfo($path,  PATHINFO_BASENAME);
-
+            // $path = $disk->put('public' ,$image);
+            // // ファイル名のみ
+            // $filename = pathinfo($path,  PATHINFO_BASENAME);
+            // =============================================
+            $image = base64_encode(file_get_contents($request->photo));
             $requestData = $request->all();
             $kazoku=Kazoku::create([
                 'user_id'=>Auth::user()->id,
-               'photo' => $filename,
+                'photo' => $image,
           
                'family_name'=>$request->family_name,
                'family_date'=>$request->family_date,

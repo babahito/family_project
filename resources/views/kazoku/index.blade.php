@@ -127,7 +127,7 @@
                                         <div class="col-lg-6">
                                         <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post">
                                         <img src="data:image/png;base64,{{ $kazoku->photo}}"  class="family_icon"> 
-                                                <img src="{{-- asset('storage/' . $kazoku->photo) --}}" class="family_icon"> 
+                                                <!-- <img src="{{-- asset('storage/' . $kazoku->photo) --}}" class="family_icon">  -->
                                                 </a>
                                                 <p>家族誕生日：{{$kazoku->family_date}}</p>
                                         </div>

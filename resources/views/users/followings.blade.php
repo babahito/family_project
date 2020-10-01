@@ -27,7 +27,8 @@
                                     <li>
                                         <a href="{{ route('users.show', ['name' => $person->name]) }}">
                                         <figure class="effect-color">
-                                            <img src="{{ asset('storage/' .  $person->user_detail->photo) }}" class="person_icon">
+                                            <img src="data:image/png;base64,{{ $person->user_detail->photo }}" class="person_icon">
+                                            <!-- <img src="{{-- asset('storage/' .  $person->user_detail->photo) --}}" class="person_icon"> -->
                                             <figure class="effect-color">
                                         </a>
                                     </li>
@@ -63,7 +64,8 @@
                                 <!-- 表示の場合 -->
                                 @if($day>$item->sendtime)
                                 <div class="card">
-                                    <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                <img src="data:image/png;base64,{{ $item->photo }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                    <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                         <div class="card-body">
                                             <h4 class="card-title">
                                             <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">
