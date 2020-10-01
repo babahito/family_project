@@ -26,7 +26,7 @@
     <div class="row mb-3">
         <div class="col-lg-9">
             <h2>MY NOTE</h2>
-            <h3>マイノート。</h3>
+            <h3>マイノート。。</div></h3>
         </div>
         <div class="col-lg-3">
             <a href="/post/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;ノートをかく</div></a>
