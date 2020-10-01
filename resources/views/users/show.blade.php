@@ -143,9 +143,9 @@
                             <div class="card">
                               <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
-                                <h4 class="card-title">メッセージが届きます</h4>
+                                <h4 class="card-title">メッセージが届きます。おまちください</h4>
                               
-                                <p class="card-text">{{ $item->sendtime }}</p>
+                                <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                             </div>
                     @endif
                    
