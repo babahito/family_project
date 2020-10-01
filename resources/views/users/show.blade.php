@@ -47,7 +47,11 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-xs-5">
+                    @if(!isset($user->user_detail->photo))
+                      <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
+                    @else
                       <img src="{{ asset('storage/' .  $user->user_detail->photo) }}" class="person_icon">
+                    @endif
                     </div>
                     <div class="col-xs-8">
                         <div class="card-body">
@@ -105,7 +109,8 @@
                         @if($day>$item->sendtime)
 
                             <div class="card">
-                                <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                     <div class="card-body">
                                         <h4 class="card-title">
                                         <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">

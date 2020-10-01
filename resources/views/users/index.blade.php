@@ -49,7 +49,7 @@
             <div class="card mb-3" style="max-width: 500px;">
       <div class="row no-gutters">
         <div class="col-lg-6">
-        @if(!isset($user->user_detail->photo))
+          @if(!isset($user->user_detail->photo))
             <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
             @else
             <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
