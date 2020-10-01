@@ -50,7 +50,7 @@
       <div class="row no-gutters">
         <div class="col-lg-6">
             <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-                <img src="data:image/png;base64,{{ $user->user_detail->photo }}" class="person_icon">
+                <!-- <img src="data:image/png;base64,{{ $user->user_detail->photo }}" class="person_icon"> -->
                 <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
             </a>
         </div>

@@ -33,7 +33,7 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-xs-5">
-                      <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon">
+                      <!-- <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon"> -->
                       <!-- <img src="{{ asset('storage/' .  $user_de->photo) }}" class="person_icon"> -->
                     </div>
                     <div class="col-xs-8">
