@@ -27,7 +27,14 @@
                                     <li>
                                         <a href="{{ route('users.show', ['name' => $person->name]) }}">
                                         <figure class="effect-color">
+                                        @if(!isset($person->user_detail->photo))
+                                        <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
+                                        @else
+                                        <div style="text-align:center;">
                                             <img src="data:image/png;base64,{{ $person->user_detail->photo }}" class="person_icon">
+                                            <p style="margin-top:10px;">{{$person->name}}</p>
+                                        </div>
+                                        @endif
                                             <!-- <img src="{{-- asset('storage/' .  $person->user_detail->photo) --}}" class="person_icon"> -->
                                             <figure class="effect-color">
                                         </a>
@@ -80,6 +87,15 @@
                                             </article-like>
                                             <p class="card-text"><a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">{{$item->user->name}}</a> </p>
                                             <p class="card-text">{{ $item->sendtime }}</p>
+                                        </div>
+                            </div>
+                        <!-- 非表示の場合 -->
+                            @else
+                                <div class="card">
+                                    <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">メッセージ送信中。おまちください</h4>
+                                            <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                                         </div>
                                 </div>
                             @endif

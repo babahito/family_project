@@ -26,7 +26,7 @@
     <div class="row mb-3">
         <div class="col-lg-9">
             <h2>MY NOTE</h2>
-            <h3>マイノート。。・・aa</div></h3>
+            <h3>マイノート</h3>
         </div>
         <div class="col-lg-3">
             <a href="/post/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;ノートをかく</div></a>
@@ -40,7 +40,7 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-xs-5">
-                        @if(!isset($user->user_detail->photo))
+                        @if(!isset($item->photo))
                             <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
                         @else
                         <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon" style="margin-left:-5px;">
@@ -53,7 +53,7 @@
                     <div class="col-xs-5">
                         <div class="card-body">
                             <h4 class="cartitle">{{$auth->name}}さん</h4>
-                            @if(!isset($user->user_detail->comment))
+                            @if(!isset($item->comment))
                                 <p class="card-text">-----</p>
                             @else
                             <p class="card-text">{{ $item->comment}}</p>
@@ -63,10 +63,10 @@
                     </div>
                     
                     <div class="col-xs-3">
-                        <button type="button" class="btn btn-secondary btn-sm">
+                        <button type="button" class="btn btn-light btn-sm">
                         <a href="{{ route('users.followings', ['name' => $auth->name]) }}"  class="text-muted">{{ $auth->count_followings }}  フォロー一覧</a>
                         </button>
-                        <button type="button" class="btn btn-secondary btn-sm">
+                        <button type="button" class="btn btn-light btn-sm">
                         <a href="{{ route('users.followers', ['name' => $auth->name]) }}" class="text-muted">{{ $auth->count_followers }} フォロワー</a>
                         </button>
                   </div>

@@ -39,16 +39,16 @@
                         <div class="card">
                         <img class="card-img-top" src="{{ asset('/assets/images/concept_03.png') }}" alt="FamilyNOTE3">
                         <div class="card-body">
-                            <h4 class="card-title">おじいちゃんから</h4>
+                            <h4 class="card-title">孫からおばあちゃんへ</h4>
                             <p style="text-align:right;">2020.5.10</p>
                         </div>
                         </div>
                     </div>
                     <div class="col-sm-3 col-xs-6 mb-2">
                         <div class="card">
-                        <img class="card-img-top" src="{{ asset('/assets/images/concept_03.png') }}" alt="FamilyNOTE3">
+                        <img class="card-img-top" src="{{ asset('/assets/images/concept_04.png') }}" alt="FamilyNOTE4">
                         <div class="card-body">
-                            <h4 class="card-title">おじいちゃんから</h4>
+                            <h4 class="card-title">おじいちゃんから孫へ</h4>
                             <p style="text-align:right;">2020.5.10</p>
                         </div>
                         </div>
