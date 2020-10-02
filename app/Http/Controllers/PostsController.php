@@ -116,8 +116,10 @@ use InterventionImage;
 
 
             $image = base64_encode(file_get_contents($request->photo));
+           
             $requestData = $request->all();
-            Post::create([
+            
+            $aa=Post::create([
                 'title'=>$request->title,
                 'body'=>$request->body,
                 'user_id'=>Auth::user()->id,
@@ -126,6 +128,7 @@ use InterventionImage;
                 'status'=>$request->status,
                 'sendtime'=>$request->sendtime,
                 ]);
+                dd($aa);
             return redirect("post")->with("flash_message", "user_detail added!");
             // ============================================
         }

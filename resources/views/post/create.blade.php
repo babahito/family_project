@@ -36,9 +36,7 @@
                 <h2>MY NOTE</h2>
                 <h3>ノートをかく</h3>
             </div>
-            <!-- <div class="col-lg-3">
-                <button class="btn btn-light"><a href="/paint">絵を描く</a></button>
-            </div> -->
+
         </div>
         
 
