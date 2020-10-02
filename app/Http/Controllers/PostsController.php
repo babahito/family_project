@@ -70,14 +70,14 @@ use InterventionImage;
                         ->get();
             
             //現在時刻
-            // $day=Carbon::now();
-            // $sendtimes=Post::select('sendtime')->get();
+            $day=Carbon::now();
+            $sendtimes=Post::select('sendtime')->get();
 
             // dd($tests);
             // 送る方のユーザーselect
             $clients=User::select('id','name')->get();
             $client_id_loop = $clients->pluck('name','id');
-            return view("post.create",compact("post","auth","user_detail",'client_id_loop','users','tests','sendtimes'));
+            return view("post.create",compact("post","auth","user_detail",'client_id_loop','users','day','tests','sendtimes'));
         }
     
 
