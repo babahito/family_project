@@ -335,5 +335,5 @@ Route::post('/deactive', 'Auth\DeactiveController@deactive')->name('deactive');
 
 //ユーザー認証を作成した時に自動的に作成されるルートを下記のように変更// メール認証用
 Auth::routes(['verify' => true]);
-
+// Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

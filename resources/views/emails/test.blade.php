@@ -9,7 +9,7 @@
         @foreach($family_name as $ff)
         馬場さんグループが{{$ff->family_name}}作成されました！
         @endforeach
-        ぜひ、ご参加ください
+        ぜひ、ご参加くださいtest
         <button>参加する</button>
     </div>
 </body>

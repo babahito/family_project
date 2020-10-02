@@ -119,7 +119,7 @@ use InterventionImage;
            
             $requestData = $request->all();
             
-            $aa=Post::create([
+            Post::create([
                 'title'=>$request->title,
                 'body'=>$request->body,
                 'user_id'=>Auth::user()->id,
@@ -128,7 +128,7 @@ use InterventionImage;
                 'status'=>$request->status,
                 'sendtime'=>$request->sendtime,
                 ]);
-                dd($aa);
+                
             return redirect("post")->with("flash_message", "user_detail added!");
             // ============================================
         }
