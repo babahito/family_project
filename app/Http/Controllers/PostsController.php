@@ -99,7 +99,7 @@ use InterventionImage;
             $validator = Validator::make($request->all(), [
                 'photo' => 'required|max:5000' //動画の容量を決める->5MB
             ]);
-
+    
             //バリデーション:エラー
             if ($validator->fails()) {
                 return redirect()->back()
@@ -114,17 +114,13 @@ use InterventionImage;
             // $filename = pathinfo($path,  PATHINFO_BASENAME);
             // ============================================
 
-            $image = base64_encode(file_get_contents($request->photo));
-           
-            // ファイル名のみ
-
-
+            $image = base64_encode(file_get_contents($request->photo->getRealPath()));
             $requestData = $request->all();
             Post::create([
-                'photo' => $image,
                 'title'=>$request->title,
                 'body'=>$request->body,
                 'user_id'=>Auth::user()->id,
+                'photo' => $image,
                 'attribute_id'=>$request->attribute_id,
                 'status'=>$request->status,
                 'sendtime'=>$request->sendtime,
@@ -133,28 +129,7 @@ use InterventionImage;
             // ============================================
 
 
-            // ================画像保存(S3)======================
-            // $imagefile = $request->file('photo');
-            // $now = date_format(Carbon::now(), 'YmdHis');
-            // $name = $imagefile->getClientOriginalName();
-            // // S3の保存先のパスを生成
-            // $storePath="hogeimage/".$now."_".$name;
-            
-                
-            
-            // Post::create([
-            //     'photo' => $filename,
-           
-            //     'title'=>$request->title,
-            //     'body'=>$request->body,
-            //     'user_id'=>Auth::user()->id,
-            //     'attribute_id'=>$request->attribute_id,
-            //     'status'=>$request->status,
-            //     'sendtime'=>$request->sendtime,
-            //     ]);
-            // return redirect("post/create")->with("flash_message", "user_detail added!");
-            // // ============================================
-
+ 
 
 
             }
