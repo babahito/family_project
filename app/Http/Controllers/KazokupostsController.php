@@ -60,8 +60,8 @@ class KazokupostsController extends Controller
             "user_id" => "nullable|integer", //integer('user_id')->nullable()
             "kazokupost_id" => "nullable|integer", //integer('user_id')->nullable()
             "photo" => "nullable", //string('photo')->nullable()
-            "attribute_id" => "integer", //integer('attribute_id')
-            "status" => "integer", //integer('status')
+            // "attribute_id" => "integer", //integer('attribute_id')
+            // "status" => "integer", //integer('status')
             "sendtime" => "required|date", //integer('status')
 
         ]);
@@ -78,7 +78,7 @@ class KazokupostsController extends Controller
                     ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
                 }
         // ===========セッションID受け取り(家族ID)
-            $id = $request->session()->get('id');
+            $request->session()->get('id');
         // ================画像保存(S3)======================
                 // $image = $request->file('photo');
                 // $disk = Storage::disk('local');
@@ -95,8 +95,8 @@ class KazokupostsController extends Controller
             'photo' => $image,
             'user_id'=>Auth::user()->id,
             'kazokupost_id'=>$request->session()->get('id'),
-            'attribute_id'=>$request->attribute_id,
-            'status'=>$request->status,
+            // 'attribute_id'=>$request->attribute_id,
+            // 'status'=>$request->status,
             'sendtime'=>$request->sendtime,
             ]);
         return redirect("kazoku")->with("flash_message", "user_detail added!");

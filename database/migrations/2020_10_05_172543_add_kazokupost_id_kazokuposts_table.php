@@ -16,7 +16,7 @@ class AddKazokupostIdKazokupostsTable extends Migration
         Schema::table('kazokuposts', function (Blueprint $table) {
             //
             // $table->integer('kazokupost_id')->unsigned();
-            $table->integer('kazokupost_name')->unsigned();
+            $table->integer('kazokupost_name')->nullable();
         });
     }
 
