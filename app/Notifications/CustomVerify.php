@@ -36,7 +36,7 @@ class CustomVerify extends Notification
     {
         return (new MailMessage)
             ->from(config('mail.from.address'))
-            ->subject('家族グループへの追加')
+            ->subject('FamilyNOTE：新規登録完了')
             // カスタム用のブレードを指定し、変数を渡す
             ->markdown('emails.custom_verify',['user'=> $this->user]);
     }
