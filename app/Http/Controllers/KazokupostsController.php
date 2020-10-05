@@ -60,9 +60,9 @@ class KazokupostsController extends Controller
             "user_id" => "nullable|integer", //integer('user_id')->nullable()
             "kazokupost_id" => "nullable|integer", //integer('user_id')->nullable()
             "photo" => "nullable", //string('photo')->nullable()
-            // "attribute_id" => "integer", //integer('attribute_id')
-            // "status" => "integer", //integer('status')
-            "sendtime" => "required|date", //integer('status')
+            "attribute_id" => "nullable|integer", //integer('attribute_id')
+            "status" => "nullable|integer", //integer('status')
+            "sendtime" => "nullable|date", //integer('status')
 
         ]);
         
@@ -95,8 +95,8 @@ class KazokupostsController extends Controller
             'photo' => $image,
             'user_id'=>Auth::user()->id,
             'kazokupost_id'=>$request->session()->get('id'),
-            // 'attribute_id'=>$request->attribute_id,
-            // 'status'=>$request->status,
+            'attribute_id'=>$request->attribute_id,
+            'status'=>$request->status,
             'sendtime'=>$request->sendtime,
             ]);
         return redirect("kazoku")->with("flash_message", "user_detail added!");
