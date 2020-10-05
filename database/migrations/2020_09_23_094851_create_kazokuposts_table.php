@@ -19,7 +19,7 @@ class CreateKazokupostsTable extends Migration
             $table->text('body');
             $table->integer('user_id')->unsigned();
             $table->integer('kazokupost_id')->unsigned();
-            $table->string('photo')->nullable();
+            $table->text('photo')->nullable();
             $table->integer('attribute_id')->nullable()->unsigned();
             $table->integer('status')->nullable();
             $table->date('sendtime')->nullable();
