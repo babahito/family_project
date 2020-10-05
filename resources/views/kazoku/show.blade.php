@@ -22,6 +22,7 @@
 </nav>
 <!-- end -->
 <main>
+
         <div class="row mb-3">
                 <div class="col-lg-9">
                 <h2>Family</h2>
@@ -38,11 +39,11 @@
                         <!-- <div class="card mb-2" style="max-width: 500px;"> -->
                                 <div class="row no-gutters">
                                         <div class="col-lg-6">
-                                        <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post">
+                                        <!-- <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post"> -->
                                         <img src="data:image/png;base64,{{ $kazoku->photo}}"  class="family_icon"> 
                                                 <!-- <img src="{{-- asset('storage/' . $kazoku->photo) --}}" class="family_icon">  -->
-                                                </a>
-                                                <p>家族誕生日：{{$kazoku->family_date}}</p>
+                                                <!-- </a> -->
+                                                <p>家族誕生日:{{$kazoku->family_date}}</p>
                                         </div>
                                         <div class="col-lg-6">
                                                 <div class="card-body">
@@ -78,8 +79,58 @@
                         </div>
 
                 </div>
+</div>
+            <!-- カード部分 -->
+            <div class="card_box">
+              <div class="row">
+              @foreach($kazokuposts as $item)
+                  <div class="col-lg-4 mb-5">
 
+                        <!-- 表示の場合 -->
+                        @if($day>$item->sendtime)
 
+                            <div class="card">
+                            <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                        <a href="{{ url("/kazokupost/" . $item->id) }}" class="stretched-link">
+                                                <span class="card_title">{{ $item->title}}</span>
+                                                </a>
+                                        </h4>
+                                                    <a href="{{ url("/kazokupost/" . $item->id . "/edit") }}">
+                                                            <i class="far fa-edit fa-2x up_btn"></i>
+                                                    </a>
+                                                    <form method="POST" action="/kazokupost/{{ $item->id }}" class="form-horizontal" style="display:inline;">
+                                                        {{ csrf_field() }}
+                                                        
+                                                        {{ method_field("DELETE") }}
+                                                        <button type="submit" title="Delete User" onclick="return confirm('削除してもよろしいですか')" class="up_btn">
+                                                            <i class="fas fa-trash fa-2x"></i>
+                                                        </button>    
+                                                    </form>
+        
+                                            <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
+                                            <p class="card-text">{{ $item->sendtime }}</p>
+                                    </div>
+                            </div>
+                 <!-- 非表示の場合 -->
+                    @else
+                            <div class="card">
+                              <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                              <div class="card-body">
+                                <h4 class="card-title">メッセージ送信中。おまちください</h4>
+                              
+                                <p class="card-text">到着日時：{{ $item->sendtime }}</p>
+                            </div>
+                    @endif
+
+                   
+                  </div>
+                  @endforeach
+                  
+              </div>  
+          </div>
 
 
             <!-- </div> -->

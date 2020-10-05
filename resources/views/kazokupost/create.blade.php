@@ -28,7 +28,7 @@
 </nav>
 <!-- end -->
 
-
+<!-- <span class="navbar-text">ようこそ！　{{-- Session::get('id') --}} 様</span> -->
 
     <main>
         <div class="row mb-3">
@@ -80,6 +80,10 @@
                                             <div>
                                                 <label for="user_id"></label>
                                                     <input name="user_id" type="hidden" id="user_id" value="{{old('user_id')}}">
+                                            </div>
+                                            <div>
+                                                <label for="kazokupost_id"></label>
+                                                    <input name="kazokupost_id" type="hidden" id="kazokupost_id">
                                             </div>
                                             <div>
                                                     <input class="pink_btn" type="submit" value="ノートをかく">

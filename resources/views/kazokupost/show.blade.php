@@ -33,23 +33,24 @@
                   <div class="col-lg-12 mb-5">
 
                         <!-- 表示の場合 -->
-                        @if($day>$item->sendtime)
+                        @if($day>$kazokupost->sendtime)
 
                             <div class="card">
                                 <div class="row no-gutters">
                                     <div class="col-lg-4">
-                                        <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: auto;object-fit: cover;">
+                                    <img src="data:image/png;base64,{{ $kazokupost->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                       
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="card-body">
                                             <h4 class="card-title">
-                                                <span class="card_title">{{ $item->title}}</span>
+                                                <span class="card_title">{{ $kazokupost->title}}</span>
                                             </h4>
-                                            @if( Auth::id() === $item->user_id )
-                                                        <a href="{{ url("/post/" . $item->id . "/edit") }}">
+                                            @if( Auth::id() === $kazokupost->user_id )
+                                                        <a href="{{ url("/kazokupost/" . $kazokupost->id . "/edit") }}">
                                                                 <i class="far fa-edit fa-2x up_btn"></i>
                                                         </a>
-                                                        <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
+                                                        <form method="POST" action="/kazokupost/{{ $kazokupost->id }}" class="form-horizontal" style="display:inline;">
                                                             {{ csrf_field() }}
                                                             
                                                             {{ method_field("DELETE") }}
@@ -58,58 +59,22 @@
                                                             </button>    
                                                         </form>
                                             @endif
-                                            <article-like
-                                                :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
-                                                :initial-count-likes='@json($item->count_likes)'
-                                                :authorized='@json(Auth::check())'
-                                                endpoint="{{ route('posts.like', ['item' => $item]) }}">
-                                            </article-like>
-                                                <p class="card-text">{{ $item->user->name }}が書いた</p>
-                                                <p class="card-text">{{ $item->body }}</p>
-                                                <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
-                                                <p class="card-text">{{ $item->sendtime }}</p>
+   
+                                                <p class="card-text">{{-- $kazokupost->user->name --}}が書いた</p>
+                                                <p class="card-text">{{ $kazokupost->body }}</p>
+                                                <p class="card-text">{{ $kazokupost->attribute_id }}さんへメッセージ</p>
+                                                <p class="card-text">{{ $kazokupost->sendtime }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    
-                      <!-- 非表示の場合 -->
-                      @else
-                      <div class="card" style="display:none;">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-4">
-                                        <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="card-body">
-                                            <h4 class="card-title">
-                                            <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">
-                                                    <span class="card_title">{{ $item->title}}</span>
-                                                    </a>
-                                            </h4>
-                                                        <a href="{{ url("/post/" . $item->id . "/edit") }}">
-                                                                <i class="far fa-edit fa-2x up_btn"></i>
-                                                        </a>
-                                                        <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
-                                                            {{ csrf_field() }}
-                                                            
-                                                            {{ method_field("DELETE") }}
-                                                            <button type="submit" title="Delete User" onclick="return confirm('削除してもよろしいですか')" class="up_btn">
-                                                                <i class="fas fa-trash fa-2x"></i>
-                                                            </button>    
-                                                        </form>
-                                            <article-like
-                                                :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
-                                                :initial-count-likes='@json($item->count_likes)'
-                                                :authorized='@json(Auth::check())'
-                                                endpoint="{{ route('posts.like', ['item' => $item]) }}">
-                                            </article-like>
-                                                <p class="card-text">{{ $item->body }}</p>
-                                                <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
-                                                <p class="card-text">{{ $item->sendtime }}</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            @else
+                            <div class="card">
+                              <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                              <div class="card-body">
+                                <h4 class="card-title">メッセージ送信中。おまちください</h4>
+                              
+                                <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                             </div>
                     @endif
                    

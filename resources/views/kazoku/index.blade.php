@@ -35,9 +35,12 @@
         </div>
     </div>
 
-                
-                    
 
+        <!-------------- 多対多 --------------->
+        <!-- @foreach($kk as $k)              
+                <p>{{--dd($k->kazokuposts)--}}</P>
+        @endforeach -->
+        <!-- --------------------------------- -->
                         <!-- 検索 -->
                         <form method="GET" action="{{ url("kazoku") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                                 <div class="input-group">

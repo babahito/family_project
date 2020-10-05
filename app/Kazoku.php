@@ -3,8 +3,10 @@
 namespace App;
 use App\Auth;
 use App\User;
+use App\Kazokupost;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Kazoku extends Model
 {
@@ -34,6 +36,12 @@ class Kazoku extends Model
     // 家族テーブルに紐づくユーザーの数を取得（スネルケースで取得可能count_kazokus）
     public function getCountKazokusAttribute(){
         return $this->kazoku_user->count();
+    }
+
+    // 家族と家族ノートとの多対多
+    public function kazokuposts(): BelongsToMany{
+        return $this->belongsToMany('App\Kazokupost','kposts');
+
     }
 
 

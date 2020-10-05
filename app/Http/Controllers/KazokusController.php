@@ -14,6 +14,8 @@ use Validator;
 use App\Kazoku;
 use App\User;
 use App\Jobs\TestJob;
+use App\Kazokupost;
+use Carbon\Carbon;
 
 //追加した関数にRequestがあるので追記
 //作成したメール関数用のファイルを追記
@@ -37,6 +39,8 @@ class KazokusController extends Controller
        } else {
         $user_id = Auth::id();
         $kazokus=User::find($user_id)->kazokus()->get();
+        $kk=Kazoku::get();
+        
         $kazokuadmin = Kazoku::where('user_id',Auth::user()->id)->get(); 
         // $kazokus=$kazokujoin->union($kazokuadmin)->get();
 
@@ -46,16 +50,16 @@ class KazokusController extends Controller
             // $aa=$kazokus->kazoku_user->sortByDesc('created_at');
             // dd($aa);
             
-            
-   
+ 
                  
        }          
-       return view("kazoku.index", compact("kazokus","kazokuadmin"));
+       return view("kazoku.index", compact("kazokus","kazokuadmin","kk"));
    }
 
 
    public function create()
    {
+
        return view("kazoku.create");
    }
 
@@ -119,17 +123,26 @@ class KazokusController extends Controller
             // dd($family_name);
             // $users=User::get();
             //    Mail::to($users)->send(new Test($auth,$family_name));    
-
-
+      
        return redirect("kazoku")->with("flash_message", "mail_received added!");
    }
 
    
 
-   public function show($id)
+   public function show(Request $request,$id)
    {
        $kazoku = Kazoku::findOrFail($id);
-       return view("kazoku.show",compact('kazoku'));
+
+        // セッションID(家族IDの取得)
+        $kazoku_id=$request->session()->put('id', $id);
+
+        $kazokuposts=Kazokupost::where('kazokupost_id','=',$id)->get();
+
+        //現在時刻
+        $day=Carbon::now();
+        // $sendtimes=Post::select('sendtime')->get();
+                  // return session()->get('email');
+       return view("kazoku.show",compact('kazoku',"id","kazokuposts","day"));
    }
 
 
