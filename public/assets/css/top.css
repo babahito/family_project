@@ -9,6 +9,7 @@ html{
     font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
     height: 100vh;
     margin: 0;
+    font-size:16px;
     /* font-size: 62.5%; */
 }
 body{
@@ -43,31 +44,32 @@ img{
     max-width:100%;
     border:0
 }
+/*
 /* // 大デバイス（デスクトップ, 1200px 未満） */
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
  .title {
    font-size: 7.0rem;
  }
-}
+} */
 /* // 中デバイス（タブレット, 992px 未満） */
-@media (max-width: 991.98px) {
+/* @media (max-width: 991.98px) {
  .title {
    font-size: 4.0rem;
  }
-}
+} */
 /* // 小デバイス（横向きモバイル, 768px 未満） */
-@media (max-width: 767.98px) {
+/* @media (max-width: 767.98px) {
  .title {
    font-size: 2.0rem;
  }
-}
+} */
 /* // @include media-breakpoint-up(sm) { */
 /* // 極小デバイス（縦向きモバイル, 576px 未満） */
-@media (max-width: 575.98px) {
+/* @media (max-width: 575.98px) {
  .title {
    font-size: 1.0rem;
  }
-}
+} */
 
 /* ナビ */
 .header{
@@ -162,13 +164,13 @@ img{
         text-align: center;
 
         margin-bottom:20px;
-        font-size:1.4rem;
+        font-size:1.2rem;
         line-height: 1.5em;
     }
     @media screen and (min-width:768px) {
         .concept_title{
             line-height: 2.0em;
-            font-size:1.8rem;
+            font-size:1.4rem;
         }
     }
 
@@ -410,11 +412,11 @@ img{
         .main_image{
             margin-top:50px;
         }
-        @media screen and (min-width:768px) {
+         /*@media screen and (min-width:768px) {
             .main_image{
                 margin-top:80px;
             }
-        }
+        }*/
         /* メイン画像の切り替え */
         img.miniimage { display: none; }   /* ※1 */
 

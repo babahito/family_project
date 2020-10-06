@@ -13,7 +13,8 @@
     <main> 
         <h2 style="text-align:center;">CONCEPT</h2>
             <div class="concept_title"> 
-                恥ずかしくていつも言えない。<br>けど、大切な家族。<br>みらいの家族にメッセージを送って、ちょっと幸せにしたい
+                恥ずかしくていつも言えない。<br>けど、大切な家族。<br>
+                みらいの家族にメッセージを送って、ちょっと幸せにしたい
             </div>
             <div class="container">
                 <div class="row">
@@ -39,7 +40,7 @@
                         <div class="card">
                         <img class="card-img-top" src="{{ asset('/assets/images/concept_03.png') }}" alt="FamilyNOTE3">
                         <div class="card-body">
-                            <h4 class="card-title">孫からおばあちゃんへ</h4>
+                            <h4 class="card-title">おばあちゃんへ</h4>
                             <p style="text-align:right;">2020.5.10</p>
                         </div>
                         </div>
@@ -48,8 +49,8 @@
                         <div class="card">
                         <img class="card-img-top" src="{{ asset('/assets/images/concept_04.png') }}" alt="FamilyNOTE4">
                         <div class="card-body">
-                            <h4 class="card-title">おじいちゃんから孫へ</h4>
-                            <p style="text-align:right;">2020.5.10</p>
+                            <h4 class="card-title">おじいちゃんから</h4>
+                            <p style="text-align:right;">2021.9.10</p>
                         </div>
                         </div>
                     </div>
