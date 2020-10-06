@@ -70,9 +70,8 @@
                                                 {{ __('退会処理') }}
                                             </a>
                                              <!-- ログアウト -->
-                                            <!-- <a class="dropdown-item" href="{{-- route('logout') --}}" -->
+                                             <a href="{{ action('Auth\DeactiveController@showDeactiveForm') }}"
                                             
-                                            <a href="{{ action('Auth\DeactiveController@showDeactiveForm') }}">
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
