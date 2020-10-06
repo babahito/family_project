@@ -66,11 +66,6 @@
                     {{ $user->name }}
                 </a>
             </h4>
-            @if(!isset($user->user_detail->comment))
-            <p class="card-text">-----</p>
-            @else
-            <p class="card-text">{{$user->user_detail->comment}}</p>
-            @endif
             <follow-button
                 class="ml-auto"
                 :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))'

@@ -63,7 +63,7 @@
     </ul>
  
     <!-- Tab panes(以下、タブを押したときに表示する中身) -->
-    <div class="tab-content p-5 ">
+    <div class="tab-content p-2 ">
         <div role="tabpanel" class="tab-pane active fade show" id="home">
 
                 <!-- カード部分 -->

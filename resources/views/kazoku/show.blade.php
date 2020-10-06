@@ -34,7 +34,7 @@
                 </div>
         </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-12">
                 <div style="{{ $kazoku->status_class }}">
                         <!-- <div class="card mb-2" style="max-width: 500px;"> -->
                                 <div class="row no-gutters">
@@ -98,6 +98,7 @@
                                                 <span class="card_title">{{ $item->title}}</span>
                                                 </a>
                                         </h4>
+                                        @if( Auth::id() === $item->user_id )
                                                     <a href="{{ url("/kazokupost/" . $item->id . "/edit") }}">
                                                             <i class="far fa-edit fa-2x up_btn"></i>
                                                     </a>
@@ -109,7 +110,7 @@
                                                             <i class="fas fa-trash fa-2x"></i>
                                                         </button>    
                                                     </form>
-        
+                                        @endif
                                             <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
                                             <p class="card-text">{{ $item->sendtime }}</p>
                                     </div>
@@ -120,7 +121,19 @@
                               <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
                                 <h4 class="card-title">メッセージ送信中。おまちください</h4>
-                              
+                                @if( Auth::id() === $item->user_id )
+                                                    <a href="{{ url("/kazokupost/" . $item->id . "/edit") }}">
+                                                            <i class="far fa-edit fa-2x up_btn"></i>
+                                                    </a>
+                                                    <form method="POST" action="/kazokupost/{{ $item->id }}" class="form-horizontal" style="display:inline;">
+                                                        {{ csrf_field() }}
+                                                        
+                                                        {{ method_field("DELETE") }}
+                                                        <button type="submit" title="Delete User" onclick="return confirm('削除してもよろしいですか')" class="up_btn">
+                                                            <i class="fas fa-trash fa-2x"></i>
+                                                        </button>    
+                                                    </form>
+                                        @endif
                                 <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                             </div>
                     @endif

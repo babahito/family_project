@@ -33,7 +33,7 @@
     <main>
         <div class="row mb-3">
             <div class="col-lg-9">
-                <h2>MY NOTE</h2>
+                <h2>Family Note</h2>
                 <h3>ノートをかく</h3>
             </div>
             <!-- <div class="col-lg-3">

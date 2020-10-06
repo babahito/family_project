@@ -18,7 +18,7 @@ class CreateFamilynotesTable extends Migration
             $table->string('title')->nullable();
             $table->text('body')->nullable();
             $table->integer('user_id')->nullable()->unsigned();
-            $table->string('photo')->nullable();
+            $table->longtext('photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
             //$table->foreign("user_id")->references("id")->on("users");

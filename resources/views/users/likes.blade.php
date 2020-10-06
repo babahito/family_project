@@ -62,7 +62,7 @@
                                       :authorized='@json(Auth::check())'
                                       endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                   </article-like>
-                                  <p class="card-text"><a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">{{$item->user->name}}</a> </p>
+                                  <p class="card-text"><a href="{{ route('users.show', ['name' => $item->user->name]) }}" class="text-dark">投稿者：{{$item->user->name}}</a> </p>
                                   <p class="card-text">{{ $item->sendtime }}</p>
                               </div>
                       </div>

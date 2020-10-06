@@ -17,7 +17,7 @@
 						$table->string('title');
 						$table->text('body');
 						$table->integer('user_id')->unsigned();
-						$table->text('photo')->nullable();
+						$table->longtext('photo')->nullable();
 						$table->integer('attribute_id')->nullable()->unsigned();
 						$table->integer('status');
 						$table->date('sendtime');
