@@ -26,7 +26,7 @@
     <div class="row mb-3">
         <div class="col-lg-9">
             <h2>MY NOTE</h2>
-            <h3>マイノート.</h3>
+            <h3>マイノート</h3>
         </div>
         <div class="col-lg-3">
             <a href="/post/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;ノートをかく</div></a>
@@ -45,9 +45,11 @@
                         @else
                         <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon" style="margin-left:-5px;">
                         @endif
-                        <!-- <img src="{{ asset('storage/' . $item->photo) }}" class="person_icon" style="margin-left:-5px;"> -->
+                        <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
                         @foreach($user_detail as $user_de)
+                      
                             <p><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}">プロフィール変更</a></p>
+                            
                         @endforeach
                     </div>
                     <div class="col-xs-5">
