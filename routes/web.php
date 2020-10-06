@@ -328,7 +328,7 @@ Route::delete("tag/{id}", "TagsController@destroy");
 
 //=======================================================================
 // ソフトデリート用
-Route::get('deactive', 'Auth\DeactiveController@showDeactiveForm');
+Route::get('deactive', 'Auth\DeactiveController@showDeactiveForm')->name('deactive.form');
 Route::post('deactive', 'Auth\DeactiveController@deactive')->name('deactive');
 
 

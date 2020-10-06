@@ -67,13 +67,10 @@
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                            <!-- 退会 -->
                                             <a class="dropdown-item" href="{{ route('deactive') }}"
-                                            onclick="event.preventDefault();
-                                                            document.getElementById('deactive-form').submit();">
+                                            onclick="event.preventDefault();>
                                                 {{ __('退会処理') }}
                                             </a>
-                                            <form id="deactive-form" action="{{ route('deactive') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
+                                         
                                              <!-- ログアウト -->
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
