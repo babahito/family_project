@@ -114,7 +114,7 @@ use App\UserDetail;
         {
             $this->validate($request, [
 				"user_id" => "required|integer", //integer('user_id')
-				"photo" => "nullable", //string('photo')->nullable()
+
                 "birthday" => "nullable|date", //date('birthday')->nullable()
                 "comment" => "nullable", //string('comment')->nullable()
 
