@@ -40,13 +40,13 @@ use InterventionImage;
                 
             } else {
                     $post = Post::where('user_id',Auth::user()->id)->paginate($perPage); 
-                    $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);     
+
                     
                    
                                
             }   
             
-            
+            $user_detail = UserDetail::where('user_id',Auth::user()->id)->paginate($perPage);     
             $auth=Auth::user();
 
             //現在時刻

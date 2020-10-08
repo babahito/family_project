@@ -42,7 +42,7 @@
         @endforeach -->
         <!-- --------------------------------- -->
                         <!-- 検索 -->
-                        <form method="GET" action="{{ url("kazoku") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
+                        <!-- <form method="GET" action="{{-- url("kazoku") --}}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                                 <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="search……">
                                 <span class="input-group-btn">
@@ -51,7 +51,7 @@
                                         </button>
                                 </span>
                                 </div>
-                        </form>
+                        </form> -->
 
 
    <!-- 以下タブの表示設定 -->
