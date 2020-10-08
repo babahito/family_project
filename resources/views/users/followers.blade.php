@@ -51,8 +51,8 @@
                 </div>
 
               <!-- 検索 -->
-              <div class="search_box">
-                    <form method="GET" action="{{ url("post") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
+              <!-- <div class="search_box">
+                    <form method="GET" action="{{-- url("post") --}}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <input type="text" class="form-control form-control-lg" name="search" placeholder="検索する">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <!-- end -->
 
 
