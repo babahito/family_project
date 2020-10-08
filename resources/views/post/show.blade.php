@@ -6,16 +6,16 @@
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+      <a itemprop="item" href="{{ url('post') }}">
           <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
         </a>
       <meta itemprop="position" content="1" />
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
-          <span itemprop="name">NOTE(ノート)</span>
-        </a>
+        
+          <span itemprop="name">MY NOTE(マイノート)</span>
+        
       <meta itemprop="position" content="2" />
     </li>
   </ol>
@@ -24,8 +24,7 @@
 
 <main>
 
-    <h2>NOTE</h2>
-            <h3>ノート</h3>
+    <h2>MY NOTE</h2>
            <!-- カード部分 -->
            <div class="card_box">
               <div class="row">
@@ -37,17 +36,17 @@
 
                             <div class="card">
                                 <div class="row no-gutters">
-                                    <div class="col-lg-4">
-                                        <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                    <div class="col-md-4">
+                                        <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%;object-fit: cover;">
                                         <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: auto;object-fit: cover;"> -->
                                     </div>
-                                    <div class="col-lg-8">
+                                    <div class="col-md-8">
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <span class="card_title">{{ $item->title}}</span>
                                             </h4>
                                             @if( Auth::id() === $item->user_id )
-                                                        <a href="{{ url("/post/" . $item->id . "/edit") }}">
+                                                        <a href="{{ url("/post/" . $item->id . "/edit") }}" class="text-dark">
                                                                 <i class="far fa-edit up_btn"></i>
                                                         </a>
                                                         <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
@@ -65,9 +64,10 @@
                                                 :authorized='@json(Auth::check())'
                                                 endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                             </article-like>
-                                                <p class="card-text">投稿者：{{ $item->user->name }}</p>
+                                                
                                                 <p class="card-text">{{ $item->body }}</p>
-                                                <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
+                                                <p class="card-text">投稿者：{{ $item->user->name }}</p>
+                                                <!-- <p class="card-text">{{-- $item->attribute_id --}}さんへメッセージ</p> -->
                                                 <p class="card-text">投稿日時：{{ $item->sendtime }}</p>
                                         </div>
                                     </div>

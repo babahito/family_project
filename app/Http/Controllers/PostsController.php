@@ -32,10 +32,10 @@ use InterventionImage;
         {
             $keyword = $request->get("search");
 
-            $perPage = 25;
+            $perPage = 5;
     
             if (!empty($keyword)) {
-                $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->orWhere("attribute_id", "LIKE", "%$keyword%")->orWhere("status", "LIKE", "%$keyword%")->paginate($perPage);
+                $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%")->orWhere("user_id", "LIKE", "%$keyword%")->orWhere("photo", "LIKE", "%$keyword%")->orWhere("attribute_id", "LIKE", "%$keyword%")->orWhere("status", "LIKE", "%$keyword%");
                 // $post = Post::where("id","LIKE","%$keyword%")->orWhere("title", "LIKE", "%$keyword%")->orWhere("body", "LIKE", "%$keyword%");
                 
             } else {

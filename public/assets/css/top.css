@@ -82,6 +82,7 @@ h2 {
     }
 }
 
+
 /* ============================================ */
 /* ==================ボタン共通=================== */
 /* ============================================ */
@@ -438,6 +439,12 @@ img.miniimage { display: none; }   /* ※1 */
     height:100px;
     width:100px;
 }
+.note_title{
+    margin-left:5px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
 /* ファミリーノート */
 /* .family_top{
     display:flex;
@@ -455,6 +462,7 @@ img.miniimage { display: none; }   /* ※1 */
             border-radius: 50%;
             /* margin-right: 5px; */
         }
+
         .effect-color {
             max-width:130px;
             margin-right: 5px;
@@ -466,6 +474,29 @@ img.miniimage { display: none; }   /* ※1 */
             }
         }
            .effect-color img {
+            opacity: 1;
+            -webkit-transition: .3s ease-in-out;
+            transition: .3s ease-in-out;
+            box-shadow: inset 0px 3px 0 rgba(255,255,255,0.3), 0 3px 3px rgba(0, 0, 0, 0.5);
+            
+          }
+
+          .person_icon_mini{
+            max-width:80px;
+            border-radius: 50%;
+            /* margin-right: 5px; */
+        }
+          .effect-color_mini {
+            max-width:80px;
+            margin-right: 5px;
+            border-radius: 50%;
+          } 
+          @media screen and (max-width: 640px) {/* 640px以下*/
+            .effect-color_mini{
+                margin:0 auto;
+            }
+        }
+           .effect-color_mini img {
             opacity: 1;
             -webkit-transition: .3s ease-in-out;
             transition: .3s ease-in-out;

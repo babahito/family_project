@@ -14,9 +14,9 @@
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+        
           <span itemprop="name">NOTE(ノート)</span>
-        </a>
+        
       <meta itemprop="position" content="2" />
     </li>
   </ol>
@@ -27,8 +27,8 @@
     <div class="row mb-3">
         <div class="col-lg-9">
             <h2>NOTE</h2>
-            <h3>{{ $user->name }}ノート</h3>
         </div>
+        
         <div class="col-lg-3">
           @if( Auth::id() !== $user->id )
                 <follow-button
@@ -42,71 +42,46 @@
         </div>
     </div>
 
-        <!-- 他者紹介 -->
-        <div class="row">
-            <div class="col-lg-6">
+
+        
+            <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-xs-5">
-                    @if(!isset($user->user_detail->photo))
-                      <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
-                    @else
-                    <img src="data:image/png;base64,{{ $user->user_detail->photo }}" class="person_icon">
-                      <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
-                    @endif
+                    <div class="col-xs-12 col-sm-6 col-md-3 mb-3 profile_box">
+                      <figure class="effect-color">
+                        @if(!isset($user->user_detail->photo))
+                          <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
+                        @else
+                          <img src="data:image/png;base64,{{ $user->user_detail->photo }}" class="person_icon">
+                          <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                        @endif
+                      </figure>
+                      <p>
+                        @if(!isset($user->user_detail->birthday))
+                          <p class="card-text">----</p>
+                        @else
+                          <p class="card-text">Birthday:<br>{{ $user->user_detail->birthday}}</p>
+                        @endif
+                      </p>
+
                     </div>
-                    <div class="col-xs-8">
-                        <div class="card-body">
-                            <h4 class="cartitle">{{ $user->name }}さん</h4>
-                            @if(!isset($user->user_detail->birthday))
-                              <p class="card-text">----</p>
-                            @else
-                              <p class="card-text">Birthday:<br>{{ $user->user_detail->birthday}}</p>
-                            @endif
-                            @if(!isset($user->user_detail->comment))
-                              <p class="card-text">----</p>
-                            @else
-                            <p class="card-text">comment:<br>{{ $user->user_detail->comment}}</p>
-                            @endif
+                    <div class="col-xs-12 col-sm-6 col-md-9 mb-3">
+                        <div>
+                            <h4>{{ $user->name }}</h4>
+                              <button type="button" class="gray_btn btn-sm mr-1">
+                                <a href="{{ route('users.followings', ['name' => $user->name]) }}"  class="text-muted">{{ $user->count_followings }}  フォロー</a>
+                              </button>
+                              <button type="button" class="gray_btn btn-sm mr-1">
+                                <a href="{{ route('users.followers', ['name' => $user->name]) }}" class="text-muted">{{ $user->count_followers }} フォロワー</a>
+                              </button>
+                              @if(!isset($user->user_detail->comment))
+                                  <p>------no comment--------</p>
+                              @else
+                                <p>{{ $user->user_detail->comment}}</p>
+                              @endif
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">        
-                  <p>
-                  <a href="{{ route('users.followings', ['name' => $user->name]) }}"  class="text-muted">{{ $user->count_followings }}  フォロー</a>
-                  </p>
-                  <p>
-                    @foreach($user->followers as $follower)
-                      {{$follower->name}},
-                    @endforeach
-                  </p>
-                <p><a href="{{ route('users.followers', ['name' => $user->name]) }}" class="text-muted">{{ $user->count_followers }} フォロワー</a></p>
-                <p>
-                    @foreach($user->followings as $following)
-                      {{$following->name}},
-                    @endforeach
-                </p>
-            </div>
-        </div>
-        
-
-
-            <!-- 検索 -->
-            <!-- <div class="search_box">
-              <form method="GET" action="{{-- url("post") --}}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
-                  <div class="form-row">
-                      <div class="form-group col-md-6">
-                          <input type="text" class="form-control form-control-lg" name="search" placeholder="検索する">
-                      </div>
-                      <div class="col-auto">
-                          <button type="submit" class="btn btn-light">検索</button>
-                      </div>
-                  </div>
-              </form>
-            </div> -->
-            <!-- end -->
-
-
 
             <!-- カード部分 -->
             <div class="card_box">
@@ -121,11 +96,9 @@
                                 <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                                 <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                     <div class="card-body">
-                                        <h4 class="card-title">
-                                        <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">
-                                                <span class="card_title">{{ $item->title}}</span>
-                                                </a>
-                                        </h4>
+                                    <p class="note_title">
+                                        <a href="{{ url("/post/" . $item->id) }}" class="stretched-link text-dark">{{ $item->title}} </a>
+                                    </p>
 
                                         <article-like
                                             :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
@@ -133,8 +106,8 @@
                                             :authorized='@json(Auth::check())'
                                             endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                         </article-like>
-                                            <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
-                                            <p class="card-text">{{ $item->sendtime }}</p>
+                                            <!-- <p class="card-text">{{-- $item->attribute_id --}}さんへメッセージ</p> -->
+                                            <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                                     </div>
                             </div>
                     
@@ -143,9 +116,10 @@
                             <div class="card">
                               <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
-                                <h4 class="card-title">メッセージ送信中。おまちください</h4>
+                              <p class="note_title">メッセージ送信中・・・</p>
                               
                                 <p class="card-text">到着日時：{{ $item->sendtime }}</p>
+                            </div>
                             </div>
                     @endif
                    
@@ -155,7 +129,9 @@
           </div>
           </div>
           <!-- end -->
-
+          <div class="d-flex justify-content-center">
+                    {{ $users->links() }}
+                </div>
 </main>
 @endsection
 

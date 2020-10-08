@@ -12,9 +12,9 @@
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+        
           <span itemprop="name">MY NOTE(マイノート)</span>
-        </a>
+        
       <meta itemprop="position" content="2" />
     </li>
   </ol>
@@ -34,9 +34,9 @@
         </div>
    
           <!-- ノートをかく -->
-          
+          <div class="row">
         @foreach($user_detail as $item)
-        <div class="row">
+        
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-3 mb-3 profile_box">
@@ -49,7 +49,7 @@
                         <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
                         @foreach($user_detail as $user_de)
                         </figure>   
-                            <p class="profile"><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}">プロフィール変更</a></p>
+                            <p class="profile"><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}" class="text-danger">プロフィール変更</a></p>
                             
                         @endforeach
                     </div>
@@ -57,8 +57,8 @@
                         <div>
                             <h4>{{$auth->name}}</h4>
                             <button type="button" class="gray_btn btn-sm mr-1">
-                        <a href="{{ route('users.followings', ['name' => $auth->name]) }}"  class="text-dark">{{ $auth->count_followings }}  フォロー</a>
-                        </button>
+                                <a href="{{ route('users.followings', ['name' => $auth->name]) }}"  class="text-dark">{{ $auth->count_followings }}  フォロー</a>
+                                </button>
                         <button type="button" class="gray_btn btn-sm">
                         <a href="{{ route('users.followers', ['name' => $auth->name]) }}"   class="text-dark">{{ $auth->count_followers }} フォロワー</a>
                         </button>
@@ -79,16 +79,14 @@
 
 
 
-
-
             <!-- 検索 -->
             <div class="search_box">
               <form method="GET" action="{{ url("post") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                   <div class="row">
-                      <div class="col-xs-6 col-sm-8 col-md-10 mb-3">
+                      <div class="col-xs-6 col-sm-8 col-md-10">
                           <input type="text" class="form-control form-control-md" name="search" placeholder="検索する">
                       </div>
-                      <div class="col-xs-6 col-sm-4 col-md-2">
+                      <div class="col-xs-6 col-sm-4 col-md-2 mb-4">
                           <button type="submit"  class="gray_btn text-dark px-2 search_btn btn-sm">検索</button>
                       </div>
                   </div>
@@ -111,13 +109,9 @@
                                 
                                 <!-- <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                     <div class="card-body">
-                                        <h4 class="card-title">
-                                        <a href="{{ url("/post/" . $item->id) }}" class="stretched-link">
-                                                <span class="card_title">{{ $item->title}}</span>
-                                                </a>
-                                        </h4>
+                                    <p class="note_title"><a href="{{ url("/post/" . $item->id) }}" class="stretched-link text-dark">{{ $item->title}}</a></p>
                                         @if( Auth::id() === $item->user_id )
-                                                    <a href="{{ url("/post/" . $item->id . "/edit") }}">
+                                                    <a href="{{ url("/post/" . $item->id . "/edit") }}" class="text-dark">
                                                             <i class="far fa-edit up_btn"></i>
                                                     </a>
                                                     <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
@@ -135,7 +129,7 @@
                                             :authorized='@json(Auth::check())'
                                             endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                         </article-like>
-                                            <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
+                                            <!-- <p class="card-text">{{-- $item->attribute_id --}}さんへメッセージ</p> -->
                                             <p class="card-text">送信日時：{{ $item->sendtime }}</p>
                                     </div>
                             </div>
@@ -145,7 +139,7 @@
                             <div class="card">
                               <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
-                                <h4 class="card-title">メッセージ送信中。おまちください</h4>
+                              <p class="note_title">メッセージ送信中・・・</p>
                                 @if( Auth::id() === $item->user_id )
                                                     <a href="{{ url("/post/" . $item->id . "/edit") }}">
                                                             <i class="far fa-edit up_btn"></i>
@@ -161,15 +155,19 @@
                                             @endif
                                 <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                             </div>
+                            </div>
                     @endif
                    
                   </div>
                   @endforeach
                   
               </div>  
-          </div>
+       
           <!-- end -->
-         
+                 <!-- ページネーション -->
+                 <div class="d-flex justify-content-center">
+                    {{ $post->links() }}
+                </div>
        
 </main>
 

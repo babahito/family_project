@@ -5,21 +5,21 @@
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+      <a itemprop="item" href="{{ url('post') }}">
           <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
         </a>
       <meta itemprop="position" content="1" />
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+        <a itemprop="item" href="{{ url('post') }}">
           <span itemprop="name">MY NOTE(マイノート)</span>
         </a>
       <meta itemprop="position" content="2" />
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+        
           <span itemprop="name">ノートをかく</span>
         </a>
       <meta itemprop="position" content="2" />
@@ -34,7 +34,6 @@
         <div class="row mb-3">
             <div class="col-lg-9">
                 <h2>MY NOTE</h2>
-                <h3>ノートをかく</h3>
             </div>
 
         </div>
