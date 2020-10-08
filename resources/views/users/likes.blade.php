@@ -56,6 +56,19 @@
                                           <span class="card_title">{{ $item->title}}</span>
                                           </a>
                                   </h4>
+                                  @if( Auth::id() === $item->user_id )
+                                                    <a href="{{ url("/post/" . $item->id . "/edit") }}">
+                                                            <i class="far fa-edit up_btn"></i>
+                                                    </a>
+                                                    <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
+                                                        {{ csrf_field() }}
+                                                        
+                                                        {{ method_field("DELETE") }}
+                                                        <button type="submit" title="Delete User" onclick="return confirm('削除してもよろしいですか')" class="up_btn">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>    
+                                                    </form>
+                                            @endif
                                   <article-like
                                       :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
                                       :initial-count-likes='@json($item->count_likes)'

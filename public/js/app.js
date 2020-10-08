@@ -6842,7 +6842,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.btn_p[data-v-2ebfe212]{\r\n  z-index: 2;\r\n  position:relative;\n}\n.like_font[data-v-2ebfe212]{\r\n    font-size: 1.4rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.btn_p[data-v-2ebfe212]{\r\n  z-index: 2;\r\n  position:relative;\n}\n.like_font[data-v-2ebfe212]{\r\n    font-size: 0.9rem;\n}\r\n", ""]);
 
 // exports
 
@@ -39505,7 +39505,7 @@ var render = function() {
         _c(
           "i",
           {
-            staticClass: "fas fa-heart mr-1 fa-2x heart_gray",
+            staticClass: "fas fa-heart mr-1 heart_gray",
             class: { "orange-text": this.isLikedBy },
             on: { click: _vm.clickLike }
           },

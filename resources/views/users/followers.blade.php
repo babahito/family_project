@@ -41,7 +41,7 @@
                                             <img src="data:image/png;base64,{{ $person->user_detail->photo }}" class="person_icon">
                                             <!-- <img src="{{-- asset('storage/' .  $person->user_detail->photo) --}}" class="person_icon"> -->
                                         @endif
-                                            <figure class="effect-color">
+                                        </figure>
                                         </a>
                                     </li>
                                 </ul>

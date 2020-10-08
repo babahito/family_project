@@ -85,11 +85,11 @@
                                                 <div class="card-body">
                                                         <h4 class="card-title">{{$kazoku->family_name}}</h4>
                                                          @if( Auth::id() === $kazoku->user_id )
-                                                                <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><i class="far fa-edit fa-2x"></i></a>
+                                                                <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><i class="far fa-edit"></i></a>
                                                                 <form method="POST" action="/kazoku/{{ $kazoku->id }}" class="form-horizontal" style="display:inline;">
                                                                         {{ csrf_field() }}
                                                                         {{ method_field("DELETE") }}
-                                                                        <button type="submit"  title="Delete User" onclick="return confirm('削除してもよろしいでしょうか')"><i class="fas fa-trash fa-2x"></i></button>   
+                                                                        <button type="submit"  title="Delete User" onclick="return confirm('削除してもよろしいでしょうか')"><i class="fas fa-trash"></i></button>   
                                                                 </form>
                                                          @endif
                                                         
@@ -138,11 +138,11 @@
                                                 <div class="card-body">
                                                         <h4 class="card-title">{{$kazoku->family_name}}</h4>
                                                          @if( Auth::id() === $kazoku->user_id )
-                                                                <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><i class="far fa-edit fa-2x"></i></a>
+                                                                <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><i class="far fa-edit"></i></a>
                                                                 <form method="POST" action="/kazoku/{{ $kazoku->id }}" class="form-horizontal" style="display:inline;">
                                                                         {{ csrf_field() }}
                                                                         {{ method_field("DELETE") }}
-                                                                        <button type="submit"  title="Delete User" onclick="return confirm('削除してもよろしいでしょうか')"><i class="fas fa-trash fa-2x"></i></button>   
+                                                                        <button type="submit"  title="Delete User" onclick="return confirm('削除してもよろしいでしょうか')"><i class="fas fa-trash"></i></button>   
                                                                 </form>
                                                          @endif
                                                         

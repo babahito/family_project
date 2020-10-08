@@ -4,7 +4,7 @@
       type="button"
       class="btn m-0 p-1 shadow-none btn_p"
     >
-      <i class="fas fa-heart mr-1 fa-2x heart_gray"
+      <i class="fas fa-heart mr-1 heart_gray"
          :class="{'orange-text':this.isLikedBy}"
          @click="clickLike"
       >
@@ -71,7 +71,7 @@
   position:relative;
 }
 .like_font{
-    font-size: 1.4rem;
+    font-size: 0.9rem;
 
 }
 </style>

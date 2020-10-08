@@ -5,7 +5,7 @@
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+      <a itemprop="item" href="{{ url('post') }}">
           <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
         </a>
       <meta itemprop="position" content="1" />
@@ -23,55 +23,54 @@
 
 
 <main>
-    <div class="row mb-3">
-        <div class="col-lg-9">
-            <h2>MY NOTE</h2>
-            <h3>マイノート</h3>
+  
+        <div class="post_note_main">
+            <div>
+                <h2>MY NOTE</h2>
+            </div>
+            <div>
+                <a href="/post/create"><button class="pink_btn btn-lg"><i class="fas fa-plus"></i>&nbsp;NOTE</button></a>
+            </div>
         </div>
-        <div class="col-lg-3">
-            <a href="/post/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;ノートをかく</div></a>
-
-        </div>
-    </div>
+   
           <!-- ノートをかく -->
           
         @foreach($user_detail as $item)
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-xs-5">
+                    <div class="col-xs-12 col-sm-6 col-md-3 mb-3 profile_box">
+                        <figure class="effect-color">
                         @if(!isset($item->photo))
                             <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
                         @else
-                        <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon" style="margin-left:-5px;">
+                        <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon">
                         @endif
                         <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
                         @foreach($user_detail as $user_de)
-                      
-                            <p><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}">プロフィール変更</a></p>
+                        </figure>   
+                            <p class="profile"><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}">プロフィール変更</a></p>
                             
                         @endforeach
                     </div>
-                    <div class="col-xs-5">
-                        <div class="card-body">
-                            <h4 class="cartitle">{{$auth->name}}さん</h4>
+                    <div class="col-xs-12 col-sm-6 col-md-9 mb-3">
+                        <div>
+                            <h4>{{$auth->name}}</h4>
+                            <button type="button" class="gray_btn btn-sm mr-1">
+                        <a href="{{ route('users.followings', ['name' => $auth->name]) }}"  class="text-dark">{{ $auth->count_followings }}  フォロー</a>
+                        </button>
+                        <button type="button" class="gray_btn btn-sm">
+                        <a href="{{ route('users.followers', ['name' => $auth->name]) }}"   class="text-dark">{{ $auth->count_followers }} フォロワー</a>
+                        </button>
                             @if(!isset($item->comment))
-                                <p class="card-text">-----</p>
+                                <p>-----</p>
                             @else
-                            <p class="card-text">{{ $item->comment}}</p>
+                            <p>{{ $item->comment}}</p>
                             @endif
                             
                         </div>
                     </div>
-                    
-                    <div class="col-xs-3">
-                        <button type="button" class="btn btn-light btn-sm">
-                        <a href="{{ route('users.followings', ['name' => $auth->name]) }}"  class="text-muted">{{ $auth->count_followings }}  フォロー一覧</a>
-                        </button>
-                        <button type="button" class="btn btn-light btn-sm">
-                        <a href="{{ route('users.followers', ['name' => $auth->name]) }}" class="text-muted">{{ $auth->count_followers }} フォロワー</a>
-                        </button>
-                  </div>
+
                 </div>
             </div>
 
@@ -85,12 +84,12 @@
             <!-- 検索 -->
             <div class="search_box">
               <form method="GET" action="{{ url("post") }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
-                  <div class="form-row">
-                      <div class="form-group col-md-6">
-                          <input type="text" class="form-control form-control-lg" name="search" placeholder="検索する">
+                  <div class="row">
+                      <div class="col-xs-6 col-sm-8 col-md-10 mb-3">
+                          <input type="text" class="form-control form-control-md" name="search" placeholder="検索する">
                       </div>
-                      <div class="col-auto">
-                          <button type="submit" class="btn btn-light">検索</button>
+                      <div class="col-xs-6 col-sm-4 col-md-2">
+                          <button type="submit"  class="gray_btn text-dark px-2 search_btn btn-sm">検索</button>
                       </div>
                   </div>
               </form>
@@ -102,7 +101,7 @@
             <div class="card_box">
               <div class="row">
               @foreach($post as $item)
-                  <div class="col-lg-4 mb-5">
+                  <div class="col-xs-12 col-sm-6 col-md-4 mb-5">
 
                         <!-- 表示の場合 -->
                         @if($day>$item->sendtime)
@@ -117,17 +116,19 @@
                                                 <span class="card_title">{{ $item->title}}</span>
                                                 </a>
                                         </h4>
+                                        @if( Auth::id() === $item->user_id )
                                                     <a href="{{ url("/post/" . $item->id . "/edit") }}">
-                                                            <i class="far fa-edit fa-2x up_btn"></i>
+                                                            <i class="far fa-edit up_btn"></i>
                                                     </a>
                                                     <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
                                                         {{ csrf_field() }}
                                                         
                                                         {{ method_field("DELETE") }}
                                                         <button type="submit" title="Delete User" onclick="return confirm('削除してもよろしいですか')" class="up_btn">
-                                                            <i class="fas fa-trash fa-2x"></i>
+                                                            <i class="fas fa-trash"></i>
                                                         </button>    
                                                     </form>
+                                            @endif
                                         <article-like
                                             :initial-is-liked-by='@json($item->isLikedBy(Auth::user()))' 
                                             :initial-count-likes='@json($item->count_likes)'
@@ -135,7 +136,7 @@
                                             endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                         </article-like>
                                             <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
-                                            <p class="card-text">{{ $item->sendtime }}</p>
+                                            <p class="card-text">送信日時：{{ $item->sendtime }}</p>
                                     </div>
                             </div>
                     
@@ -145,7 +146,19 @@
                               <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
                                 <h4 class="card-title">メッセージ送信中。おまちください</h4>
-                              
+                                @if( Auth::id() === $item->user_id )
+                                                    <a href="{{ url("/post/" . $item->id . "/edit") }}">
+                                                            <i class="far fa-edit up_btn"></i>
+                                                    </a>
+                                                    <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
+                                                        {{ csrf_field() }}
+                                                        
+                                                        {{ method_field("DELETE") }}
+                                                        <button type="submit" title="Delete User" onclick="return confirm('削除してもよろしいですか')" class="up_btn">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>    
+                                                    </form>
+                                            @endif
                                 <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                             </div>
                     @endif

@@ -48,14 +48,14 @@
                                             </h4>
                                             @if( Auth::id() === $item->user_id )
                                                         <a href="{{ url("/post/" . $item->id . "/edit") }}">
-                                                                <i class="far fa-edit fa-2x up_btn"></i>
+                                                                <i class="far fa-edit up_btn"></i>
                                                         </a>
                                                         <form method="POST" action="/post/{{ $item->id }}" class="form-horizontal" style="display:inline;">
                                                             {{ csrf_field() }}
                                                             
                                                             {{ method_field("DELETE") }}
                                                             <button type="submit" title="Delete User" onclick="return confirm('削除してもよろしいですか')" class="up_btn">
-                                                                <i class="fas fa-trash fa-2x"></i>
+                                                                <i class="fas fa-trash"></i>
                                                             </button>    
                                                         </form>
                                             @endif
@@ -65,10 +65,10 @@
                                                 :authorized='@json(Auth::check())'
                                                 endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                             </article-like>
-                                                <p class="card-text">{{ $item->user->name }}が書いた</p>
+                                                <p class="card-text">投稿者：{{ $item->user->name }}</p>
                                                 <p class="card-text">{{ $item->body }}</p>
                                                 <p class="card-text">{{ $item->attribute_id }}さんへメッセージ</p>
-                                                <p class="card-text">{{ $item->sendtime }}</p>
+                                                <p class="card-text">投稿日時：{{ $item->sendtime }}</p>
                                         </div>
                                     </div>
                                 </div>
