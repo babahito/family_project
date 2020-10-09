@@ -84,13 +84,13 @@ use InterventionImage;
         public function store(Request $request)
         {
             $this->validate($request, [
-				"title" => "string", //string('title')->nullable()
-				"body" => " string", //text('body')->nullable()
+				"title" => "nullable", //string('title')->nullable()
+				"body" => "nullable", //text('body')->nullable()
 				"user_id" => "nullable|integer", //integer('user_id')->nullable()
-				"photo" => "required", //string('photo')->nullable()
+				"photo" => "nullable", //string('photo')->nullable()
 				"attribute_id" => "integer", //integer('attribute_id')
 				"status" => "integer", //integer('status')
-				"sendtime" => "required|datetime", //integer('status')
+				"sendtime" => "required|date", //integer('status')
 
             ]);
             
