@@ -88,11 +88,11 @@
                 <div class="row">
                 @foreach($kazokus as $kazoku)
             
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                 <!-- 表示非表示を設定 -->
                         <div class="card mb-2" style="max-width: 500px;">
                                 <div class="row no-gutters">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                                 <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post dark-text">
                                                         <figure class="effect-color">
                                                                 @if(!isset($kazoku->photo))
@@ -111,7 +111,7 @@
 
                                       
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-8">
                                                 <div class="card-body">
                                                 <p class="note_title">{{$kazoku->family_name}}</p>
                                                          @if( Auth::id() === $kazoku->user_id )
@@ -157,11 +157,11 @@
                   <div class="row">
                 @foreach($kazokuadmin as $kazoku)
             
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                 <!-- 表示非表示を設定 -->
                         <div class="card mb-2" style="max-width: 500px;">
                                 <div class="row no-gutters">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
 
                                         <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post">
                                                 <figure class="effect-color">
@@ -177,7 +177,7 @@
                                         <p class="profile">家族誕生日：{{$kazoku->family_date}}</p>
 
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-8">
                                                 <div class="card-body">
                                                         <p class="note_title">{{$kazoku->family_name}}</p>
                                                          @if( Auth::id() === $kazoku->user_id )

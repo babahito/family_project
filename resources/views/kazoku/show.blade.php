@@ -133,7 +133,7 @@
                             <div class="card">
                               <img src="{{ asset('/assets/images/mirai_note.png') }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
-                                <h4 class="card-title">メッセージ送信中・・・</h4>
+                              <p class="note_title">メッセージ送信中・・・</p>
                                 @if( Auth::id() === $item->user_id )
                                                     <a href="{{ url("/kazokupost/" . $item->id . "/edit") }}">
                                                             <i class="far fa-edit up_btn"></i>
