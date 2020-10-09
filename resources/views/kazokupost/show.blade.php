@@ -59,8 +59,9 @@
                                                         </form>
                                             @endif
    
-                                                <p class="card-text">{{ $kazokupost->user->name }}が書いた</p>
+                                                
                                                 <p class="card-text">{{ $kazokupost->body }}</p>
+                                                <p class="card-text">投稿者：{{ $kazokupost->user->name }}</p>
                                                 <!-- <p class="card-text">{{-- $kazokupost->attribute_id --}}さんへメッセージ</p> -->
                                                 <p class="card-text">投稿日時：{{ $kazokupost->sendtime }}</p>
                                         </div>
