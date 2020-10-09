@@ -80,7 +80,7 @@
             @endforeach
         </div>
         <!-- ページネーション -->
-      <div class="pagination-wrapper"> {!! $users->appends(["search" => Request::get("search")])->render() !!} </div>          
+          
 </main>  
          
         @endsection

@@ -5,14 +5,14 @@
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+      <a itemprop="item" href="{{ url('post') }}">
           <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
         </a>
       <meta itemprop="position" content="1" />
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+        <a itemprop="item"  href="{{ url('kazoku') }}">
           <span itemprop="name">Family(家族)</span>
         </a>
       <meta itemprop="position" content="2" />
@@ -30,7 +30,6 @@
 
         <main>
                 <h2>Family</h2>
-                <h3>ファミリー</h3>
                 <div class="row">
                     <!-- <div class="col-md-12"> -->
                     <div class="col-md-12">
@@ -67,7 +66,7 @@
                                         <input name="family_date" type="date" id="f_date" value="{{old('family_date')}}">
                                     </div>
         
-   
+<!--    
 
                                     <div>
                                         <select name="status">
@@ -76,7 +75,7 @@
 
 
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <p></p>
                                     <div>
                                             <input class="pink_btn" type="submit" value="家族をつくる">

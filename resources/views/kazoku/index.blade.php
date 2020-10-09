@@ -5,16 +5,16 @@
         <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope
         itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+        <a itemprop="item" href="{{ url('post') }}">
                 <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
                 </a>
         <meta itemprop="position" content="1" />
         </li>
         <li itemprop="itemListElement" itemscope
         itemtype="https://schema.org/ListItem">
-                <a itemprop="item" href="#">
+                
                 <span itemprop="name">Family(家族)</span>
-                </a>
+                
         <meta itemprop="position" content="2" />
         </li>
         </ol>
@@ -22,16 +22,34 @@
         <!-- end -->
 
 <main>
-    <div class="row mb-3">
-        <div class="col-lg-6">
+
+
+<!-- <div class="row mb-3">
+        <div class="col-md-8">
+            <div>
                 <h2>Family</h2>
-                <h3>ファミリー</h3>
+            </div>
+            <div class="col-md-2">
+                <a href="/kazoku/create"><button class="pink_btn" ><i class="fas fa-users"></i>&nbsp;家族をつくる</button></a>
+                </div>
+            <div class="col-md-2">
+                <a href="/hello/create"><button class="pink_btn" ><i class="fas fa-paper-plane"></i>&nbsp;家族をさそう</button></a>
+            </div>
         </div>
-        <div class="col-lg-3">
-                <a href="/kazoku/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;家族をつくる</div></a>
+</div> -->
+    <div class="row mb-3">
+        <div class="col-sm-8">
+                <h2>Family</h2>
         </div>
-        <div class="col-lg-3">
-                <a href="/hello/create"><div class="pink_btn" ><i class="fas fa-plus"></i>&nbsp;家族を誘う</div></a>
+        <div class="col-sm-4">
+                <div class="row mb-3">
+                        <div class="col-xs-6 m-2">
+                                <a href="/kazoku/create"><button class="pink_btn"><i class="fas fa-users"></i>&nbsp;家族をつくる</button></a>
+                        </div>
+                        <div class="col-xs-6 m-2">
+                                <a href="/hello/create"><button class="pink_btn"><i class="fas fa-paper-plane"></i>&nbsp;家族をさそう</button></a>
+                        </div>
+                </div>
         </div>
     </div>
 
@@ -75,15 +93,27 @@
                         <div class="card mb-2" style="max-width: 500px;">
                                 <div class="row no-gutters">
                                         <div class="col-lg-6">
-                                        <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post">
-                                        <img src="data:image/png;base64,{{ $kazoku->photo}}"  class="family_icon"> 
-                                                <!-- <img src="{{-- asset('storage/' . $kazoku->photo) --}}" class="family_icon">  -->
-                                                </a>
-                                                <p>家族誕生日：{{$kazoku->family_date}}</p>
+                                                <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post dark-text">
+                                                        <figure class="effect-color">
+                                                                @if(!isset($kazoku->photo))
+                                                                <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
+                                                                @else
+                                                                <img src="data:image/png;base64,{{ $kazoku->photo }}" class="person_icon">
+                                                                @endif
+                                                                <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
+                                                                
+                                                        </figure>
+                                                </a>  
+                                        <p class="profile">家族誕生日：{{$kazoku->family_date}}</p>
+                            
+
+
+
+                                      
                                         </div>
                                         <div class="col-lg-6">
                                                 <div class="card-body">
-                                                        <h4 class="card-title">{{$kazoku->family_name}}</h4>
+                                                <p class="note_title">{{$kazoku->family_name}}</p>
                                                          @if( Auth::id() === $kazoku->user_id )
                                                                 <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><i class="far fa-edit"></i></a>
                                                                 <form method="POST" action="/kazoku/{{ $kazoku->id }}" class="form-horizontal" style="display:inline;">
@@ -93,21 +123,25 @@
                                                                 </form>
                                                          @endif
                                                         
-                                                        <p class="card-text">{{ $kazoku->history }}</p>
-                                                        <p>メンバー：
-                                                                @foreach($kazoku->kazoku_user as $user)
-                                                                <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-                                                                        {{$user->name}}
-                                                                </a>
-                                                                @endforeach
-                                                        </p>
-                                                        <kazoku-like
+                                                         <kazoku-like
                                                                 :initial-is-kazoku-by='@json($kazoku->isKazokuBy(Auth::user()))'
                                                                 :initial-count-kazokus='@json($kazoku->count_kazokus)'
                                                                 :authorized='@json(Auth::check())' 
                                                                 endpoint="{{route('kazokus.like',['kazoku'=>$kazoku])}}"
                                                                 >
                                                         </kazoku-like>
+                                                        <p>メンバー：<br>
+                                                                @foreach($kazoku->kazoku_user as $user)
+                                                                
+                                                                <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
+                                                                <button class="gray_btn btn-sm">
+                                                                        {{$user->name}}
+                                                                </button>
+                                                                </a>
+                                                                
+                                                                @endforeach
+                                                        </p>
+
 
                                                 </div>
                                         </div>
@@ -128,15 +162,24 @@
                         <div class="card mb-2" style="max-width: 500px;">
                                 <div class="row no-gutters">
                                         <div class="col-lg-6">
+
                                         <a href="{{ url("/kazoku/" . $kazoku->id) }}" title="View post">
-                                        <img src="data:image/png;base64,{{ $kazoku->photo}}"  class="family_icon"> 
-                                                <!-- <img src="{{-- asset('storage/' . $kazoku->photo) --}}" class="family_icon">  -->
-                                                </a>
-                                                <p>家族誕生日：{{$kazoku->family_date}}</p>
+                                                <figure class="effect-color">
+                                                        @if(!isset($kazoku->photo))
+                                                        <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
+                                                        @else
+                                                        <img src="data:image/png;base64,{{ $kazoku->photo }}" class="person_icon">
+                                                        @endif
+                                                        <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
+                                                        
+                                                </figure>
+                                        </a> 
+                                        <p class="profile">家族誕生日：{{$kazoku->family_date}}</p>
+
                                         </div>
                                         <div class="col-lg-6">
                                                 <div class="card-body">
-                                                        <h4 class="card-title">{{$kazoku->family_name}}</h4>
+                                                        <p class="note_title">{{$kazoku->family_name}}</p>
                                                          @if( Auth::id() === $kazoku->user_id )
                                                                 <a href="{{ url("/kazoku/" . $kazoku->id . "/edit") }}" title="Edit post"><i class="far fa-edit"></i></a>
                                                                 <form method="POST" action="/kazoku/{{ $kazoku->id }}" class="form-horizontal" style="display:inline;">
@@ -145,22 +188,24 @@
                                                                         <button type="submit"  title="Delete User" onclick="return confirm('削除してもよろしいでしょうか')"><i class="fas fa-trash"></i></button>   
                                                                 </form>
                                                          @endif
-                                                        
-                                                        <p class="card-text">{{ $kazoku->history }}</p>
-                                                        <p>メンバー：
-                                                                @foreach($kazoku->kazoku_user as $user)
-                                                                <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-                                                                        {{$user->name}}
-                                                                </a>
-                                                                @endforeach
-                                                        </p>
-                                                        <kazoku-like
+                                                         <kazoku-like
                                                                 :initial-is-kazoku-by='@json($kazoku->isKazokuBy(Auth::user()))'
                                                                 :initial-count-kazokus='@json($kazoku->count_kazokus)'
                                                                 :authorized='@json(Auth::check())' 
                                                                 endpoint="{{route('kazokus.like',['kazoku'=>$kazoku])}}"
                                                                 >
                                                         </kazoku-like>
+                                                       
+                                                        <p>メンバー：<br>
+                                                                @foreach($kazoku->kazoku_user as $user)
+                                                                <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
+                                                                <button class="gray_btn btn-sm">
+                                                                        {{$user->name}}
+                                                                </button>
+                                                                </a>
+                                                                @endforeach
+                                                        </p>
+
 
                                                 </div>
                                         </div>

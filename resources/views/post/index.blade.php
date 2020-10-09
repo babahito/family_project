@@ -49,7 +49,11 @@
                         <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
                         @foreach($user_detail as $user_de)
                         </figure>   
-                            <p class="profile"><a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}" class="text-danger">プロフィール変更</a></p>
+                            <p class="profile">
+                                <a href="{{ url("/user_detail/" . $user_de->id . "/edit") }}" class="text-danger">
+                                    <button type="button" class="btn-sm btn-warning">プロフィール変更</button>
+                                </a>
+                            </p>
                             
                         @endforeach
                     </div>
@@ -165,9 +169,9 @@
        
           <!-- end -->
                  <!-- ページネーション -->
-                 <div class="d-flex justify-content-center">
-                    {{ $post->links() }}
-                </div>
+                 <!-- <div class="d-flex justify-content-center">
+                    {{-- $post->links() --}}
+                </div> -->
        
 </main>
 

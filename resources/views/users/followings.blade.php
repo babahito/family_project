@@ -25,28 +25,28 @@
         <main>
             <h2>Follower NOTE</h2>
                 <!-- メンバー一覧 -->
-                <div class="row">
-                                @foreach($followings as $person)
-                                <div class="col-xs-12 col-sm-6 col-md-4 mb-5">
-                                        <a href="{{ route('users.show', ['name' => $person->name]) }}">
-                                            <figure class="effect-color_mini">
-                                                @if(!isset($person->user_detail->photo))
-                                                <div style="text-align:center;">
-                                                    <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon_mini">
-                                                    <p style="margin-top:10px;">{{$person->name}}</p>
-                                                </div>
-                                                @else
-                                                <div style="text-align:center;">
-                                                    <img src="data:image/png;base64,{{ $person->user_detail->photo }}" class="person_icon_mini">
-                                                    <p style="margin-top:10px;">{{$person->name}}</p>
-                                                </div>
-                                                @endif
-                                                <!-- <img src="{{-- asset('storage/' .  $person->user_detail->photo) --}}" class="person_icon"> -->
-                                            </figure>
-                                        </a>
-</div>
-                                    @endforeach
-</div>
+                <div class="row" style="margin:0 8px;">
+                    @foreach($followings as $person)
+                        <div style="float:left;padding:3px;">
+                            <a href="{{ route('users.show', ['name' => $person->name]) }}">
+                                <figure class="effect-color_mini">
+                                    @if(!isset($person->user_detail->photo))
+                                    <div style="text-align:center;">
+                                        <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon_mini">
+                                        <p style="margin-top:10px;font-size:0.9rem;" class="text-dark">{{$person->name}}</p>
+                                    </div>
+                                    @else
+                                    <div style="text-align:center;">
+                                        <img src="data:image/png;base64,{{ $person->user_detail->photo }}" class="person_icon_mini">
+                                        <p style="margin-top:10px;font-size:0.9rem;" class="text-dark">{{$person->name}}</p>
+                                    </div>
+                                    @endif
+                                    <!-- <img src="{{-- asset('storage/' .  $person->user_detail->photo) --}}" class="person_icon"> -->
+                                </figure>
+                            </a>
+                        </div>
+                        @endforeach
+                </div>
                 <!-- end -->
 
                 <!-- 検索 -->

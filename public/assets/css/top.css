@@ -458,13 +458,15 @@ img.miniimage { display: none; }   /* ※1 */
         
     } */
         .person_icon{
-            max-width:130px;
+            max-width:110px;
+            height:110px;
             border-radius: 50%;
-            /* margin-right: 5px; */
+            margin-right: 5px;
         }
 
         .effect-color {
-            max-width:130px;
+            max-width:110px;
+            height:110px;
             margin-right: 5px;
             border-radius: 50%;
           } 

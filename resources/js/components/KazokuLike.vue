@@ -1,6 +1,6 @@
 <template>
     <div>
-    <button type="button" class="btn-sm shadow-none border border-primary p-2" 
+    <button type="button" class="btn-sm shadow-none border border-warning p-2" 
     :class="buttonColor"
     @click="clickLike">
             <i
@@ -35,7 +35,7 @@ export default {
     computed:{
       buttonColor(){
         return this.isKazokuBy
-        ? 'bg-primary text-white'
+        ? 'bg-warning text-white'
         : 'bg-white'
       },
       buttonIcon() {

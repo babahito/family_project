@@ -5,23 +5,23 @@
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+      <a itemprop="item" href="{{ url('post') }}">
           <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
         </a>
       <meta itemprop="position" content="1" />
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+      <a itemprop="item" href="{{ url('kazoku') }}">
           <span itemprop="name">Family(家族)</span>
         </a>
       <meta itemprop="position" content="2" />
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+        
           <span itemprop="name">家族を誘う</span>
-        </a>
+        
       <meta itemprop="position" content="2" />
     </li>
   </ol>

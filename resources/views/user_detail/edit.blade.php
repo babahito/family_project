@@ -7,16 +7,16 @@
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="{{ route('users.followings', ['name' => Auth::user()->name]) }}">
+      <a itemprop="item" href="{{ url('post') }}">
           <i class="fas fa-home"></i><span itemprop="name">ホーム</span>
         </a>
       <meta itemprop="position" content="1" />
     </li>
     <li itemprop="itemListElement" itemscope
       itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#">
+        
           <span itemprop="name">MY PAGE(ユーザー設定)</span>
-        </a>
+        
       <meta itemprop="position" content="2" />
     </li>
   </ol>
@@ -28,27 +28,33 @@
 
 <main>
     <h2>My PAGE</h2>
-        <h3>ユーザー設定</h3>
 
               <!-- 本人紹介 -->
-                <div class="row">
-                    <div class="col-lg-6">
+
                         <div class="row">
-                            <div class="col-xs-5">
-                            <img src="data:image/png;base64,{{ $user_detail->photo }}" class="person_icon">
-                            <!-- <img src="{{ asset('storage/' .  $user_detail->photo) }}" class="person_icon"> -->
+                        <div class="col-xs-12 col-sm-6 col-md-3 mb-3 profile_box">
+                            <figure class="effect-color" style="margin:0 auto;">
+                            <!-- 登録がない場合 -->
+                            @if(!isset($user_detail->photo))
+                            <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon" style="margin:5px;">
+                            <!-- 登録がある場合 -->
+                            @else
+                                <img src="data:image/png;base64,{{  $user_detail->photo}}" class="person_icon" style="margin:5px;">
+                                <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                            
+                            @endif
+                            </figure>
+
+
                             </div>
                             <div class="col-xs-8">
                                 <div class="card-body">
-                                    <h4 class="cartitle">{{ $auth->name }}さん</h4>
-                                    <p class="card-text">Birthday:<br>{{ $user_detail->birthday}}</p>
-                                    <p class="card-text">comment:<br>{{ $user_detail->comment}}</p>
+                                    <h4 class="cartitle">{{ $auth->name }}</h4>
+                                    
+                                    <p class="card-text">{{ $user_detail->comment}}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
             <!-- end -->
 
 

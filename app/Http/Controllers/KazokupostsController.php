@@ -127,15 +127,26 @@ class KazokupostsController extends Controller
      
         public function update(Request $request, $id)
         {
-            $this->validate($request, [
-                'title'=>$request->title,
-                'body'=>$request->body,
+            // $this->validate($request, [
+			// 	"title" => "nullable", //string('title')->nullable()
+			// 	"body" => "nullable", //text('body')->nullable()
+			// 	"user_id" => "nullable|integer", //integer('user_id')->nullable()
+			// 	"photo" => "nullable", //string('photo')->nullable()
+			// 	"attribute_id" => "nullable|integer", //integer('attribute_id')
+			// 	"status" => "nullable|integer", //integer('status')
 
-                'user_id'=>Auth::user()->id,
-                'kazokupost_id'=>$request->session()->get('id'),
-                'attribute_id'=>$request->attribute_id,
-                'status'=>$request->status,
-                'sendtime'=>$request->sendtime,
+            // ]);
+
+
+            $this->validate($request, [
+                'title'=>"nullable",
+                'body'=>"nullable",
+
+                'user_id'=>"nullable",
+                'kazokupost_id'=>"nullable",
+                // 'attribute_id'=>$request->attribute_id,
+                // 'status'=>$request->status,
+                'sendtime'=>"nullable",
      
             ]);
             $requestData = $request->all();
@@ -143,7 +154,7 @@ class KazokupostsController extends Controller
             $kazokupost = Kazokupost::findOrFail($id);
             $kazokupost->update($requestData);
      
-            return redirect("kazokupost")->with("flash_message", "mail_received updated!");
+            return redirect("kazokupost/$id")->with("flash_message", "mail_received updated!");
         }
 
 

@@ -75,7 +75,7 @@
         </div>
 
         <a href="{{ $urls['hi'] }}"><button class="pink_btn">参加する</button></a>
-        <!-- {{-- $urls['hi'] --}} -->
+        {{ $urls['hi'] }}
         <!-- <a href="{{-- $urls['bye'] --}}"><button class="gray_btn">断る</button></a>  -->
     </main> 
 </body>

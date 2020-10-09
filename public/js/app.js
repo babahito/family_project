@@ -2246,7 +2246,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     buttonColor: function buttonColor() {
-      return this.isKazokuBy ? 'bg-primary text-white' : 'bg-white';
+      return this.isKazokuBy ? 'bg-warning text-white' : 'bg-white';
     },
     buttonIcon: function buttonIcon() {
       return this.isKazokuBy ? 'fas fa-user-check' : 'fas fa-user-plus';
@@ -39606,7 +39606,7 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "btn-sm shadow-none border border-primary p-2",
+        staticClass: "btn-sm shadow-none border border-warning p-2",
         class: _vm.buttonColor,
         attrs: { type: "button" },
         on: { click: _vm.clickLike }
