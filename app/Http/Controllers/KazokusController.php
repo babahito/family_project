@@ -78,15 +78,18 @@ class KazokusController extends Controller
    {
        $this->validate($request, [
            "user_id" => "nullable|integer", //integer('user_id')
-           "family_name" => "nullable|string", //integer('received_user_id')
-           "famil_date" => "nullable|date", //date('received_day')
+ 
+           "family_name" => "required|string", //integer('received_user_id')
+           "history" => "required|string", //integer('received_user_id')
+           "photo" => "required",
+           "famil_date" => "required|date", //date('received_day')
            "status" => "nullable|integer", //integer('received_life')
-           "history" => "nullable|string", //integer('received_user_id')
+
 
        ]);
             // ====画像ファイルの保存=====
             $validator = Validator::make($request->all(), [
-                'photo' => 'nullable|max:5000' //動画の容量を決める->5MB
+                'photo' => 'required|max:5000' //動画の容量を決める->5MB
             ]);
 
             //バリデーション:エラー

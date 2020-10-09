@@ -60,7 +60,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="body">ノート</label>
-                                                <textarea name="body" id="body" value="{{old('body')}}" rows="4" class="form-control"></textarea>
+                                                <textarea name="body" id="body" value="{{old('body')}}" rows="4" class="form-control" requied></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="photo">写真をえらぶ </label>

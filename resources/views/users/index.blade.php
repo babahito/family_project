@@ -46,7 +46,7 @@
             <div class=" col-sm-6 col-md-4 mb-3">
                 <div class="card mb-3">
                     <div class="row no-gutters">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <figure class="effect-color" style="margin:0 auto;">
                             <!-- 登録がない場合 -->
                             @if(!isset($user->user_detail->photo))
@@ -60,7 +60,7 @@
                             @endif
                             </figure>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-8 pb-2">
                           <div class="card-body">
                             <p class="note_title">
                                 <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">{{ $user->name }}</a>

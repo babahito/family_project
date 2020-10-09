@@ -484,12 +484,14 @@ img.miniimage { display: none; }   /* ※1 */
           }
 
           .person_icon_mini{
-            max-width:80px;
+            width:80px;
+            height:80px;
             border-radius: 50%;
             /* margin-right: 5px; */
         }
           .effect-color_mini {
             max-width:80px;
+            height:80px;
             margin-right: 5px;
             border-radius: 50%;
           } 

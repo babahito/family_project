@@ -55,11 +55,11 @@ class KazokupostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "title" => "nullable", //string('title')->nullable()
-            "body" => "nullable", //text('body')->nullable()
+            "title" => "string", //string('title')->nullable()
+            "body" => "string", //text('body')->nullable()
             "user_id" => "nullable|integer", //integer('user_id')->nullable()
             "kazokupost_id" => "nullable|integer", //integer('user_id')->nullable()
-            "photo" => "nullable", //string('photo')->nullable()
+            "photo" => "required", //string('photo')->nullable()
             "attribute_id" => "nullable|integer", //integer('attribute_id')
             "status" => "nullable|integer", //integer('status')
             "sendtime" => "nullable|date", //integer('status')
@@ -68,7 +68,7 @@ class KazokupostsController extends Controller
         
         // ====画像ファイルの保存=====
                 $validator = Validator::make($request->all(), [
-                    'photo' => 'max:5000' //動画の容量を決める->5MB
+                    'photo' => 'required|max:5000' //動画の容量を決める->5MB
                 ]);
 
                 // //バリデーション:エラー
