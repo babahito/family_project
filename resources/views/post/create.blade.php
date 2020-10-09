@@ -66,10 +66,10 @@
                                                 <label for="photo">写真をえらぶ </label>
                                                 <input name="photo" type="file" id="photo" value="{{old('photo')}}"　class="form-control-file" >
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="exampleFormControlSelect2">誰におくる</label>
-                                                {{ Form::select('attribute_id', $client_id_loop,)}}
-                                            </div>
+                                                {{-- Form::select('attribute_id', $client_id_loop,)--}}
+                                            </div> -->
                                             <div>
                                                 <label for="sendtime">おくる日時: </label>
                                                     <input name="sendtime" type="datetime-local" id="sendtime" value="{{old('sendtime')}}">

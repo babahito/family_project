@@ -18,5 +18,9 @@ class Kazokupost extends Model
             return $this->belongsToMany('App\Kazoku','kposts');
     
         }
+
+        public function user(){
+            return $this->belongsTo('App\User');
+        }
     
 }
