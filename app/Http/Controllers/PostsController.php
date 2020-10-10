@@ -154,6 +154,7 @@ use InterventionImage;
             }
 
 
+
             $file=$request->file('photo');
             $filename = Storage::disk('s3')->put('/post',$file, 'public');
 
