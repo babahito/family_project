@@ -80,13 +80,10 @@ class KazokupostsController extends Controller
         // ===========セッションID受け取り(家族ID)
             $request->session()->get('id');
         // ================画像保存(S3)======================
-                // $image = $request->file('photo');
-                // $disk = Storage::disk('local');
-                // $path = $disk->put('public' ,$image );
-                // // ファイル名のみ
-                // $filename = pathinfo($path,  PATHINFO_BASENAME);
-
-        $image = base64_encode(file_get_contents($request->photo));
+            $file=$request->file('photo');
+            $image = Storage::disk('s3')->put('/post',$file, 'public');
+        // ================heroku======================
+        // $image = base64_encode(file_get_contents($request->photo));
         $requestData = $request->all();
         Kazokupost::create([
        

@@ -37,8 +37,8 @@
                             <div class="card">
                                 <div class="row no-gutters">
                                     <div class="col-lg-4">
-                                    <img src="data:image/png;base64,{{ $kazokupost->photo }}"  class="card-img-top"  style="width:100%;object-fit: cover;">
-                                       
+                                    <!-- <img src="data:image/png;base64,{{-- $kazokupost->photo --}}"  class="card-img-top"  style="width:100%;object-fit: cover;"> -->
+                                    <img class="rounded" src="{{ Storage::disk('s3')->url($kazokupost->photo) }}"  class="card-img-top"  style="width:100%;object-fit: cover;">
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="card-body">
