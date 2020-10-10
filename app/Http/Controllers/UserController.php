@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get("search");
-        $perPage = 6;
+        $perPage = 50;
 
 
 
@@ -58,11 +58,11 @@ class UserController extends Controller
     }
 
 
-    public function show(Request $request,string $name)
+    public function show(Request $request,string $id)
     {
         $perPage = 6;
         $users = User::paginate($perPage);  
-        $user = User::where('name', $name)->first();
+        $user = User::where('id', $id)->first();
         $post = $user->posts->sortByDesc('created_at');
         $day=Carbon::now();
         $sendtimes=Post::select('sendtime')->get();

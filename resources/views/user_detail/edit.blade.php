@@ -39,8 +39,8 @@
                             <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon" style="margin:5px;">
                             <!-- 登録がある場合 -->
                             @else
-                                <img src="data:image/png;base64,{{  $user_detail->photo}}" class="person_icon" style="margin:5px;">
-                                <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                                <!-- <img src="data:image/png;base64,{{-- $user_detail->photo--}}" class="person_icon" style="margin:5px;"> -->
+                                <img src="{{ Storage::disk('s3')->url($user_detail->photo) }}"  class="person_icon" style="margin:5px;">
                             
                             @endif
                             </figure>

@@ -44,9 +44,10 @@
                         @if(!isset($item->photo))
                             <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
                         @else
-                        <img src="data:image/png;base64,{{ $item->photo }}" class="person_icon">
+                        <img src="{{ Storage::disk('s3')->url($item->photo) }}"  class="person_icon">
+                        <!-- <img src="data:image/png;base64,{{-- $item->photo --}}" class="person_icon"> -->
                         @endif
-                        <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
+ 
                         @foreach($user_detail as $user_de)
                         </figure>   
                             <p class="profile">
@@ -110,7 +111,7 @@
 
                             <div class="card">
                                 <!-- <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
-                                <img class="rounded" src="{{ Storage::disk('s3')->url($item->photo) }}" fclass="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                                <img src="{{ Storage::disk('s3')->url($item->photo) }}" fclass="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
                                 
                                     <div class="card-body">
                                     <p class="note_title"><a href="{{ url("/post/" . $item->id) }}" class="stretched-link text-dark">{{ $item->title}}</a></p>

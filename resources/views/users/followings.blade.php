@@ -37,7 +37,8 @@
                                     </div>
                                     @else
                                     <div style="text-align:center;">
-                                        <img src="data:image/png;base64,{{ $person->user_detail->photo }}" class="person_icon_mini">
+                                        <!-- <img src="data:image/png;base64,{{-- $person->user_detail->photo --}}" class="person_icon_mini"> -->
+                                        <img src="{{ Storage::disk('s3')->url($person->user_detail->photo) }}" class="person_icon_mini">
                                         <p style="margin-top:10px;font-size:0.9rem;" class="text-dark">{{$person->name}}</p>
                                     </div>
                                     @endif
@@ -74,8 +75,8 @@
                                 <!-- 表示の場合 -->
                                 @if($day>$item->sendtime)
                                 <div class="card">
-                                <img src="data:image/png;base64,{{ $item->photo }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
-                                    <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
+                                    <!-- <img src="data:image/png;base64,{{-- $item->photo --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
+                                    <img src="{{ Storage::disk('s3')->url($item->photo) }}"  style="width:100%; height: 180px;object-fit: cover;">
                                         <div class="card-body">
                                             <p class="note_title">
                                             <a href="{{ url("/post/" . $item->id) }}" class="stretched-link text-dark">

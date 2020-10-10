@@ -49,8 +49,8 @@
               @foreach($post as $item)
                   <div class="col-xs-12 col-sm-6 col-md-4 mb-5">
                       <div class="card">
-                      <img src="data:image/png;base64,{{ $item->photo }}"  style="width:100%; height: 180px;object-fit: cover;">
-                          <!-- <img src="{{ asset('storage/' . $item->photo) }}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
+                        <!-- <img src="data:image/png;base64,{{-- $item->photo --}}"  style="width:100%; height: 180px;object-fit: cover;"> -->
+                        <img src="{{ Storage::disk('s3')->url($item->photo) }}"  style="width:100%; height: 180px;object-fit: cover;">
                               <div class="card-body">
                                 <p class="note_title">
                                   <a href="{{ url("/post/" . $item->id) }}" class="stretched-link text-dark">

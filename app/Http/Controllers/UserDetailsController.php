@@ -49,7 +49,7 @@ use App\UserDetail;
         {
             $this->validate($request, [
 				"user_id" => "nullable|integer", //integer('user_id')
-				"photo" => "required", //string('photo')->nullable()
+				"photo" => "nullable", //string('photo')->nullable()
                 "birthday" => "date", //date('birthday')->nullable()
                 "comment" => "string", //string('comment')->nullable()
 
@@ -67,18 +67,11 @@ use App\UserDetail;
                 ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
             }
 
-            // ================画像保存======================
-            // $image = $request->file('photo');
-            
-            // $disk = Storage::disk('local');
-            
-            // $path = $disk->put('public' ,$image);
-            // // ファイル名のみ
-            // $filename = pathinfo($path,  PATHINFO_BASENAME);
-
-            // =============================================-
-
-            $image = base64_encode(file_get_contents($request->photo));
+            // ================画像保存(S3)======================
+            $file=$request->file('photo');
+            $image = Storage::disk('s3')->put('/post',$file, 'public');
+            // ======herokuバイナリ=====
+            // $image = base64_encode(file_get_contents($request->photo));
 
             $requestData = $request->all();
             UserDetail::create([

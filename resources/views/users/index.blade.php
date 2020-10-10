@@ -50,12 +50,14 @@
                             <figure class="effect-color" style="margin:0 auto;">
                             <!-- 登録がない場合 -->
                             @if(!isset($user->user_detail->photo))
+                            <a href="{{ route('users.show', ['name' => $user->id]) }}" class="text-dark">
                             <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon" style="margin:5px;">
+                            </a>
                             <!-- 登録がある場合 -->
                             @else
-                            <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-                                <img src="data:image/png;base64,{{ $user->user_detail->photo}}" class="person_icon" style="margin:5px;">
-                                <!-- <img src="{{-- asset('storage/' .  $user->user_detail->photo) --}}" class="person_icon"> -->
+                            <a href="{{ route('users.show', ['name' => $user->id]) }}" class="text-dark">
+                                <!-- <img src="data:image/png;base64,{{-- $user->user_detail->photo--}}" class="person_icon" style="margin:5px;"> -->
+                                <img src="{{ Storage::disk('s3')->url($user->user_detail->photo) }}"  class="person_icon" style="margin:5px;">
                             </a>
                             @endif
                             </figure>
