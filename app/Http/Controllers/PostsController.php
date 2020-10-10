@@ -153,11 +153,6 @@ use InterventionImage;
                 ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
             }
 
-            // $image = $request->file('photo');
-            // $disk = Storage::disk('s3');
-            // $path = $disk->put('public' ,$image);
-            // $filename = pathinfo($path,  PATHINFO_BASENAME);
-
 
             $file=$request->file('photo');
             $filename = Storage::disk('s3')->put('/post',$file, 'public');

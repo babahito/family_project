@@ -111,7 +111,7 @@
                             <div class="card">
                                 <!-- <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                 <img class="rounded" src="{{ Storage::disk('s3')->url($item->photo) }}" fclass="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
-                                <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
+                                
                                     <div class="card-body">
                                     <p class="note_title"><a href="{{ url("/post/" . $item->id) }}" class="stretched-link text-dark">{{ $item->title}}</a></p>
                                         @if( Auth::id() === $item->user_id )

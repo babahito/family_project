@@ -42,9 +42,10 @@
                         @if(!isset( $kazoku->photo))
                             <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
                         @else
-                        <img src="data:image/png;base64,{{  $kazoku->photo }}" class="person_icon">
+                            <img src="{{ Storage::disk('s3')->url($kazoku->photo) }}" class="person_icon">
+                            <!-- <img src="data:image/png;base64,{{--  $kazoku->photo --}}" class="person_icon"> -->
                         @endif
-                        <!-- <img src="{{-- asset('storage/' .  $kazoku->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
+                        
                  
                         </figure>   
                             <p class="profile">家族誕生日<br>{{$kazoku->family_date}}</p>
@@ -102,7 +103,8 @@
                         @if($day>$item->sendtime)
 
                             <div class="card">
-                            <img src="data:image/png;base64,{{ $item->photo }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                            <img src="{{ Storage::disk('s3')->url($item->photo) }}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;">
+                            <!-- <img src="data:image/png;base64,{{-- $item->photo --}}"  class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                 <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="card-img-top"  style="width:100%; height: 180px;object-fit: cover;"> -->
                                         <div class="card-body">
                                         <p class="note_title">

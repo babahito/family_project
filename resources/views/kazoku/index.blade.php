@@ -98,7 +98,8 @@
                                                                 @if(!isset($kazoku->photo))
                                                                 <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
                                                                 @else
-                                                                <img src="data:image/png;base64,{{ $kazoku->photo }}" class="person_icon">
+                                                                <img src="{{ Storage::disk('s3')->url($kazoku->photo) }}" class="person_icon">
+                                                                <!-- <img src="data:image/png;base64,{{-- $kazoku->photo --}}" class="person_icon"> -->
                                                                 @endif
                                                                 <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
                                                                 
@@ -168,9 +169,10 @@
                                                         @if(!isset($kazoku->photo))
                                                         <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon">
                                                         @else
-                                                        <img src="data:image/png;base64,{{ $kazoku->photo }}" class="person_icon">
+                                                        <!-- <img src="data:image/png;base64,{{-- $kazoku->photo --}}" class="person_icon"> -->
+                                                        <img src="{{ Storage::disk('s3')->url($kazoku->photo) }}" class="person_icon">
                                                         @endif
-                                                        <!-- <img src="{{-- asset('storage/' . $item->photo) --}}" class="person_icon" style="margin-left:-5px;"> -->
+                                                        
                                                         
                                                 </figure>
                                         </a> 

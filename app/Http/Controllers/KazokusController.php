@@ -78,11 +78,10 @@ class KazokusController extends Controller
    {
        $this->validate($request, [
            "user_id" => "nullable|integer", //integer('user_id')
- 
            "family_name" => "required|string", //integer('received_user_id')
            "history" => "required|string", //integer('received_user_id')
            "photo" => "required",
-           "famil_date" => "required|date", //date('received_day')
+           "famil_date" => "nullable|date", //date('received_day')
            "status" => "nullable|integer", //integer('received_life')
 
 
@@ -98,34 +97,18 @@ class KazokusController extends Controller
                 ->withInput()
                 ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
             }
-
-            // ================画像保存======================
-            // $image = $request->file('photo');
-            
-            // $disk = Storage::disk('local');
-            
-            // $path = $disk->put('public' ,$image);
-            // // ファイル名のみ
-            // $filename = pathinfo($path,  PATHINFO_BASENAME);
-            // =============================================
-            $image = base64_encode(file_get_contents($request->photo));
+            $file=$request->file('photo');
+            $image = Storage::disk('s3')->put('/post',$file, 'public');
             $requestData = $request->all();
             $kazoku=Kazoku::create([
                 'user_id'=>Auth::user()->id,
                 'photo' => $image,
-          
                'family_name'=>$request->family_name,
                'family_date'=>$request->family_date,
 
                'status'=>$request->status,
                'history'=>$request->history,
                ]);
-                        //    メール送信
-            // $auth=Auth::user()->name;
-            // $family_name=Kazoku::get();
-            // dd($family_name);
-            // $users=User::get();
-            //    Mail::to($users)->send(new Test($auth,$family_name));    
       
        return redirect("kazoku")->with("flash_message", "mail_received added!");
    }
