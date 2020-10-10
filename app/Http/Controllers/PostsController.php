@@ -80,7 +80,54 @@ use InterventionImage;
             return view("post.create",compact("post","auth","user_detail",'client_id_loop','users','day','tests','sendtimes'));
         }
     
+        // =======================================
+        //======== heroku バリデーション用=========
+        // ======================================
+        // public function store(Request $request)
+        // {
+        //     $this->validate($request, [
+		// 		"title" => "nullable", //string('title')->nullable()
+		// 		"body" => "nullable", //text('body')->nullable()
+		// 		"user_id" => "nullable|integer", //integer('user_id')->nullable()
+		// 		"photo" => "nullable", //string('photo')->nullable()
+		// 		"attribute_id" => "integer", //integer('attribute_id')
+		// 		"status" => "integer", //integer('status')
+		// 		"sendtime" => "required|date", //integer('status')
 
+        //     ]);
+            
+        //     // ====画像ファイルの保存=====
+        //     $validator = Validator::make($request->all(), [
+        //         'photo' => 'required|max:5000' //動画の容量を決める->5MB
+        //     ]);
+    
+        //     //バリデーション:エラー
+        //     if ($validator->fails()) {
+        //         return redirect()->back()
+        //         ->withInput()
+        //         ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
+        //     }
+
+        //     $image = base64_encode(file_get_contents($request->photo));
+           
+        //     $requestData = $request->all();
+            
+        //     Post::create([
+        //         'title'=>$request->title,
+        //         'body'=>$request->body,
+        //         'user_id'=>Auth::user()->id,
+        //         'photo' => $image,
+        //         'attribute_id'=>$request->attribute_id,
+        //         'status'=>$request->status,
+        //         'sendtime'=>$request->sendtime,
+        //         ]);
+                
+        //     return redirect("post")->with("flash_message", "user_detail added!");    
+        // }
+
+        // =======================================
+        //======== s3 用=========
+        // ======================================
         public function store(Request $request)
         {
             $this->validate($request, [
@@ -106,32 +153,40 @@ use InterventionImage;
                 ->withErrors($validator);//バリデーションの内容を返しながら、前ページに戻る
             }
 
-            // ================画像保存======================
             // $image = $request->file('photo');
-            // $disk = Storage::disk('local');
+            // $disk = Storage::disk('s3');
             // $path = $disk->put('public' ,$image);
             // $filename = pathinfo($path,  PATHINFO_BASENAME);
-            // ==============================================
 
 
+            $file=$request->file('photo');
+            $filename = Storage::disk('s3')->put('/post',$file, 'public');
 
-            $image = base64_encode(file_get_contents($request->photo));
-           
             $requestData = $request->all();
             
             Post::create([
                 'title'=>$request->title,
                 'body'=>$request->body,
                 'user_id'=>Auth::user()->id,
-                'photo' => $image,
+                'photo' => $filename,
                 'attribute_id'=>$request->attribute_id,
                 'status'=>$request->status,
                 'sendtime'=>$request->sendtime,
                 ]);
                 
-            return redirect("post")->with("flash_message", "user_detail added!");
-            // ============================================
+            return redirect("post")->with("flash_message", "user_detail added!");    
         }
+
+
+
+
+
+            // ================画像保存======================
+            // $image = $request->file('photo');
+            // $disk = Storage::disk('local');
+            // $path = $disk->put('public' ,$image);
+            // $filename = pathinfo($path,  PATHINFO_BASENAME);
+            // ==============================================
 
 
 

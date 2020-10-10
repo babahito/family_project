@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "616fa0626fa2f7854a620d58a469e9c2",
+    "content-hash": "0e571df9ce0e54fc70534fb5872a4fa8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.158.0",
+            "version": "3.158.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "59345aa45161a8f83c3a0027a7df9567ae72cc85"
+                "reference": "4e912c1ae4d4b3538ada36ac1478f980f9bdf329"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/59345aa45161a8f83c3a0027a7df9567ae72cc85",
-                "reference": "59345aa45161a8f83c3a0027a7df9567ae72cc85",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4e912c1ae4d4b3538ada36ac1478f980f9bdf329",
+                "reference": "4e912c1ae4d4b3538ada36ac1478f980f9bdf329",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-10-01T18:41:53+00:00"
+            "time": "2020-10-09T18:11:48+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1547,16 +1547,16 @@
         },
         {
             "name": "league/flysystem-aws-s3-v3",
-            "version": "1.0.28",
+            "version": "1.0.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "af7384a12f7cd7d08183390d930c9d0ec629c990"
+                "reference": "4e25cc0582a36a786c31115e419c6e40498f6972"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/af7384a12f7cd7d08183390d930c9d0ec629c990",
-                "reference": "af7384a12f7cd7d08183390d930c9d0ec629c990",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/4e25cc0582a36a786c31115e419c6e40498f6972",
+                "reference": "4e25cc0582a36a786c31115e419c6e40498f6972",
                 "shasum": ""
             },
             "require": {
@@ -1590,7 +1590,7 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "time": "2020-08-22T08:43:01+00:00"
+            "time": "2020-10-08T18:58:37+00:00"
         },
         {
             "name": "league/mime-type-detection",
