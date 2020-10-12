@@ -31,20 +31,31 @@
 
               <!-- 本人紹介 -->
 
-                        <div class="row">
+                        <!-- <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-3 mb-3 profile_box">
-
+                            <figure class="effect-color" style="margin:0 auto;">
+                            
+                            @if(!isset($user_detail->photo))
+                            <img src="{{-- asset('/assets/images/noimage.png') --}}" class="person_icon" style="margin:5px;">
+                         
+                            @else
+                                
+                                <img src="{{-- Storage::disk('s3')->url($user_detail->photo) --}}"  class="person_icon" style="margin:5px;">
+                                
+                            
+                            @endif
+                            </figure>
 
 
                             </div>
                             <div class="col-xs-8">
                                 <div class="card-body">
-                                    <h4 class="cartitle">{{ $auth->name }}</h4>
+                                    <h4 class="cartitle">{{-- $auth->name --}}</h4>
                                     
-                                    <p class="card-text">{{ $user_detail->comment}}</p>
+                                    <p class="card-text">{{-- $user_detail->comment--}}</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
             <!-- end -->
 
 
