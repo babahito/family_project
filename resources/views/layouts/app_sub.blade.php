@@ -91,10 +91,10 @@
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <!-- 退会 -->
-                                        <a class="dropdown-item" href="{{ route('deactive') }}">
-                                            退会します
+                                        <!-- <a class="dropdown-item" href="{{-- route('deactive') --}}"> -->
+                                            <!-- 退会します -->
                                             
-                                        </a>
+                                        <!-- </a> -->
                                         <!-- ログアウト -->
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
