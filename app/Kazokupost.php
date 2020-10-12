@@ -18,7 +18,7 @@ class Kazokupost extends Model
             return $this->belongsToMany('App\Kazoku','kposts');
     
         }
-
+        // 家族ノートとユーザーの１対多
         public function user(){
             return $this->belongsTo('App\User');
         }

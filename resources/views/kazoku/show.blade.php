@@ -127,6 +127,7 @@
                                                     </form>
                                         @endif
                                             <!-- <p class="card-text">{{-- $item->attribute_id --}}さんへメッセージ</p> -->
+                                            <p class="card-text">投稿者：{{ $item->user->name }}</p>
                                             <p class="card-text">送信日時：{{ $item->sendtime }}</p>
                                     </div>
                             </div>
