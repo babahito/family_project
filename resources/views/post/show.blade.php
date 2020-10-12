@@ -39,6 +39,7 @@
                                     <div class="col-md-4">
                                         <!-- <img src="data:image/png;base64,{{-- $item->photo --}}"  class="card-img-top"  style="width:100%;object-fit: cover;"> -->
                                         <img class="rounded" src="{{ Storage::disk('s3')->url($item->photo) }}" fclass="card-img-top"  style="width:100%;object-fit: cover;">
+                                        
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
