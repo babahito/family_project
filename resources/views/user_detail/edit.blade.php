@@ -33,18 +33,7 @@
 
                         <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-3 mb-3 profile_box">
-                            <figure class="effect-color" style="margin:0 auto;">
-                            <!-- 登録がない場合 -->
-                            @if(!isset($user_detail->photo))
-                            <img src="{{ asset('/assets/images/noimage.png') }}" class="person_icon" style="margin:5px;">
-                            <!-- 登録がある場合 -->
-                            @else
-                                <!-- <img src="data:image/png;base64,{{-- $user_detail->photo--}}" class="person_icon" style="margin:5px;"> -->
-                                <img src="{{ Storage::disk('s3')->url($user_detail->photo) }}"  class="person_icon" style="margin:5px;">
-                                
-                            
-                            @endif
-                            </figure>
+
 
 
                             </div>
