@@ -18,6 +18,11 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    // ログアウト後にROOTにリダイレクト
+    protected function loggedOut(\Illuminate\Http\Request $request)
+    {
+        return redirect('/');
+    }
 
     use AuthenticatesUsers;
 
