@@ -91,7 +91,7 @@
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <!-- 退会 -->
-                                        <a class="dropdown-item" href="{{ route('deactive') }}">
+                                        <a class="dropdown-item" href="/deactive">
                                             {{ __('退会処理') }}
                                         </a>
                                         <!-- ログアウト -->
