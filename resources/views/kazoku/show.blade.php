@@ -150,7 +150,8 @@
                                                         </button>    
                                                     </form>
                                         @endif
-                                <p class="card-text">到着日時：{{ $item->sendtime }}</p>
+                                        <p class="card-text">投稿者：{{ $item->user->name }}</p>
+                                        <p class="card-text">到着日時：{{ $item->sendtime }}</p>
                             </div>
                             </div>
                     @endif
