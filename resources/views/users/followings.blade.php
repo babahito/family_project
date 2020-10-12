@@ -25,7 +25,7 @@
         <main>
             <h2>Follower NOTE</h2>
                 <!-- メンバー一覧 -->
-                <div class="row" style="margin:0 8px;">
+                <div class="row" style="margin:0 8px 15px 8px;">
                     @foreach($followings as $person)
                         <div style="float:left;padding:3px;">
                             <a href="{{ route('users.show', ['name' => $person->name]) }}">
