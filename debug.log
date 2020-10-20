@@ -4,3 +4,4 @@
 [1011/215212.668:ERROR:process_memory_win.cc(39)] Failed to initialize ProcessInfo.
 [1011/215212.669:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: 既存のプロセスにアクセスしようとしました。 (0xc000010a)
 [1012/090831.809:ERROR:directory_reader_win.cc(43)] FindFirstFile: 指定されたパスが見つかりません。 (0x3)
+[1013/090618.432:ERROR:directory_reader_win.cc(43)] FindFirstFile: 指定されたパスが見つかりません。 (0x3)

@@ -74,6 +74,9 @@
                                                 <label for="sendtime">おくる日時: </label>
                                                     <input name="sendtime" type="datetime-local" id="sendtime" value="{{old('sendtime')}}">
                                             </div>
+                                            <!-- <div class="calender">
+                                              <h3 id="date_title"></h3> -->
+                                            <!-- </div> -->
                                             <div>
                                                 <label for="user_id"></label>
                                                     <input name="user_id" type="hidden" id="user_id" value="{{old('user_id')}}">

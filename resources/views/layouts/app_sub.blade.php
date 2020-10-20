@@ -134,6 +134,7 @@
 
        </div>
     </div>
+    <script src="{{mix('js/calendar.js')}}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/canva.js') }}"></script>
     <!-- Bootstrap tooltips -->

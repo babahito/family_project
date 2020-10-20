@@ -66,7 +66,7 @@
                                                 endpoint="{{ route('posts.like', ['item' => $item]) }}">
                                             </article-like>
                                                 
-                                                <p class="card-text">{{ $item->body }}</p>
+                                                <p class="card-text"><pre>{{ $item->body }}</pre></p>
                                                 <p class="card-text">投稿者：{{ $item->user->name }}</p>
                                                 <!-- <p class="card-text">{{-- $item->attribute_id --}}さんへメッセージ</p> -->
                                                 <p class="card-text">投稿日時：{{ $item->sendtime }}</p>
