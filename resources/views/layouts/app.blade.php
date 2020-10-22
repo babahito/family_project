@@ -31,7 +31,7 @@
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
 </head>
-<body style="background-color:#fff;">
+<body>
     <div id="app">
         <div class="content">
             <!-- ヘッダー -->
@@ -88,7 +88,13 @@
 
             <!--本文  -->
             @yield('content')
-       </div>
+
+            <!--footer  -->
+            <!-- @yield('company') -->
+
+
+        </div>
+
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/canva.js') }}"></script>

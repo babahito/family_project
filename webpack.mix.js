@@ -12,6 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+   .js('resources/js/shop.js', 'public/js') 
+   .js('resources/js/router.js', 'public/js')
    .js('resources/js/canva.js', 'public/js') 
    .js('resources/js/calendar.js','public/js')
    // .sass('resources/sass/app.scss', 'public/css')

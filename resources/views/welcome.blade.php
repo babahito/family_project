@@ -53,6 +53,20 @@
                     </div>
                 </div>
             </div>
+
+<!-- footer -->
+            <div class="footer">
+            
+            <p>運営者管理者用：</p>
+                <a href="{{ url("/shop/login") }}" >
+                    <button type="button" class="btn btn-light">ログイン</button>
+                </a>
+                <a href="{{ url("/shop/register") }}">
+                    <button type="button" class="btn btn-light">新規登録</button>
+                </a>
+            </div>
+
+
     </main>
+
     @endsection
-    
