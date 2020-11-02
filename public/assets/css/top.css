@@ -604,8 +604,8 @@ img.miniimage { display: none; }   /* ※1 */
     height:50px;
     background: #555;
     color:#fff;
-    position: fixed; 
-    bottom:0;
-    left:0;
+    /* position: fixed;  */
+    /* bottom:0;
+    left:0; */
     text-align: center;
 }

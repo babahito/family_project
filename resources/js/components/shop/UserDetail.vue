@@ -1,14 +1,28 @@
 <template>
-<div>
-	<div>
+<v-app>
 	<h1>ユーザ詳細</h1>
-	<ul>
-		<li>ユーザー番号: {{ user.id }}</li>
-		<li>名前: {{ user.name }}</li>
-		<li>メール: {{ user.email }}</li>
-	</ul>
-	</div>
-</div>
+
+		<v-simple-table>
+			<template v-slot:default>
+			<thead>
+				<tr>
+					<th class="text-left">ID</th>
+					<th class="text-left">名前</th>
+					<th class="text-left">email</th>
+					<th class="text-left">誕生日</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.email }}</td>	  
+					<td>{{ user.email }}</td>	  
+				</tr>
+			</tbody>
+			</template>
+		</v-simple-table>
+</v-app>
 </template>
 
 <script>

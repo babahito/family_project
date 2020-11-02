@@ -15,6 +15,10 @@ window.Vue = Vue;
 Vue.use(VueRouter);
 Vue.use(Vuetify);
 
+// バリテーション
+Vue.use(window.vuelidate.default);
+const {required, email} = window.validators;
+
 const app = new Vue({
     el: '#app',
     router,

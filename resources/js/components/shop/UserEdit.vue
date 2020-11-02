@@ -1,21 +1,12 @@
 <template>
-<div>
-	<div>
-	<h1>ユーザ更新</h1>
-	<p>User Id: {{ user.id }}</p>
-	<form @submit.prevent="updateUser">
-		<div class="form-group">
-			<label for="name">Name:</label>
-			<input v-model="user.name">
-		</div>
-		<div class="form-group">
-			<label for="email">Email:</label>
-			<input v-model="user.email">
-		</div>
-		<button type="submit">更新</button>
-	</form>
-	</div>
-</div>
+	<v-app>
+		<h1>ユーザ更新</h1>
+		<form @submit.prevent="updateUser">
+				<v-text-field v-model="user.name" label="名前"></v-text-field>
+				<v-text-field v-model="user.email" label="メールアドレス"></v-text-field>
+			<button type="submit" class="pink_btn">更新</button>
+		</form>
+	</v-app>
 </template>
 
 <script>
@@ -50,3 +41,24 @@
 
 	}
 </script>
+<style scoped>
+.pink_btn{
+    background:#EEB0D2;
+    color:#fff;
+    border:1px solid #fff;
+    padding:10px 0;
+    /* float:right; */
+    width:100%;
+    color:#fff;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: color 1s, background 1s;
+    font-size:1.2rem;
+}
+    .pink_btn:hover{
+        background:#EB8ABE;
+        box-shadow: 0 0 2px rgba(0,0,0,0.2); 
+        border:1px solid #EB8ABE;
+    }
+</style>

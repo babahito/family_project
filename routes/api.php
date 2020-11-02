@@ -12,8 +12,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+// =================================
+// =====運営側情報=============
+// =================================
+Route::get('/home',function (Request $request) {
+	$users = App\Shop::all();
+	return response()->json(['users' => $users]);
+});
+
+
 // ==================================
-// =====管理者側のユーザー情報=========
+// =====管理者側のお客様=========
 // ==================================
 
 //ユーザー情報表示（全部）
